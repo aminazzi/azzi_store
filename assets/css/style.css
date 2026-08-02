@@ -150,3 +150,11 @@ footer{
     padding:30px;
     background:#111827;
 }
+.card{
+    text-decoration:none;
+    color:white;
+}
+
+.card:hover{
+    color:white;
+}
