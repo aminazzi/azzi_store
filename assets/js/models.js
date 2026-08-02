@@ -7,19 +7,22 @@ fetch("../assets/data/models.json")
     products.forEach(product => {
 
       container.innerHTML += `
-        <a href="${product.page}" class="card">
+<div class="card">
 
-          <img src="${product.image}"
-               style="width:100%;border-radius:10px;">
+<img src="${product.image}" class="product-img">
 
-          <h3>${product.name}</h3>
+<h3>${product.name}</h3>
 
-          <p>⭐ ${product.rating}</p>
+<p class="rating">⭐⭐⭐⭐⭐ ${product.rating}</p>
 
-          <p><strong>$${product.price}</strong></p>
+<p class="price">$${product.price}</p>
 
-        </a>
-      `;
+<a href="${product.page}" class="btn">
+View Product
+</a>
+
+</div>
+`;
 
     });
 
