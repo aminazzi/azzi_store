@@ -1,1 +1,26 @@
-
+[
+  {
+    "id": 1,
+    "name": "Knight 3D Model",
+    "price": 9.99,
+    "rating": 5,
+    "image": "../assets/images/knight.jpg",
+    "page": "products/knight.html"
+  },
+  {
+    "id": 2,
+    "name": "Dragon 3D Model",
+    "price": 14.99,
+    "rating": 4.9,
+    "image": "../assets/images/dragon.jpg",
+    "page": "products/dragon.html"
+  },
+  {
+    "id": 3,
+    "name": "Castle 3D Model",
+    "price": 12.99,
+    "rating": 4.8,
+    "image": "../assets/images/castle.jpg",
+    "page": "products/castle.html"
+  }
+]
