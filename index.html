@@ -11,30 +11,63 @@
 
 <body>
 
-<header>
-    <div class="logo">
-        <h1>AZZI STORE</h1>
+<!-- HEADER -->
+<header class="header">
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <h1 class="logo">AZZI STORE</h1>
+
+    <div class="top-icons">
+        <button onclick="toggleSearch()">🔍</button>
+        <button id="langBtn">🌐</button>
+        <button>❤️</button>
+        <button>🛒</button>
     </div>
 
-    <nav>
-        <a href="#">الرئيسية</a>
-        <a href="pages/models.html">3D</a>
-        <a href="pages/books.html">PDF</a>
-        <a href="pages/mods.html">Mods</a>
-        <a href="pages/scripts.html">Scripts</a>
-        <a href="pages/fonts.html">Fonts</a>
-    </nav>
 </header>
+
+<!-- القائمة الجانبية -->
+
+<div id="sidebar" class="sidebar">
+
+    <button class="close-btn" onclick="toggleMenu()">✕</button>
+
+    <a href="index.html">🏠 الرئيسية</a>
+
+    <a href="pages/models.html">📦 3D Models</a>
+
+    <a href="pages/books.html">📚 PDF Books</a>
+
+    <a href="pages/mods.html">🎮 Mods</a>
+
+    <a href="pages/scripts.html">💻 Scripts</a>
+
+    <a href="pages/fonts.html">🎨 Fonts</a>
+
+    <a href="#">🔥 الأكثر مبيعًا</a>
+
+    <a href="#">⭐ التخفيضات</a>
+
+    <a href="#">❤️ المفضلة</a>
+
+    <a href="#">🛒 السلة</a>
+
+    <a href="#">📞 اتصل بنا</a>
+
+    <a href="#">ℹ️ من نحن</a>
+
+</div>
 
 <section class="hero">
 
 <h2>أفضل متجر للمنتجات الرقمية</h2>
 
 <p>
-موديلات ثلاثية الأبعاد، كتب PDF، مودات، سكربتات، خطوط وقوالب احترافية.
+بيع موديلات ثلاثية الأبعاد، كتب PDF، مودات، سكربتات، خطوط وقوالب.
 </p>
 
-<a class="btn" href="#products">تصفح المنتجات</a>
+<a class="btn" href="#products">ابدأ التسوق</a>
 
 </section>
 
@@ -44,30 +77,15 @@
 
 <div class="cards">
 
-<div class="card">
-<h3>3D Models</h3>
-<p>موديلات ثلاثية الأبعاد.</p>
-</div>
+<div class="card">📦<br>3D Models</div>
 
-<div class="card">
-<h3>PDF Books</h3>
-<p>كتب رقمية.</p>
-</div>
+<div class="card">📚<br>PDF Books</div>
 
-<div class="card">
-<h3>Mods</h3>
-<p>مودات للألعاب.</p>
-</div>
+<div class="card">🎮<br>Mods</div>
 
-<div class="card">
-<h3>Scripts</h3>
-<p>سكربتات احترافية.</p>
-</div>
+<div class="card">💻<br>Scripts</div>
 
-<div class="card">
-<h3>Fonts</h3>
-<p>خطوط وقوالب.</p>
-</div>
+<div class="card">🎨<br>Fonts</div>
 
 </div>
 
@@ -75,12 +93,12 @@
 
 <footer>
 
-<p>© 2026 AZZI STORE</p>
+© 2026 AZZI STORE
 
 </footer>
 
 <script src="assets/js/script.js"></script>
-
-</body>
-
+    
+<body>
+    
 </html>
