@@ -76,7 +76,7 @@
     "name": "airplane 3D Model",
     "price": 12.99,
     "rating": 4.9,
-    "image": "../assets/images/models/aireplane.png",
+    "image": "../assets/images/models/airplane.png",
     "page": "products/airplane.html"
   }
 
