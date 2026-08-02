@@ -4,7 +4,7 @@
     "name": "boy 3D Model",
     "price": 4.99,
     "rating": 5,
-    "image": "../assets/images/knight.jpg",
+    "image": "../assets/images/boy.jpg",
     "page": "products/boy.html"
   },
   {
@@ -12,7 +12,7 @@
     "name": "girl 3D Model",
     "price": 3.99,
     "rating": 4.9,
-    "image": "../assets/images/dragon.jpg",
+    "image": "../assets/images/girl.jpg",
     "page": "products/girl.html"
   },
   {
@@ -20,7 +20,7 @@
     "name": "house 3D Model",
     "price": 8.99,
     "rating": 4.8,
-    "image": "../assets/images/castle.jpg",
+    "image": "../assets/images/house.jpg",
     "page": "products/house.html"
   },
   {
@@ -28,7 +28,7 @@
     "name": "car 3D model",
     "price": 6.99,
     "rating": 4.8,
-    "image": "../assets/images/castle.jpg",
+    "image": "../assets/images/car.jpg",
     "page": "products/car.html"
   },
 {
@@ -36,7 +36,7 @@
     "name": "sniper 3D Model",
     "price": 3.99,
     "rating": 3.8,
-    "image": "../assets/images/castle.jpg",
+    "image": "../assets/images/sniper.jpg",
     "page": "products/sniper.html"
   },
 {
@@ -44,23 +44,23 @@
     "name": "phone 3D Model",
     "price": 6.99,
     "rating": 5,
-    "image": "../assets/images/castle.jpg",
+    "image": "../assets/images/phone.jpg",
     "page": "products/phone.html"
   },
 {
     "id": 7,
-    "name": "pc portable 3D Model",
+    "name": "pc 3D Model",
     "price": 7.99,
     "rating": 4.8,
-    "image": "../assets/images/castle.jpg",
-    "page": "products/pc portable .html"
+    "image": "../assets/images/pc.jpg",
+    "page": "products/pc.html"
   },
 {
     "id": 8,
     "name": "cat 3D Model",
     "price": 3.99,
     "rating": 3.6,
-    "image": "../assets/images/castle.jpg",
+    "image": "../assets/images/cat.jpg",
     "page": "products/cat.html"
   },
   {
@@ -76,7 +76,7 @@
     "name": "airplane 3D Model",
     "price": 12.99,
     "rating": 4.9,
-    "image": "../assets/images/castle.jpg",
+    "image": "../assets/images/aireplane.jpg",
     "page": "products/airplane.html"
   }
 
