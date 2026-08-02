@@ -20,7 +20,7 @@
     "name": "house 3D Model",
     "price": 8.99,
     "rating": 4.8,
-    "image": "../assets/images/models/house.jpg",
+    "image": "../assets/images/models/house.png",
     "page": "products/house.html"
   },
   {
@@ -36,7 +36,7 @@
     "name": "sniper 3D Model",
     "price": 3.99,
     "rating": 3.8,
-    "image": "../assets/images/models/sniper.jpg",
+    "image": "../assets/images/models/sniper.png",
     "page": "products/sniper.html"
   },
 {
@@ -44,7 +44,7 @@
     "name": "phone 3D Model",
     "price": 6.99,
     "rating": 5,
-    "image": "../assets/images/models/phone.jpg",
+    "image": "../assets/images/models/phone.png",
     "page": "products/phone.html"
   },
 {
@@ -76,7 +76,7 @@
     "name": "airplane 3D Model",
     "price": 12.99,
     "rating": 4.9,
-    "image": "../assets/images/models/aireplane.jpg",
+    "image": "../assets/images/models/aireplane.png",
     "page": "products/airplane.html"
   }
 
