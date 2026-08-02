@@ -1,26 +1,86 @@
 [
   {
     "id": 1,
-    "name": "Knight 3D Model",
-    "price": 9.99,
+    "name": "boy 3D Model",
+    "price": 4.99,
     "rating": 5,
     "image": "../assets/images/knight.jpg",
-    "page": "products/knight.html"
+    "page": "products/boy.html"
   },
   {
     "id": 2,
-    "name": "Dragon 3D Model",
-    "price": 14.99,
+    "name": "girl 3D Model",
+    "price": 3.99,
     "rating": 4.9,
     "image": "../assets/images/dragon.jpg",
-    "page": "products/dragon.html"
+    "page": "products/girl.html"
   },
   {
     "id": 3,
-    "name": "Castle 3D Model",
-    "price": 12.99,
+    "name": "house 3D Model",
+    "price": 8.99,
     "rating": 4.8,
     "image": "../assets/images/castle.jpg",
+    "page": "products/house.html"
+  },
+  {
+    "id": 4,
+    "name": "car 3D model",
+    "price": 6.99,
+    "rating": 4.8,
+    "image": "../assets/images/castle.jpg",
+    "page": "products/car.html"
+  },
+{
+    "id": 5,
+    "name": "sniper 3D Model",
+    "price": 3.99,
+    "rating": 3.8,
+    "image": "../assets/images/castle.jpg",
+    "page": "products/sniper.html"
+  },
+{
+    "id": 6,
+    "name": "phone 3D Model",
+    "price": 6.99,
+    "rating": 5,
+    "image": "../assets/images/castle.jpg",
+    "page": "products/phone.html"
+  },
+{
+    "id": 7,
+    "name": "pc portable 3D Model",
+    "price": 7.99,
+    "rating": 4.8,
+    "image": "../assets/images/castle.jpg",
+    "page": "products/pc portable .html"
+  },
+{
+    "id": 8,
+    "name": "cat 3D Model",
+    "price": 3.99,
+    "rating": 3.6,
+    "image": "../assets/images/castle.jpg",
+    "page": "products/cat.html"
+  },
+  {
+    "id": 9,
+    "name": "truck 3D Model",
+    "price": 9.99,
+    "rating": 4.3,
+    "image": "../assets/images/truck.jpg",
     "page": "products/castle.html"
+  },
+  {
+    "id": 10,
+    "name": "airplane 3D Model",
+    "price": 12.99,
+    "rating": 4.9,
+    "image": "../assets/images/castle.jpg",
+    "page": "products/airplane.html"
   }
+
+
+
+
 ]
