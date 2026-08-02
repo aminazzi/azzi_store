@@ -4,7 +4,7 @@
     "name": "boy 3D Model",
     "price": 4.99,
     "rating": 5,
-    "image": "../assets/images/boy.jpg",
+    "image": "../assets/images/models/boy.jpg",
     "page": "products/boy.html"
   },
   {
@@ -12,7 +12,7 @@
     "name": "girl 3D Model",
     "price": 3.99,
     "rating": 4.9,
-    "image": "../assets/images/girl.jpg",
+    "image": "../assets/images/models/girl.jpg",
     "page": "products/girl.html"
   },
   {
@@ -20,7 +20,7 @@
     "name": "house 3D Model",
     "price": 8.99,
     "rating": 4.8,
-    "image": "../assets/images/house.jpg",
+    "image": "../assets/images/models/house.jpg",
     "page": "products/house.html"
   },
   {
@@ -28,7 +28,7 @@
     "name": "car 3D model",
     "price": 6.99,
     "rating": 4.8,
-    "image": "../assets/images/car.jpg",
+    "image": "../assets/images/models/car.jpg",
     "page": "products/car.html"
   },
 {
@@ -36,7 +36,7 @@
     "name": "sniper 3D Model",
     "price": 3.99,
     "rating": 3.8,
-    "image": "../assets/images/sniper.jpg",
+    "image": "../assets/images/models/sniper.jpg",
     "page": "products/sniper.html"
   },
 {
@@ -44,7 +44,7 @@
     "name": "phone 3D Model",
     "price": 6.99,
     "rating": 5,
-    "image": "../assets/images/phone.jpg",
+    "image": "../assets/images/models/phone.jpg",
     "page": "products/phone.html"
   },
 {
@@ -52,7 +52,7 @@
     "name": "pc 3D Model",
     "price": 7.99,
     "rating": 4.8,
-    "image": "../assets/images/pc.jpg",
+    "image": "../assets/images/models/pc.jpg",
     "page": "products/pc.html"
   },
 {
@@ -60,7 +60,7 @@
     "name": "cat 3D Model",
     "price": 3.99,
     "rating": 3.6,
-    "image": "../assets/images/cat.jpg",
+    "image": "../assets/images/models/cat.jpg",
     "page": "products/cat.html"
   },
   {
@@ -68,7 +68,7 @@
     "name": "truck 3D Model",
     "price": 9.99,
     "rating": 4.3,
-    "image": "../assets/images/truck.jpg",
+    "image": "../assets/images/models/truck.jpg",
     "page": "products/truck.html"
   },
   {
@@ -76,7 +76,7 @@
     "name": "airplane 3D Model",
     "price": 12.99,
     "rating": 4.9,
-    "image": "../assets/images/aireplane.jpg",
+    "image": "../assets/images/models/aireplane.jpg",
     "page": "products/airplane.html"
   }
 
