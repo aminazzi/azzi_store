@@ -80,6 +80,31 @@ body{
     color:black;
     margin-bottom:15px;
 }
+.product-img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:12px;
+    margin-bottom:12px;
+}
+
+.price{
+    color:#38bdf8;
+    font-size:22px;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+.rating{
+    color:gold;
+    margin:8px 0;
+}
+
+.card .btn{
+    display:block;
+    margin-top:15px;
+    text-align:center;
+}
 
 /* ===== Hero ===== */
 
@@ -157,4 +182,29 @@ footer{
 
 .card:hover{
     color:white;
+}
+.product-img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:12px;
+    margin-bottom:12px;
+}
+
+.price{
+    color:#38bdf8;
+    font-size:22px;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+.rating{
+    color:gold;
+    margin:8px 0;
+}
+
+.card .btn{
+    display:block;
+    margin-top:15px;
+    text-align:center;
 }
