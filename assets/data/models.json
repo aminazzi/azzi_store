@@ -10,7 +10,6 @@
 "format":"OBJ + FBX",
 "size":"53 MB"
 }
-  },
   {
     "id": 2,
     "name": "girl 3D Model",
@@ -22,7 +21,6 @@
 "format":"OBJ + FBX",
 "size":"56 MB"
 }
-  },
   {
     "id": 3,
     "name": "house 3D Model",
@@ -34,7 +32,6 @@
 "format":"OBJ + FBX",
 "size":"2 MB"
 }
-  },
   {
     "id": 4,
     "name": "car 3D model",
@@ -46,7 +43,6 @@
 "format":"OBJ + FBX",
 "size":"20 MB"
 }
-  },
 {
     "id": 5,
     "name": "sniper 3D Model",
@@ -58,7 +54,6 @@
 "format":"OBJ + FBX",
 "size":"7 KB"
 }
-  },
 {
     "id": 6,
     "name": "phone 3D Model",
@@ -70,7 +65,6 @@
 "format":"OBJ + FBX",
 "size":"6 MB"
 }
-  },
 {
     "id": 7,
     "name": "pc 3D Model",
@@ -82,7 +76,6 @@
 "format":"OBJ + FBX",
 "size":"4 MB"
 }
-  },
 {
     "id": 8,
     "name": "cat 3D Model",
@@ -94,7 +87,6 @@
 "format":"OBJ + FBX",
 "size":"3 MB"
 }
-  },
   {
     "id": 9,
     "name": "truck 3D Model",
@@ -106,7 +98,6 @@
 "format":"OBJ + FBX",
 "size":"26 MB"
 }
-  },
   {
     "id": 10,
     "name": "airplane 3D Model",
@@ -118,7 +109,7 @@
 "format":"OBJ + FBX",
 "size":"24 MB"
 }
-  }
+
 
 
 
