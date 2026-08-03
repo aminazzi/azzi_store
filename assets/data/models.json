@@ -79,7 +79,7 @@
   {
     "id": 8,
     "name": "Cat 3D Model",
-    "price": 3.49,
+    "price": 3.99,
     "rating": 4.9,
     "image": "../assets/images/models/cat.jpg",
     "page": "product.html?id=8",
