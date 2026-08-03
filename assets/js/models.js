@@ -1,4 +1,3 @@
-alert("models.js loaded");
 fetch("../assets/data/models.json")
   .then(response => response.json())
   .then(products => {
