@@ -1,117 +1,112 @@
 [
   {
     "id": 1,
-    "name": "boy 3D Model",
+    "name": "Boy 3D Model",
     "price": 4.99,
-    "rating": 5,
+    "rating": 5.0,
     "image": "../assets/images/models/boy.jpg",
-    "page": "page": "product.html?id=1"
-    "description":"High quality 3D model ready for games.",
-"format":"OBJ + FBX",
-"size":"53 MB"
-}
+    "page": "product.html?id=1",
+    "description": "High quality 3D model ready for games.",
+    "format": "OBJ + FBX",
+    "size": "53 MB"
+  },
   {
     "id": 2,
-    "name": "girl 3D Model",
+    "name": "Girl 3D Model",
     "price": 3.99,
     "rating": 4.9,
     "image": "../assets/images/models/girl.jpg",
-    "page": "page": "product.html?id=2"
-    "description":"High quality 3D model ready for games.",
-"format":"OBJ + FBX",
-"size":"56 MB"
-}
+    "page": "product.html?id=2",
+    "description": "High quality 3D model ready for games.",
+    "format": "OBJ + FBX",
+    "size": "56 MB"
+  },
   {
     "id": 3,
-    "name": "house 3D Model",
+    "name": "House 3D Model",
     "price": 8.99,
     "rating": 4.8,
     "image": "../assets/images/models/house.png",
-    "page": "page": "product.html?id=3"
-    "description":"High quality 3D model ready for games.",
-"format":"OBJ + FBX",
-"size":"2 MB"
-}
+    "page": "product.html?id=3",
+    "description": "High quality 3D house model.",
+    "format": "OBJ + FBX",
+    "size": "2 MB"
+  },
   {
     "id": 4,
-    "name": "car 3D model",
+    "name": "Car 3D Model",
     "price": 6.99,
     "rating": 4.8,
     "image": "../assets/images/models/car.jpg",
-    "page": "page": "product.html?id=4"
-    "description":"High quality 3D model ready for games.",
-"format":"OBJ + FBX",
-"size":"20 MB"
-}
-{
+    "page": "product.html?id=4",
+    "description": "Detailed sports car model.",
+    "format": "OBJ + FBX",
+    "size": "18 MB"
+  },
+  {
     "id": 5,
-    "name": "sniper 3D Model",
-    "price": 3.99,
-    "rating": 3.8,
+    "name": "Sniper 3D Model",
+    "price": 5.99,
+    "rating": 4.7,
     "image": "../assets/images/models/sniper.png",
-    "page": "page": "product.html?id=5"
-  "description":"High quality 3D model ready for games.",
-"format":"OBJ + FBX",
-"size":"7 KB"
-}
+    "page": "product.html?id=5",
+    "description": "Professional sniper weapon model.",
+    "format": "OBJ + FBX",
+    "size": "12 MB"
+  },
 {
     "id": 6,
-    "name": "phone 3D Model",
-    "price": 6.99,
-    "rating": 5,
-    "image": "../assets/images/models/phone.png",
-    "page": "page": "product.html?id=6"
-  "description":"High quality 3D model ready for games.",
-"format":"OBJ + FBX",
-"size":"6 MB"
-}
-{
-    "id": 7,
-    "name": "pc 3D Model",
-    "price": 7.99,
+    "name": "Phone 3D Model",
+    "price": 2.99,
     "rating": 4.8,
+    "image": "../assets/images/models/phone.png",
+    "page": "product.html?id=6",
+    "description": "Modern smartphone model.",
+    "format": "OBJ + FBX",
+    "size": "8 MB"
+  },
+  {
+    "id": 7,
+    "name": "PC 3D Model",
+    "price": 7.99,
+    "rating": 5.0,
     "image": "../assets/images/models/pc.jpg",
-    "page": "page": "product.html?id=7"
-  "description":"High quality 3D model ready for games.",
-"format":"OBJ + FBX",
-"size":"4 MB"
-}
-{
+    "page": "product.html?id=7",
+    "description": "Gaming PC model.",
+    "format": "OBJ + FBX",
+    "size": "25 MB"
+  },
+  {
     "id": 8,
-    "name": "cat 3D Model",
-    "price": 3.99,
-    "rating": 3.6,
+    "name": "Cat 3D Model",
+    "price": 3.49,
+    "rating": 4.9,
     "image": "../assets/images/models/cat.jpg",
-    "page": "page": "product.html?id=8"
-  "description":"High quality 3D model ready for games.",
-"format":"OBJ + FBX",
-"size":"3 MB"
-}
+    "page": "product.html?id=8",
+    "description": "Cute cat character model.",
+    "format": "OBJ + FBX",
+    "size": "10 MB"
+  },
   {
     "id": 9,
-    "name": "truck 3D Model",
+    "name": "Truck 3D Model",
     "price": 9.99,
-    "rating": 4.3,
+    "rating": 4.8,
     "image": "../assets/images/models/truck.jpg",
-    "page": "page": "product.html?id=9"
-    "description":"High quality 3D model ready for games.",
-"format":"OBJ + FBX",
-"size":"26 MB"
-}
+    "page": "product.html?id=9",
+    "description": "Realistic truck model.",
+    "format": "OBJ + FBX",
+    "size": "30 MB"
+  },
   {
     "id": 10,
-    "name": "airplane 3D Model",
+    "name": "Airplane 3D Model",
     "price": 12.99,
-    "rating": 4.9,
+    "rating": 5.0,
     "image": "../assets/images/models/airplane.png",
-    "page": "page": "product.html?id=10"
-    "description":"High quality 3D model ready for games.",
-"format":"OBJ + FBX",
-"size":"24 MB"
-}
-
-
-
-
-
+    "page": "product.html?id=10",
+    "description": "Professional airplane model.",
+    "format": "OBJ + FBX",
+    "size": "45 MB"
+  }
 ]
