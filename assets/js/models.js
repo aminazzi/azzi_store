@@ -13,7 +13,7 @@ fetch("../assets/data/models.json")
 
 <h3>${product.name}</h3>
 
-<p class="rating"> ⭐ ${product.rating}</p>
+<p class="rating">⭐ ${product.rating}</p>
 
 <p class="price">$${product.price}</p>
 
