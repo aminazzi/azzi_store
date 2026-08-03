@@ -15,37 +15,49 @@
 
 <a href="models.html" class="back-btn">⬅</a>
 
-<h1>AZZI STORE</h1>
+<h1 class="logo">AZZI STORE</h1>
 
 </header>
 
 <div class="product-page">
 
-<img id="product-image" src="" class="product-image">
+<div class="product-card">
+
+<img id="product-image" class="product-image">
 
 <h2 id="product-name"></h2>
 
-<div id="product-rating"></div>
+<div id="product-rating" class="rating"></div>
 
-<h3 id="product-price"></h3>
+<h3 id="product-price" class="price"></h3>
+
+<button id="buy-btn" class="buy-btn">
+🛒 Buy Now
+</button>
+
+<button id="favorite-btn" class="favorite-btn">
+❤ Add to Favorites
+</button>
+
+<hr>
+
+<h3>Description</h3>
 
 <p id="product-description"></p>
 
 <div class="product-info">
 
-<p><b>Format:</b> <span id="product-format"></span></p>
+<p><strong>Format:</strong> <span id="product-format"></span></p>
 
-<p><b>Size:</b> <span id="product-size"></span></p>
+<p><strong>File Size:</strong> <span id="product-size"></span></p>
 
 </div>
 
-<button id="buy-btn">
-Buy Now
-</button>
+</div>
 
-<button id="favorite-btn">
-❤ Add to Favorites
-</button>
+</div>
+
 <script src="../assets/js/product.js"></script>
+
 </body>
 </html>
