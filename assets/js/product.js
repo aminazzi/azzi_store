@@ -18,7 +18,7 @@ fetch("../assets/data/models.json")
     document.getElementById("product-size").textContent = product.size;
 
     document.getElementById("buy-btn").addEventListener("click", () => {
-      window.location.href = "https://payhip.com/b/8g0vs";
+      window.location.href = product.payhip;
     });
 
   })
