@@ -6,6 +6,10 @@
     "rating": 5,
     "image": "../assets/images/models/boy.jpg",
     "page": "page": "product.html?id=1"
+    "description":"High quality 3D model ready for games.",
+"format":"OBJ + FBX",
+"size":"53 MB"
+}
   },
   {
     "id": 2,
@@ -14,6 +18,10 @@
     "rating": 4.9,
     "image": "../assets/images/models/girl.jpg",
     "page": "page": "product.html?id=2"
+    "description":"High quality 3D model ready for games.",
+"format":"OBJ + FBX",
+"size":"56 MB"
+}
   },
   {
     "id": 3,
@@ -22,6 +30,10 @@
     "rating": 4.8,
     "image": "../assets/images/models/house.png",
     "page": "page": "product.html?id=3"
+    "description":"High quality 3D model ready for games.",
+"format":"OBJ + FBX",
+"size":"2 MB"
+}
   },
   {
     "id": 4,
@@ -30,6 +42,10 @@
     "rating": 4.8,
     "image": "../assets/images/models/car.jpg",
     "page": "page": "product.html?id=4"
+    "description":"High quality 3D model ready for games.",
+"format":"OBJ + FBX",
+"size":"20 MB"
+}
   },
 {
     "id": 5,
@@ -38,6 +54,10 @@
     "rating": 3.8,
     "image": "../assets/images/models/sniper.png",
     "page": "page": "product.html?id=5"
+  "description":"High quality 3D model ready for games.",
+"format":"OBJ + FBX",
+"size":"7 KB"
+}
   },
 {
     "id": 6,
@@ -46,6 +66,10 @@
     "rating": 5,
     "image": "../assets/images/models/phone.png",
     "page": "page": "product.html?id=6"
+  "description":"High quality 3D model ready for games.",
+"format":"OBJ + FBX",
+"size":"6 MB"
+}
   },
 {
     "id": 7,
@@ -54,6 +78,10 @@
     "rating": 4.8,
     "image": "../assets/images/models/pc.jpg",
     "page": "page": "product.html?id=7"
+  "description":"High quality 3D model ready for games.",
+"format":"OBJ + FBX",
+"size":"4 MB"
+}
   },
 {
     "id": 8,
@@ -62,6 +90,10 @@
     "rating": 3.6,
     "image": "../assets/images/models/cat.jpg",
     "page": "page": "product.html?id=8"
+  "description":"High quality 3D model ready for games.",
+"format":"OBJ + FBX",
+"size":"3 MB"
+}
   },
   {
     "id": 9,
@@ -70,6 +102,10 @@
     "rating": 4.3,
     "image": "../assets/images/models/truck.jpg",
     "page": "page": "product.html?id=9"
+    "description":"High quality 3D model ready for games.",
+"format":"OBJ + FBX",
+"size":"26 MB"
+}
   },
   {
     "id": 10,
@@ -78,6 +114,10 @@
     "rating": 4.9,
     "image": "../assets/images/models/airplane.png",
     "page": "page": "product.html?id=10"
+    "description":"High quality 3D model ready for games.",
+"format":"OBJ + FBX",
+"size":"24 MB"
+}
   }
 
 
