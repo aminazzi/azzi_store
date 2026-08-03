@@ -16,6 +16,12 @@ fetch("../assets/data/models.json")
     document.getElementById("product-description").textContent = product.description;
     document.getElementById("product-format").textContent = product.format;
     document.getElementById("product-size").textContent = product.size;
+
     document.getElementById("buy-btn").addEventListener("click", () => {
-    window.location.href = "https://payhip.com/b/8g0vs";
+      window.location.href = "https://payhip.com/b/8g0vs";
+    });
+
+  })
+  .catch(error => {
+    console.error("Error loading product:", error);
   });
