@@ -1,67 +1,67 @@
 [
   {
     "id": 1,
-    "name": "Python Programming",
-    "price": 7.99,
+    "name": "رواية أرض زيكولا pdf ",
+    "price": 5.00,
     "rating": 5.0,
     "image": "../assets/images/books/python.jpg",
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
     "size": "12 MB",
-    "payhip": "ضع رابط Payhip هنا"
+    "payhip": "https://payhip.com/b/p4eYU"
   },
   {
     "id": 2,
-    "name": "Python Programming",
-    "price": 7.99,
-    "rating": 5.0,
+    "name": "رواية كن لنفسك كل شيء pdf",
+    "price": 4.50,
+    "rating": 4.4,
     "image": "../assets/images/books/python.jpg",
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
     "size": "12 MB",
-    "payhip": "ضع رابط Payhip هنا"
+    "payhip": "https://payhip.com/b/4awkm"
   },
   {
     "id": 3,
-    "name": "Python Programming",
-    "price": 7.99,
-    "rating": 5.0,
+    "name": "رواية إبتسم فأنت ميت pdf",
+    "price": 4.00,
+    "rating": 4.9,
     "image": "../assets/images/books/python.jpg",
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
     "size": "12 MB",
-    "payhip": "ضع رابط Payhip هنا"
+    "payhip": "https://payhip.com/b/qIpbB"
   },
   {
     "id": 4,
-    "name": "Python Programming",
+    "name": "رواية بدأ الضلام pdf ",
     "price": 7.99,
-    "rating": 5.0,
+    "rating": 3.50,
     "image": "../assets/images/books/python.jpg",
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
     "size": "12 MB",
-    "payhip": "ضع رابط Payhip هنا"
+    "payhip": "https://payhip.com/b/uoWT3"
   },
   {
     "id": 5,
-    "name": "Python Programming",
-    "price": 7.99,
+    "name": "كتاب لغة الجسد pdf",
+    "price": 3.00,
     "rating": 5.0,
     "image": "../assets/images/books/python.jpg",
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
     "size": "12 MB",
-    "payhip": "ضع رابط Payhip هنا"
+    "payhip": "https://payhip.com/b/KVcaq"
   },
   {
     "id": 6,
-    "name": "Python Programming",
+    "name": "رواية باساتين عربستان pdf",
     "price": 7.99,
     "rating": 5.0,
     "image": "../assets/images/books/python.jpg",
@@ -69,54 +69,54 @@
     "description": "Complete Python programming ebook.",
     "format": "PDF",
     "size": "12 MB",
-    "payhip": "ضع رابط Payhip هنا"
+    "payhip": "https://payhip.com/b/XjlOk"
   },
   {
     "id": 7,
-    "name": "Python Programming",
-    "price": 7.99,
+    "name": "رواية صراع العروش pdf",
+    "price": 4.50,
     "rating": 5.0,
     "image": "../assets/images/books/python.jpg",
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
     "size": "12 MB",
-    "payhip": "ضع رابط Payhip هنا"
+    "payhip": "https://payhip.com/b/5oHgT"
   },
   {
     "id": 8,
-    "name": "Python Programming",
+    "name": "كتاب صحيح مسلم pdf",
     "price": 7.99,
-    "rating": 5.0,
+    "rating": 4.00,
     "image": "../assets/images/books/python.jpg",
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
     "size": "12 MB",
-    "payhip": "ضع رابط Payhip هنا"
+    "payhip": "https://payhip.com/b/poe6N"
   },
   {
     "id": 9,
-    "name": "Python Programming",
-    "price": 7.99,
+    "name": "كتاب قصص الانبياء pdf",
+    "price": 3.50,
     "rating": 5.0,
     "image": "../assets/images/books/python.jpg",
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
     "size": "12 MB",
-    "payhip": "ضع رابط Payhip هنا"
+    "payhip": "https://payhip.com/b/ecYlk"
   },
   {
     "id": 10,
-    "name": "Python Programming",
-    "price": 7.99,
+    "name": "رواية ليست عذراء pdf",
+    "price": 3.00,
     "rating": 5.0,
     "image": "../assets/images/books/python.jpg",
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
     "size": "12 MB",
-    "payhip": "ضع رابط Payhip هنا"
+    "payhip": "https://payhip.com/b/tvlNY"
   },
 ]
