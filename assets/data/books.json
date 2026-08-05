@@ -6,7 +6,7 @@
     "rating": 5.0,
     "image": "../assets/images/books/أرض زيكولا.png",
     "page": "product.html?id=101",
-    "description": "Complete Python programming ebook.",
+    "description": "رواية فانتازيا عن شاب ينتقل لعالم موازٍ تتعامل أهله بوحدات الذكاء بدل المال ويعيشون تحت قوانين قاسية.",
     "format": "PDF",
     "size": "6 MB",
     "payhip": "https://payhip.com/b/p4eYU"
@@ -18,7 +18,7 @@
     "rating": 4.4,
     "image": "../assets/images/books/كن لنفسك كل شيء.png",
     "page": "product.html?id=102",
-    "description": "Complete Python programming ebook.",
+    "description": "كتاب تحفيزي يقدم نصائح قصيرة لتمكين الإنسان من الاعتماد على نفسه وبناء ذاته.",
     "format": "PDF",
     "size": "5 MB",
     "payhip": "https://payhip.com/b/4awkm"
@@ -30,19 +30,19 @@
     "rating": 4.9,
     "image": "../assets/images/books/إبتسم فأنت ميت.png",
     "page": "product.html?id=103",
-    "description": "Complete Python programming ebook.",
+    "description": "مجموعة قصص رعب قصيرة مصرية تخلط بين الأساطير الشعبية والرعب النفسي بأسلوب صادم.",
     "format": "PDF",
     "size": "14 MB",
     "payhip": "https://payhip.com/b/qIpbB"
   },
   {
     "id": 104,
-    "name": "رواية بدأ الضلام pdf ",
+    "name": "رواية وبدأ الضلام pdf ",
     "price": 3.50,
     "rating": 3.9,
     "image": "../assets/images/books/وبدأ الضلام.png",
     "page": "product.html?id=104",
-    "description": "Complete Python programming ebook.",
+    "description": "رواية رعب وإثارة تدور أحداثها في مكان مغلق حيث يواجه الأبطال قوى غامضة ومرعبة.",
     "format": "PDF",
     "size": "8 MB",
     "payhip": "https://payhip.com/b/uoWT3"
@@ -54,19 +54,19 @@
     "rating": 3.1,
     "image": "../assets/images/books/لغة الجسد.png",
     "page": "product.html?id=105",
-    "description": "Complete Python programming ebook.",
+    "description": "كتاب تنمية بشرية يشرح دلالات حركات الجسم وتعبيرات الوجه وكيفية فهم الآخرين والتأثير فيهم.",
     "format": "PDF",
     "size": "16 MB",
     "payhip": "https://payhip.com/b/KVcaq"
   },
   {
     "id": 106,
-    "name": "رواية باساتين عربستان pdf",
+    "name": "رواية بساتين عربستان pdf",
     "price": 5.0,
     "rating": 4.0,
     "image": "../assets/images/books/بساتين عربستان.png",
     "page": "product.html?id=106",
-    "description": "Complete Python programming ebook.",
+    "description": "رواية فانتازيا عربية تدور في عالم الجن والشياطين وتسرد مغامرات مليئة بالسحر والحروب.",
     "format": "PDF",
     "size": "6 MB",
     "payhip": "https://payhip.com/b/XjlOk"
@@ -78,7 +78,7 @@
     "rating": 5.0,
     "image": "../assets/images/books/صراع العروش.png",
     "page": "product.html?id=107",
-    "description": "Complete Python programming ebook.",
+    "description": "رواية فانتازيا ملحمية عن صراع العائلات النبيلة على السلطة في قارة ويستروس المليئة بالخيانة والأسرار.",
     "format": "PDF",
     "size": "17 MB",
     "payhip": "https://payhip.com/b/5oHgT"
@@ -90,7 +90,7 @@
     "rating": 4.5,
     "image": "../assets/images/books/صحيح مسلم.png",
     "page": "product.html?id=108",
-    "description": "Complete Python programming ebook.",
+    "description": "من أصح كتب الحديث النبوي الشريف ويجمع الأحاديث الصحيحة في العقيدة والعبادات والمعاملات.",
     "format": "PDF",
     "size": "13 MB",
     "payhip": "https://payhip.com/b/poe6N"
@@ -102,7 +102,7 @@
     "rating": 4.2,
     "image": "../assets/images/books/قصص الأنبياء.png",
     "page": "product.html?id=109",
-    "description": "Complete Python programming ebook.",
+    "description": "كتاب ديني يسرد قصص الأنبياء عليهم السلام من آدم إلى عيسى مستنداً إلى القرآن والسنة والعبر المستفادة منها.",
     "format": "PDF",
     "size": "22 MB",
     "payhip": "https://payhip.com/b/ecYlk"
@@ -114,7 +114,7 @@
     "rating": 3.9,
     "image": "../assets/images/books/ليست عذراء.png",
     "page": "product.html?id=110",
-    "description": "Complete Python programming ebook.",
+    "description": "رواية اجتماعية بالعامية المصرية تناقش قضايا المرأة والمجتمع بجرأة وصراحة.",
     "format": "PDF",
     "size": "1 MB",
     "payhip": "https://payhip.com/b/tvlNY"
