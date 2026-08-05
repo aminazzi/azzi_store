@@ -1,5 +1,6 @@
 const params = new URLSearchParams(window.location.search);
-const id = Number(params.get("id"));
+
+console.log(params.get("id"));
 
 Promise.all([
   fetch("../assets/data/models.json").then(r => r.json()),
