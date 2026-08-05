@@ -8,7 +8,7 @@
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
-    "size": "12 MB",
+    "size": "6 MB",
     "payhip": "https://payhip.com/b/p4eYU"
   },
   {
@@ -20,7 +20,7 @@
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
-    "size": "12 MB",
+    "size": "5 MB",
     "payhip": "https://payhip.com/b/4awkm"
   },
   {
@@ -32,43 +32,43 @@
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
-    "size": "12 MB",
+    "size": "14 MB",
     "payhip": "https://payhip.com/b/qIpbB"
   },
   {
     "id": 4,
     "name": "رواية بدأ الضلام pdf ",
-    "price": 7.99,
-    "rating": 3.50,
+    "price": 3.50,
+    "rating": 3.9,
     "image": "../assets/images/books/python.jpg",
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
-    "size": "12 MB",
+    "size": "8 MB",
     "payhip": "https://payhip.com/b/uoWT3"
   },
   {
     "id": 5,
     "name": "كتاب لغة الجسد pdf",
     "price": 3.00,
-    "rating": 5.0,
+    "rating": 3.1,
     "image": "../assets/images/books/python.jpg",
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
-    "size": "12 MB",
+    "size": "16 MB",
     "payhip": "https://payhip.com/b/KVcaq"
   },
   {
     "id": 6,
     "name": "رواية باساتين عربستان pdf",
-    "price": 7.99,
-    "rating": 5.0,
+    "price": 5.0,
+    "rating": 4.0,
     "image": "../assets/images/books/python.jpg",
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
-    "size": "12 MB",
+    "size": "6 MB",
     "payhip": "https://payhip.com/b/XjlOk"
   },
   {
@@ -80,43 +80,43 @@
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
-    "size": "12 MB",
+    "size": "17 MB",
     "payhip": "https://payhip.com/b/5oHgT"
   },
   {
     "id": 8,
     "name": "كتاب صحيح مسلم pdf",
-    "price": 7.99,
-    "rating": 4.00,
+    "price": 4.00,
+    "rating": 4.5,
     "image": "../assets/images/books/python.jpg",
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
-    "size": "12 MB",
+    "size": "13 MB",
     "payhip": "https://payhip.com/b/poe6N"
   },
   {
     "id": 9,
     "name": "كتاب قصص الانبياء pdf",
     "price": 3.50,
-    "rating": 5.0,
+    "rating": 4.2,
     "image": "../assets/images/books/python.jpg",
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
-    "size": "12 MB",
+    "size": "22 MB",
     "payhip": "https://payhip.com/b/ecYlk"
   },
   {
     "id": 10,
     "name": "رواية ليست عذراء pdf",
     "price": 3.00,
-    "rating": 5.0,
+    "rating": 3.9,
     "image": "../assets/images/books/python.jpg",
     "page": "product.html?id=101",
     "description": "Complete Python programming ebook.",
     "format": "PDF",
-    "size": "12 MB",
+    "size": "1 MB",
     "payhip": "https://payhip.com/b/tvlNY"
   },
 ]
