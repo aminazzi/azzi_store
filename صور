@@ -1,0 +1,43 @@
+from PIL import Image
+import sys
+
+
+if len(sys.argv) != 4:
+
+    print(
+        "Usage:"
+    )
+
+    print(
+        "python ImageResizer.py input.jpg output.jpg 800"
+    )
+
+    raise SystemExit
+
+
+input_file = sys.argv[1]
+output_file = sys.argv[2]
+width = int(sys.argv[3])
+
+
+with Image.open(input_file) as image:
+
+    ratio = width / image.width
+
+    height = round(
+        image.height * ratio
+    )
+
+    resized = image.resize(
+        (width, height),
+        Image.Resampling.LANCZOS
+    )
+
+    resized.save(
+        output_file
+    )
+
+    print(
+        "Image saved:",
+        output_file
+    )
