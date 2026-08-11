@@ -1,0 +1,69 @@
+import webbrowser
+
+SITES = {
+
+    "1": (
+        "Google",
+        "https://www.google.com"
+    ),
+
+    "2": (
+        "YouTube",
+        "https://www.youtube.com"
+    ),
+
+    "3": (
+        "GitHub",
+        "https://github.com"
+    ),
+
+    "4": (
+        "Payhip",
+        "https://payhip.com"
+    ),
+
+    "5": (
+        "ChatGPT",
+        "https://chatgpt.com"
+    )
+}
+
+
+while True:
+
+    print()
+    print("==============================")
+    print("AZZI QUICK ACCESS")
+    print("==============================")
+
+    for key, site in SITES.items():
+
+        print(
+            key + ". " + site[0]
+        )
+
+    print("0. Exit")
+
+    choice = input(
+        "Choose a website: "
+    ).strip()
+
+    if choice == "0":
+        break
+
+    if choice in SITES:
+
+        print(
+            "Opening:",
+            SITES[choice][0]
+        )
+
+        webbrowser.open(
+            SITES[choice][1]
+        )
+
+    else:
+
+        print(
+            "Invalid choice."
+        )
