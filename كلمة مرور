@@ -1,0 +1,51 @@
+import secrets
+import string
+
+
+print("==============================")
+print("AZZI PASSWORD GENERATOR")
+print("==============================")
+
+
+try:
+
+    length = int(
+        input(
+            "Password length: "
+        )
+    )
+
+except ValueError:
+
+    length = 16
+
+
+if length < 12:
+
+    length = 12
+
+
+characters = (
+    string.ascii_letters
+    + string.digits
+    + "!@#$%^&*_-+="
+)
+
+
+password = ""
+
+
+for i in range(length):
+
+    password += secrets.choice(
+        characters
+    )
+
+
+print()
+print("Generated password:")
+print(password)
+print()
+print(
+    "Keep your password private."
+)
