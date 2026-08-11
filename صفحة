@@ -1,0 +1,35 @@
+from pypdf import PdfReader
+import sys
+
+
+if len(sys.argv) != 2:
+
+    print(
+        "Usage: python PDFPageCounter.py file.pdf"
+    )
+
+    raise SystemExit
+
+
+file_path = sys.argv[1]
+
+
+reader = PdfReader(
+    file_path
+)
+
+
+pages = len(
+    reader.pages
+)
+
+
+print(
+    "File:",
+    file_path
+)
+
+print(
+    "Number of pages:",
+    pages
+)
