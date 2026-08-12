@@ -20,7 +20,7 @@
     "page": "product.html?id=202",
     "description": "A basic defensive website checker that analyzes HTTPS, redirects, response status and selected security headers.",
     "format": "Python",
-    "size": "4 KB",
+    "size": "24 KB",
     "payhip": ""
   },
   {
@@ -32,7 +32,7 @@
     "page": "product.html?id=203",
     "description": "Quickly open your favorite websites from a simple customizable menu.",
     "format": "Python",
-    "size": "3 KB",
+    "size": "31 KB",
     "payhip": ""
   },
   {
@@ -44,7 +44,7 @@
     "page": "product.html?id=204",
     "description": "Resize images quickly while maintaining their proportions.",
     "format": "Python",
-    "size": "2 KB",
+    "size": "11 KB",
     "payhip": ""
   },
   {
@@ -56,14 +56,14 @@
     "page": "product.html?id=205",
     "description": "A simple Python tool that counts the number of pages inside a PDF file.",
     "format": "Python",
-    "size": "2 KB",
+    "size": "8 KB",
     "payhip": ""
   },
   {
     "id": 306,
     "name": "Password Generator",
-    "price": 3.99,
-    "rating": 4.9,
+    "price": 1.99,
+    "rating": 4.6,
     "image": "../assets/images/scripts/password-generator.jpg",
     "page": "product.html?id=206",
     "description": "Generate strong random passwords locally with customizable password length.",
@@ -74,49 +74,49 @@
   {
     "id": 307,
     "name": "File Search Tool",
-    "price": 3.49,
+    "price": 1.99,
     "rating": 4.8,
     "image": "../assets/images/scripts/file-search.jpg",
     "page": "product.html?id=207",
     "description": "Search files quickly through folders and subfolders using a simple command-line tool.",
     "format": "Python",
-    "size": "2 KB",
+    "size": "13 KB",
     "payhip": ""
   },
   {
     "id": 308,
     "name": "URL Status Checker",
-    "price": 3.99,
+    "price": 2.99,
     "rating": 4.7,
     "image": "../assets/images/scripts/url-checker.jpg",
     "page": "product.html?id=208",
     "description": "Check multiple URLs and see their HTTP response status quickly.",
     "format": "Python",
-    "size": "3 KB",
+    "size": "73 KB",
     "payhip": ""
   },
   {
     "id": 309,
     "name": "3D Third-Person Camera - Unity",
-    "price": 4.99,
+    "price": 3.99,
     "rating": 5.0,
     "image": "../assets/images/scripts/third-person-camera.jpg",
     "page": "product.html?id=209",
     "description": "A simple third-person camera controller for Unity 3D games with mouse-controlled rotation.",
     "format": "C# / Unity",
-    "size": "3 KB",
+    "size": "9 KB",
     "payhip": ""
   },
   {
     "id": 310,
-    "name": "3D Third-Person Camera - Unity",
-    "price": 4.99,
+    "name": "AZZI STORE",
+    "price": 1000,
     "rating": 5.0,
-    "image": "../assets/images/scripts/third-person-camera.jpg",
+    "image": "../assets/images/scripts/azzi store.png",
     "page": "product.html?id=209",
-    "description": "A simple third-person camera controller for Unity 3D games with mouse-controlled rotation.",
-    "format": "C# / Unity",
-    "size": "3 KB",
+    "description":"site azzi store.",
+    "format": "file",
+    "size": "10 MB",
     "payhip": ""
   }
 ]
