@@ -1,58 +1,127 @@
 const params = new URLSearchParams(window.location.search);
 const id = Number(params.get("id"));
 
+console.log("Product ID:", id);
+
 Promise.all([
-  fetch("../assets/data/models.json").then(r => r.json()),
-  fetch("../assets/data/books.json").then(r => r.json()),
-  fetch("../assets/data/mods.json").then(r => r.json())
+    fetch("../assets/data/models.json").then(r => r.json()),
+    fetch("../assets/data/books.json").then(r => r.json()),
+    fetch("../assets/data/scripts.json").then(r => r.json())
 ])
-.then(([models, books, mods]) => {
 
-  const products = [
-    ...models,
-    ...books,
-    ...mods
-  ];
+.then(([models, books, scripts]) => {
 
-  const product = products.find(p => Number(p.id) === id);
+    const products = [
+        ...models,
+        ...books,
+        ...scripts
+    ];
 
-  if (!product) {
-    alert("Product not found! ID = " + id);
-    return;
-  }
+    const product = products.find(p => p.id === id);
 
-  document.getElementById("product-image").src = product.image;
-  document.getElementById("product-image").alt = product.name;
+    if (!product) {
 
-  document.getElementById("product-name").textContent = product.name;
+        document.body.innerHTML =
+            "<h2>Product not found</h2>";
 
-  document.getElementById("product-rating").textContent =
-    "⭐ " + product.rating;
-
-  document.getElementById("product-price").textContent =
-    "$" + product.price;
-
-  document.getElementById("product-description").textContent =
-    product.description;
-
-  document.getElementById("product-format").textContent =
-    product.format;
-
-  document.getElementById("product-size").textContent =
-    product.size;
-
-  document.getElementById("buy-btn").onclick = function () {
-
-    if (!product.payhip || product.payhip.includes("PUT-YOUR-LINK-HERE")) {
-      alert("Payhip link is not available for this product yet.");
-      return;
+        return;
     }
 
-    window.location.href = product.payhip;
-  };
+    console.log("Product found:", product);
+
+    // Image
+    const image =
+        document.getElementById("product-image");
+
+    if (image) {
+        image.src = product.image;
+        image.alt = product.name;
+    }
+
+    // Name
+    const name =
+        document.getElementById("product-name");
+
+    if (name) {
+        name.textContent = product.name;
+    }
+
+    // Rating
+    const rating =
+        document.getElementById("product-rating");
+    if (rating) {
+        rating.textContent =
+            "⭐ " + product.rating;
+    }
+
+    // Price
+    const price =
+        document.getElementById("product-price");
+
+    if (price) {
+        price.textContent =
+            "$" + product.price;
+    }
+
+    // Description
+    const description =
+        document.getElementById("product-description");
+
+    if (description) {
+        description.textContent =
+            product.description;
+    }
+
+    // Format
+    const format =
+        document.getElementById("product-format");
+
+    if (format) {
+        format.textContent =
+            product.format;
+    }
+
+    // Size
+    const size =
+        document.getElementById("product-size");
+
+    if (size) {
+        size.textContent =
+            product.size;
+    }
+
+    // Buy button
+    const buyButton =
+        document.getElementById("buy-btn")
+    ;
+
+    if (buyButton) {
+
+        buyButton.onclick = function () {
+
+            if (product.payhip) {
+
+                window.location.href =
+                    product.payhip;
+
+            } else {
+
+                alert(
+                    "Payhip link is not available yet."
+                );
+
+            }
+
+        };
+    }
 
 })
+
 .catch(error => {
-  console.error("Error loading product:", error);
-  alert("Error loading product data.");
+
+    console.error(
+        "Error loading product:",
+        error
+    );
+
 });
