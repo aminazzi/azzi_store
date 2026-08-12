@@ -4,108 +4,108 @@
     "name": "3D Player Movement - Unity",
     "price": 3.99,
     "rating": 5.0,
-    "image": "../assets/images/scripts/player-movement.jpg",
+    "image": "../assets/images/scripts/لاعب.jpg",
     "page": "product.html?id=201",
     "description": "A ready-to-use 3D player movement script for Unity games with walking, rotation, gravity and jumping.",
     "format": "C# / Unity",
     "size": "5 KB",
-    "payhip": ""
+    "payhip": "https://payhip.com/b/FAukm"
   },
   {
     "id": 302,
     "name": "Website Safety Checker",
     "price": 2.99,
     "rating": 4.4,
-    "image": "../assets/images/scripts/website-safety.jpg",
+    "image": "../assets/images/scripts/أمان.jpg",
     "page": "product.html?id=202",
     "description": "A basic defensive website checker that analyzes HTTPS, redirects, response status and selected security headers.",
     "format": "Python",
     "size": "24 KB",
-    "payhip": ""
+    "payhip": "https://payhip.com/b/OgV2J"
   },
   {
     "id": 303,
     "name": "Quick Access Launcher",
     "price": 1.99,
     "rating": 3.8,
-    "image": "../assets/images/scripts/quick-access.jpg",
+    "image": "../assets/images/scripts/موقع.jpg",
     "page": "product.html?id=203",
     "description": "Quickly open your favorite websites from a simple customizable menu.",
     "format": "Python",
     "size": "31 KB",
-    "payhip": ""
+    "payhip": "https://payhip.com/b/k05Qc"
   },
   {
     "id": 304,
     "name": "Image Resizer",
     "price": 3.99,
     "rating": 3.7,
-    "image": "../assets/images/scripts/image-resizer.jpg",
+    "image": "../assets/images/scripts/صورة.jpg",
     "page": "product.html?id=204",
     "description": "Resize images quickly while maintaining their proportions.",
     "format": "Python",
     "size": "11 KB",
-    "payhip": ""
+    "payhip": "https://payhip.com/b/sG0n8"
   },
   {
     "id": 305,
     "name": "PDF Page Counter",
     "price": 2.99,
     "rating": 5,
-    "image": "../assets/images/scripts/pdf-counter.jpg",
+    "image": "../assets/images/scripts/صفحة.jpg",
     "page": "product.html?id=205",
     "description": "A simple Python tool that counts the number of pages inside a PDF file.",
     "format": "Python",
     "size": "8 KB",
-    "payhip": ""
+    "payhip": "https://payhip.com/b/ZJHaL"
   },
   {
     "id": 306,
     "name": "Password Generator",
     "price": 1.99,
     "rating": 4.6,
-    "image": "../assets/images/scripts/password-generator.jpg",
+    "image": "../assets/images/scripts/كلمة مرور.jpg",
     "page": "product.html?id=206",
     "description": "Generate strong random passwords locally with customizable password length.",
     "format": "Python",
     "size": "2 KB",
-    "payhip": ""
+    "payhip": "https://payhip.com/b/vJdPE"
   },
   {
     "id": 307,
     "name": "File Search Tool",
     "price": 1.99,
     "rating": 4.8,
-    "image": "../assets/images/scripts/file-search.jpg",
+    "image": "../assets/images/scripts/ملف.jpg",
     "page": "product.html?id=207",
     "description": "Search files quickly through folders and subfolders using a simple command-line tool.",
     "format": "Python",
     "size": "13 KB",
-    "payhip": ""
+    "payhip": "https://payhip.com/b/tgApX"
   },
   {
     "id": 308,
     "name": "URL Status Checker",
     "price": 2.99,
     "rating": 4.7,
-    "image": "../assets/images/scripts/url-checker.jpg",
+    "image": "../assets/images/scripts/فحص.jpg",
     "page": "product.html?id=208",
     "description": "Check multiple URLs and see their HTTP response status quickly.",
     "format": "Python",
     "size": "73 KB",
-    "payhip": ""
+    "payhip": "https://payhip.com/b/hXLrJ"
   },
   {
     "id": 309,
     "name": "3D Third-Person Camera - Unity",
     "price": 3.99,
     "rating": 5.0,
-    "image": "../assets/images/scripts/third-person-camera.jpg",
+    "image": "../assets/images/scripts/كاميرا.jpg",
     "page": "product.html?id=209",
     "description": "A simple third-person camera controller for Unity 3D games with mouse-controlled rotation.",
     "format": "C# / Unity",
     "size": "9 KB",
-    "payhip": ""
+    "payhip": "https://payhip.com/b/Fm4r9"
   },
   {
     "id": 310,
@@ -117,6 +117,6 @@
     "description":"site azzi store.",
     "format": "file",
     "size": "10 MB",
-    "payhip": ""
+    "payhip": "https://payhip.com/b/cbS8K"
   }
 ]
