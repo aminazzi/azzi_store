@@ -2,7 +2,9 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Scripts | AZZI STORE</title>
@@ -21,6 +23,7 @@
 
 </header>
 
+
 <section class="hero">
 
 <h2>قسم السكربتات</h2>
@@ -31,6 +34,88 @@
 
 </section>
 
+
+<!-- PRODUCTS -->
+
+<section>
+
+<div id="products-container" class="products-container"></div>
+
+</section>
+
+
+<script>
+
+fetch("../assets/data/scripts.json")
+
+.then(response => {
+
+    if (!response.ok) {
+        throw new Error("Failed to load scripts.json");
+    }
+
+    return response.json();
+
+})
+
+.then(products => {
+
+    const container =
+        document.getElementById("products-container");
+
+    products.forEach(product => {
+
+        container.innerHTML += `
+
+        <div class="card">
+
+            <img
+                src="${product.image}"
+                class="product-img"
+                alt="${product.name}"
+            >
+
+            <h3>${product.name}</h3>
+
+            <p class="rating">
+                ⭐ ${product.rating}
+            </p>
+
+            <p class="price">
+                $${product.price}
+            </p>
+
+            <a
+                href="${product.page}"
+                class="btn"
+            >
+                View Product
+            </a>
+
+        </div>
+
+        `;
+    });
+
+})
+
+.catch(error => {
+
+    console.error(error);
+
+    document.getElementById(
+        "products-container"
+    ).innerHTML =
+
+        "<p>حدث خطأ أثناء تحميل المنتجات.</p>";
+
+});
+
+</script>
+
+
 </body>
 
 </html>
+
+ 
