@@ -153,9 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     menu.classList.toggle("show");
 
-}
-
-
+});
 function selectLanguage(lang) {
 
     changeLanguage(lang);
@@ -167,4 +165,3 @@ function selectLanguage(lang) {
 
 }
 
-});
