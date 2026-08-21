@@ -74,25 +74,25 @@
   {
     "id": 407,
     "name": "activitiy trace",
-    "price": 2.99,
-    "rating": 4.7,
-    "image": "../assets/images/apps/task-manager.png",
+    "price": 11.80,
+    "rating": 3.9,
+    "image": "../assets/images/apps/نشاط.jpg",
     "page": "product.html?id=401",
-    "description": "تطبيق بسيط لتنظيم المهام اليومية وترتيب الأعمال حسب الأولوية.",
+    "description": "تطبيق بسيط لنظيم النشاطات اليومية و الأسبوعية والشهرية والسنوية .",
     "format": "APK",
-    "size": "4 MB",
-    "payhip": "ضع-رابط-Payhip-هنا"
+    "size": "11 MB",
+    "payhip": "https://payhip.com/b/4KfU5"
   },
   {
-    "id": 402,
-    "name": "Budget Manager",
-    "price": 3.99,
+    "id": 408,
+    "name": "AI",
+    "price": 50,
     "rating": 4.8,
-    "image": "../assets/images/apps/budget-manager.png",
+    "image": "../assets/images/apps/ai.jpg",
     "page": "product.html?id=402",
-    "description": "تطبيق يساعدك على تنظيم الراتب والمصاريف والميزانية الشهرية.",
+    "description": "تطبيق عبارة عن دردشة متطورك مع الذكاء الاصطناعي يمكنك سؤاله عن أي شيء.",
     "format": "APK",
-    "size": "6 MB",
-    "payhip": "ضع-رابط-Payhip-هنا"
+    "size": "25 MB",
+    "payhip": "https://payhip.com/b/evatK"
   }
 ]
