@@ -2,14 +2,14 @@
   {
     "id": 401,
     "name": "Task Manager",
-    "price": 2.99,
+    "price": 4.13,
     "rating": 4.7,
-    "image": "../assets/images/apps/task-manager.png",
+    "image": "../assets/images/apps/مهام.jpg",
     "page": "product.html?id=401",
     "description": "تطبيق بسيط لتنظيم المهام اليومية وترتيب الأعمال حسب الأولوية.",
     "format": "APK",
     "size": "4 MB",
-    "payhip": "ضع-رابط-Payhip-هنا"
+    "payhip": "https://payhip.com/b/uQq76"
   },
   {
     "id": 402,
