@@ -4,124 +4,82 @@ const id = Number(params.get("id"));
 console.log("Product ID:", id);
 
 Promise.all([
-    fetch("../assets/data/models.json").then(r => r.json()),
-    fetch("../assets/data/books.json").then(r => r.json()),
-    fetch("../assets/data/scripts.json").then(r => r.json())
+  fetch("../assets/data/models.json").then(r => r.json()),
+  fetch("../assets/data/books.json").then(r => r.json()),
+  fetch("../assets/data/scripts.json").then(r => r.json()),
+  fetch("../assets/data/mods.json").then(r => r.json()),
+  fetch("../assets/data/apps.json").then(r => r.json())
 ])
 
-.then(([models, books, scripts]) => {
+.then(([models, books, scripts, mods, apps]) => {
 
-    const products = [
-        ...models,
-        ...books,
-        ...scripts
-    ];
+  const products = [
+    ...models,
+    ...books,
+    ...scripts,
+    ...mods,
+    ...apps
+  ];
 
-    const product = products.find(p => p.id === id);
+  const product = products.find(
+    p => Number(p.id) === id
+  );
 
-    if (!product) {
+  if (!product) {
 
-        document.body.innerHTML =
-            "<h2>Product not found</h2>";
+    document.body.innerHTML = `
+      <div style="text-align:center; padding:50px;">
+        <h2>❌ Product not found</h2>
+        <p>المنتج غير موجود.</p>
+      </div>
+    `;
 
-        return;
-    }
+    return;
+      }
 
-    console.log("Product found:", product);
+  // الصورة
+  document.getElementById("product-image").src =
+    product.image;
 
-    // Image
-    const image =
-        document.getElementById("product-image");
+  // الاسم
+  document.getElementById("product-name").textContent =
+    product.name;
 
-    if (image) {
-        image.src = product.image;
-        image.alt = product.name;
-    }
+  // التقييم
+  document.getElementById("product-rating").textContent =
+    "⭐ " + product.rating;
 
-    // Name
-    const name =
-        document.getElementById("product-name");
+  // السعر
+  document.getElementById("product-price").textContent =
+    "$" + product.price;
 
-    if (name) {
-        name.textContent = product.name;
-    }
+  // الوصف
+  document.getElementById("product-description").textContent =
+    product.description;
 
-    // Rating
-    const rating =
-        document.getElementById("product-rating");
-    if (rating) {
-        rating.textContent =
-            "⭐ " + product.rating;
-    }
+  // النوع
+  document.getElementById("product-format").textContent =
+    product.format;
 
-    // Price
-    const price =
-        document.getElementById("product-price");
+  // الحجم
+  document.getElementById("product-size").textContent =
+    product.size;
 
-    if (price) {
-        price.textContent =
-            "$" + product.price;
-    }
+  // زر الشراء
+  document.getElementById("buy-btn").onclick = function () {
 
-    // Description
-    const description =
-        document.getElementById("product-description");
+    if (product.payhip) {
+      window.location.href = product.payhip;
+    } else {
+      alert("رابط الشراء غير متوفر لهذا المنتج.");
+   }
 
-    if (description) {
-        description.textContent =
-            product.description;
-    }
-
-    // Format
-    const format =
-        document.getElementById("product-format");
-
-    if (format) {
-        format.textContent =
-            product.format;
-    }
-
-    // Size
-    const size =
-        document.getElementById("product-size");
-
-    if (size) {
-        size.textContent =
-            product.size;
-    }
-
-    // Buy button
-    const buyButton =
-        document.getElementById("buy-btn")
-    ;
-
-    if (buyButton) {
-
-        buyButton.onclick = function () {
-
-            if (product.payhip) {
-
-                window.location.href =
-                    product.payhip;
-
-            } else {
-
-                alert(
-                    "Payhip link is not available yet."
-                );
-
-            }
-
-        };
-    }
+  };
 
 })
 
 .catch(error => {
 
-    console.error(
-        "Error loading product:",
-        error
-    );
+  console.error("Error loading product:", error);
 
 });
