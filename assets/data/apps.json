@@ -1,0 +1,98 @@
+[
+  {
+    "id": 401,
+    "name": "Task Manager",
+    "price": 2.99,
+    "rating": 4.7,
+    "image": "../assets/images/apps/task-manager.png",
+    "page": "product.html?id=401",
+    "description": "تطبيق بسيط لتنظيم المهام اليومية وترتيب الأعمال حسب الأولوية.",
+    "format": "APK",
+    "size": "4 MB",
+    "payhip": "ضع-رابط-Payhip-هنا"
+  },
+  {
+    "id": 402,
+    "name": "Budget Manager",
+    "price": 3.99,
+    "rating": 4.8,
+    "image": "../assets/images/apps/budget-manager.png",
+    "page": "product.html?id=402",
+    "description": "تطبيق يساعدك على تنظيم الراتب والمصاريف والميزانية الشهرية.",
+    "format": "APK",
+    "size": "6 MB",
+    "payhip": "ضع-رابط-Payhip-هنا"
+  },
+  {
+    "id": 403,
+    "name": "Language Talk",
+    "price": 2.99,
+    "rating": 4.6,
+    "image": "../assets/images/apps/language-talk.png",
+    "page": "product.html?id=403",
+    "description": "تطبيق للمساعدة على ممارسة اللغات والتواصل مع متعلمين من مختلف البلدان.",
+    "format": "APK",
+    "size": "8 MB",
+    "payhip": "ضع-رابط-Payhip-هنا"
+  },
+  {
+    "id": 401,
+    "name": "Task Manager",
+    "price": 2.99,
+    "rating": 4.7,
+    "image": "../assets/images/apps/task-manager.png",
+    "page": "product.html?id=401",
+    "description": "تطبيق بسيط لتنظيم المهام اليومية وترتيب الأعمال حسب الأولوية.",
+    "format": "APK",
+    "size": "4 MB",
+    "payhip": "ضع-رابط-Payhip-هنا"
+  },
+  {
+    "id": 402,
+    "name": "Budget Manager",
+    "price": 3.99,
+    "rating": 4.8,
+    "image": "../assets/images/apps/budget-manager.png",
+    "page": "product.html?id=402",
+    "description": "تطبيق يساعدك على تنظيم الراتب والمصاريف والميزانية الشهرية.",
+    "format": "APK",
+    "size": "6 MB",
+    "payhip": "ضع-رابط-Payhip-هنا"
+  },
+  {
+    "id": 403,
+    "name": "Language Talk",
+    "price": 2.99,
+    "rating": 4.6,
+    "image": "../assets/images/apps/language-talk.png",
+    "page": "product.html?id=403",
+    "description": "تطبيق للمساعدة على ممارسة اللغات والتواصل مع متعلمين من مختلف البلدان.",
+    "format": "APK",
+    "size": "8 MB",
+    "payhip": "ضع-رابط-Payhip-هنا"
+  },
+  {
+    "id": 401,
+    "name": "Task Manager",
+    "price": 2.99,
+    "rating": 4.7,
+    "image": "../assets/images/apps/task-manager.png",
+    "page": "product.html?id=401",
+    "description": "تطبيق بسيط لتنظيم المهام اليومية وترتيب الأعمال حسب الأولوية.",
+    "format": "APK",
+    "size": "4 MB",
+    "payhip": "ضع-رابط-Payhip-هنا"
+  },
+  {
+    "id": 402,
+    "name": "Budget Manager",
+    "price": 3.99,
+    "rating": 4.8,
+    "image": "../assets/images/apps/budget-manager.png",
+    "page": "product.html?id=402",
+    "description": "تطبيق يساعدك على تنظيم الراتب والمصاريف والميزانية الشهرية.",
+    "format": "APK",
+    "size": "6 MB",
+    "payhip": "ضع-رابط-Payhip-هنا"
+  }
+]
