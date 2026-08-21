@@ -146,5 +146,25 @@ const savedLanguage =
 document.addEventListener("DOMContentLoaded", () => {
 
     applyLanguage(savedLanguage);
+    function toggleLanguageMenu() {
+
+    const menu =
+        document.getElementById("language-options");
+
+    menu.classList.toggle("show");
+
+}
+
+
+function selectLanguage(lang) {
+
+    changeLanguage(lang);
+
+    const menu =
+        document.getElementById("language-options");
+
+    menu.classList.remove("show");
+
+}
 
 });
