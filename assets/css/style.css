@@ -275,3 +275,47 @@ border:none;
 border-top:1px solid #444;
 margin:20px 0;
 }
+.language-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.language-icon {
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.language-options {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    padding: 8px;
+    min-width: 150px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 9999;
+}
+
+.language-options.show {
+    display: block;
+}
+
+.language-options button {
+    display: block;
+    width: 100%;
+    border: none;
+    background: white;
+    padding: 10px;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.language-options button:hover {
+    background: #eeeeee;
+}
