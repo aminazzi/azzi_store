@@ -64,7 +64,7 @@
     "name": "OCR",
     "price": 15.58,
     "rating": 4.9,
-    "image": "../assets/images/apps/نص من صور.jpg",
+    "image": "../assets/images/apps/نص من صورة.jpg",
     "page": "product.html?id=403",
     "description": "تطبيق للمساعدة على استخراج أي نص بأي لغة من أي صورة.",
     "format": "APK",
