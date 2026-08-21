@@ -13,19 +13,27 @@
 
 <!-- HEADER -->
 <header class="header">
-    <div class="language-switcher">
+    <div class="language-menu">
 
-    <button onclick="changeLanguage('ar')">
-        🇲🇦 العربية
+    <button class="language-icon" onclick="toggleLanguageMenu()">
+        🌐
     </button>
 
-    <button onclick="changeLanguage('en')">
-        🇬🇧 English
-    </button>
+    <div id="language-options" class="language-options">
 
-    <button onclick="changeLanguage('fr')">
-        🇫🇷 Français
-    </button>
+        <button onclick="selectLanguage('ar')">
+            🇲🇦 العربية
+        </button>
+
+        <button onclick="selectLanguage('en')">
+            🇬🇧 English
+        </button>
+
+        <button onclick="selectLanguage('fr')">
+            🇫🇷 Français
+        </button>
+
+    </div>
 
 </div>
 
