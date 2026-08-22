@@ -3,9 +3,37 @@ function toggleMenu() {
     document.getElementById("sidebar").classList.toggle("active");
 }
 
-// البحث (سنطوره لاحقًا)
 function toggleSearch() {
-    alert("سيتم إضافة البحث الاحترافي في الإصدار القادم 🔍");
+
+    let box = document.getElementById("search-box");
+
+    if (box) {
+        box.remove();
+        return;
+    }
+
+    box = document.createElement("div");
+
+    box.id = "search-box";
+
+    box.innerHTML = `
+        <input
+            type="text"
+            id="search-input"
+            placeholder="ابحث عن منتج..."
+            autocomplete="off">
+
+        <div id="search-results"></div>
+    `;
+
+    document.body.appendChild(box);
+
+    const input =
+        document.getElementById("search-input");
+
+    input.focus();
+
+    input.addEventListener("input", searchProducts);
 }
 
 // تغيير اللغة
