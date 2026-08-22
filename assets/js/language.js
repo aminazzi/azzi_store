@@ -31,7 +31,7 @@ const translations = {
         apps_description: "تطبيقات مفيدة وخفيفة",
         videos_description: "فيديوهات تعليمية مفيدة"
     },
-  en: {
+    en: {
         home: "Home",
         models: "3D Models",
         books: "Books",
@@ -57,12 +57,13 @@ const translations = {
 
         models_description: "Discover the best 3D Models",
         books_description: "Various digital books and novels",
+
         scripts_description: "Useful scripts for your projects",
         mods_description: "Mods, games and modifications",
         apps_description: "Useful and lightweight applications",
         videos_description: "Useful educational videos"
     },
-  fr: {
+    fr: {
         home: "Accueil",
         models: "Modèles 3D",
         books: "Livres",
@@ -88,23 +89,30 @@ const translations = {
 
         models_description: "Découvrez les meilleurs modèles 3D",
         books_description: "Divers livres et romans numériques",
+
         scripts_description: "Scripts utiles pour vos projets",
         mods_description: "Mods, jeux et modifications",
         apps_description: "Applications utiles et légères",
         videos_description: "Vidéos éducatives utiles"
     }
+
     };
 
 
+// تغيير اللغة
 function changeLanguage(lang) {
+
+    if (!translations[lang]) {
+        lang = "ar";
+    }
 
     localStorage.setItem("language", lang);
 
     applyLanguage(lang);
-
 }
 
 
+// تطبيق اللغة
 function applyLanguage(lang) {
 
     if (!translations[lang]) {
@@ -121,12 +129,11 @@ function applyLanguage(lang) {
                 translations[lang][key];
 
         }
-
-    });
-
+        });
 
     document.documentElement.lang = lang;
-  if (lang === "ar") {
+
+    if (lang === "ar") {
 
         document.documentElement.dir = "rtl";
 
@@ -139,21 +146,33 @@ function applyLanguage(lang) {
 }
 
 
+// اللغة المحفوظة
 const savedLanguage =
     localStorage.getItem("language") || "ar";
 
 
+// تطبيق اللغة عند فتح الصفحة
 document.addEventListener("DOMContentLoaded", () => {
 
     applyLanguage(savedLanguage);
-    function toggleLanguageMenu() {
+
+});
+// فتح وإغلاق قائمة اللغات
+function toggleLanguageMenu() {
 
     const menu =
         document.getElementById("language-options");
 
-    menu.classList.toggle("show");
+    if (menu) {
 
-});
+        menu.classList.toggle("show");
+
+    }
+
+}
+
+
+// اختيار اللغة
 function selectLanguage(lang) {
 
     changeLanguage(lang);
@@ -161,7 +180,10 @@ function selectLanguage(lang) {
     const menu =
         document.getElementById("language-options");
 
-    menu.classList.remove("show");
+    if (menu) {
+
+        menu.classList.remove("show");
+
+    }
 
 }
-
