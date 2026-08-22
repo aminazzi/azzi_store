@@ -35,6 +35,113 @@ function toggleSearch() {
 
     input.addEventListener("input", searchProducts);
 }
+async function searchProducts() {
+
+    const input =
+        document.getElementById("search-input");
+
+    const results =
+        document.getElementById("search-results");
+
+    const text =
+        input.value.trim().toLowerCase();
+
+    if (text === "") {
+        results.innerHTML = "";
+        return;
+    }
+
+    try {
+
+        const files = [
+            "../assets/data/models.json",
+            "../assets/data/books.json",
+            "../assets/data/mods.json",
+            "../assets/data/scripts.json",
+            "../assets/data/apps.json"
+        ];
+
+        const responses =
+            await Promise.all(
+                files.map(file => fetch(file))
+            );
+
+        const data =
+            await Promise.all(
+                responses.map(response => response.json())
+            );
+
+        const products =
+            data.flat();
+
+        const found =
+            products.filter(product => {
+
+                const name =
+                    String(product.name || "")
+                    .toLowerCase();
+
+                return name.includes(text);
+
+            });
+
+        if (found.length === 0) {
+
+            results.innerHTML =
+                "<p>لم يتم العثور على المنتج.</p>";
+
+            return;
+
+        }
+
+        results.innerHTML = "";
+
+        found.forEach(product => {
+
+            results.innerHTML += `
+
+                <a
+                    href="${product.page}"
+                    class="search-result">
+
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}">
+
+                    <div>
+
+                        <h3>
+                            ${product.name}
+                        </h3>
+
+                        <p>
+                            ⭐ ${product.rating}
+                        </p>
+
+                        <strong>
+                            $${product.price}
+                        </strong>
+
+                    </div>
+
+                </a>
+
+            `;
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        results.innerHTML =
+            "<p>حدث خطأ أثناء البحث.</p>";
+
+    }
+
+}
 
 // تغيير اللغة
 let currentLang = "ar";
