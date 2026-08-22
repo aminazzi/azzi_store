@@ -2,145 +2,255 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azzi Store</title>
 
-    <link rel="stylesheet" href="assets/css/style.css">
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AZZI STORE</title>
+
+<link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
 
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-    <h1 class="logo">AZZI STORE</h1>
+<h1 class="logo">AZZI STORE</h1>
 
-    <div class="top-icons">
+<div class="top-icons">
 
-        <!-- Search -->
-        <button onclick="toggleSearch()">🔍</button>
+<button onclick="toggleSearch()">🔍</button>
 
-        <!-- Language -->
-        <div class="language-menu">
+<div class="language-menu">
 
-            <button
-                class="language-icon"
-                onclick="toggleLanguageMenu()">
-                🌐
-            </button>
+<button
+class="language-icon"
+onclick="toggleLanguageMenu()">
+🌐
+</button>
 
-            <div
-                id="language-options"
-                class="language-options">
+<div
+id="language-options"
+class="language-options">
 
-                <button onclick="selectLanguage('ar')">
-                    🇲🇦 العربية
-                </button>
+<button onclick="selectLanguage('ar')">
+🇲🇦 العربية
+</button>
 
-                <button onclick="selectLanguage('en')">
-                    🇬🇧 English
-                </button>
+<button onclick="selectLanguage('en')">
+🇬🇧 English
+</button>
 
-                <button onclick="selectLanguage('fr')">
-                    🇫🇷 Français
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- Favorites -->
-        <button>❤️</button>
-
-        <!-- Cart -->
-        <button>🛒</button>
-
-    </div>
-
-</header>
-
-<!-- القائمة الجانبية -->
-
-<div id="sidebar" class="sidebar">
-
-    <button class="close-btn" onclick="toggleMenu()">✕</button>
-
-    <a href="index.html">🏠 الرئيسية</a>
-
-    <a href="pages/models.html">📦 3D Models</a>
-
-    <a href="pages/books.html">📚 PDF Books</a>
-
-    <a href="pages/mods.html">🎮 Mods</a>
-
-    <a href="pages/scripts.html">💻 Scripts</a>
-
-    <a href="pages/apps.html">🤖 Apps</a>
-
-    <a href="pages/tutorial videos.html">🎥 Tutorial videos</a>
-
-
-    <a href="#">❤️ المفضلة</a>
-
-    <a href="#">🛒 السلة</a>
-
-    <a href="#">📞 اتصل بنا</a>
-
-    <a href="#">ℹ️ من نحن</a>
+<button onclick="selectLanguage('fr')">
+🇫🇷 Français
+</button>
 
 </div>
 
+</div>
+
+<button>❤️</button>
+
+<button>🛒</button>
+
+</div>
+
+</header>
+<!-- SIDEBAR -->
+
+<div id="sidebar" class="sidebar">
+
+<button
+class="close-btn"
+onclick="toggleMenu()">
+✕
+</button>
+
+<a href="index.html">
+🏠
+<span data-i18n="home">
+الرئيسية
+</span>
+</a>
+
+<a href="pages/models.html">
+📦
+<span data-i18n="models">
+3D Models
+</span>
+</a>
+
+<a href="pages/books.html">
+📚
+<span data-i18n="books">
+PDF Books
+</span>
+</a>
+
+<a href="pages/mods.html">
+🎮
+<span data-i18n="mods">
+Mods
+</span>
+</a>
+
+<a href="pages/scripts.html">
+💻
+<span data-i18n="scripts">
+Scripts
+</span>
+</a>
+
+<a href="pages/apps.html">
+🤖
+<span data-i18n="apps">
+Apps
+</span>
+</a>
+
+<a href="pages/tutorial videos.html">
+🎥
+<span data-i18n="videos">
+Tutorial Videos
+</span>
+</a>
+
+<a href="#">
+❤️
+<span data-i18n="favorites">
+المفضلة
+</span>
+</a>
+
+<a href="#">
+🛒
+<span data-i18n="cart">
+السلة
+</span>
+</a>
+
+<a href="#">
+📞
+<span data-i18n="contact">
+اتصل بنا
+</span>
+</a>
+
+<a href="#">
+ℹ️
+<span data-i18n="about">
+من نحن
+</span>
+</a>
+
+</div>
+<!-- HERO -->
+
 <section class="hero">
 
-<h2>أفضل متجر للمنتجات الرقمية</h2>
+<h2 data-i18n="hero_title">
+أفضل متجر للمنتجات الرقمية
+</h2>
 
-<p>
-    الأدوات التي يستخدمها المحترفون... أصبحت بين يديك  
-تخيّل أن تبدأ مشروعك وتجد أمامك عالماً متكاملاً من نماذج 3D واقعية، وخطوط تبهر الأنظار، وقوالب تذهل عملاءك، وإضافات تغيّر قواعد اللعبة، وسكريبتات تحل أعقد المشاكل.  
-كل أصل هنا ليس مجرد ملف. إنه اختصار لطريق طويل من الجهد والخبرة.  
-توقف عن المشاهدة. حمّل أول أصل لك اليوم ودع عملك يتحدث عنك.
+<p data-i18n="hero_description">
+الأدوات التي يستخدمها المحترفون... أصبحت بين يديك.
+تخيل أن تبدأ مشروعك وتجد أمامك عالماً متكاملاً من نماذج 3D
+وكتب وسكريبتات ومودات وتطبيقات وفيديوهات تعليمية.
 </p>
 
-<a class="btn" href="#products">ابدأ التسوق</a>
+<a
+class="btn"
+href="#products"
+data-i18n="shop_now">
+ابدأ التسوق
+</a>
 
 </section>
 
+
+<!-- CATEGORIES -->
+
 <section id="products">
 
-<h2>الأقسام</h2>
+<h2 data-i18n="categories">
+الأقسام
+</h2>
 
 <div class="cards">
 
 <a href="pages/models.html" class="card">
-📦<br>3D Models
+
+📦<br>
+
+<span data-i18n="models">
+3D Models
+</span>
+
 </a>
+
 
 <a href="pages/books.html" class="card">
-📚<br>PDF Books
+
+📚<br>
+
+<span data-i18n="books">
+PDF Books
+</span>
+
 </a>
+
 
 <a href="pages/mods.html" class="card">
-🎮<br>Mods
+
+🎮<br>
+
+<span data-i18n="mods">
+Mods
+</span>
+
 </a>
+
 
 <a href="pages/scripts.html" class="card">
-💻<br>Scripts
+
+💻<br>
+
+<span data-i18n="scripts">
+Scripts
+</span>
+
 </a>
+
 
 <a href="pages/apps.html" class="card">
-🤖<br>Apps
+
+🤖<br>
+
+<span data-i18n="apps">
+Apps
+</span>
+
 </a>
 
-<a herf="pages/tutorial videos.html" class="card">
-🎥<br>Tutorial videos
+
+<a href="pages/tutorial videos.html" class="card">
+
+🎥<br>
+
+<span data-i18n="videos">
+Tutorial Videos
+</span>
+
 </a>
 
 </div>
 
 </section>
+<!-- FOOTER -->
 
 <footer>
 
@@ -148,8 +258,14 @@
 
 </footer>
 
+
+<!-- JAVASCRIPT -->
+
 <script src="assets/js/script.js"></script>
-<script src="assets/js/language.js"></script>    
-<body>
-    
+
+<script src="assets/js/language.js"></script>
+
+
+</body>
+
 </html>
