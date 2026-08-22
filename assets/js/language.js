@@ -95,7 +95,6 @@ const translations = {
         apps_description: "Applications utiles et légères",
         videos_description: "Vidéos éducatives utiles"
     }
-
     };
 
 
