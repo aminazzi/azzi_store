@@ -13,38 +13,51 @@
 
 <!-- HEADER -->
 <header class="header">
-  
 
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
     <h1 class="logo">AZZI STORE</h1>
 
     <div class="top-icons">
+
+        <!-- Search -->
         <button onclick="toggleSearch()">🔍</button>
-    <div class="language-menu">
-    <button class="language-icon" onclick="toggleLanguageMenu()">
-    🌐
-    </button>
 
-    <div id="language-options" class="language-options">
+        <!-- Language -->
+        <div class="language-menu">
 
-        <button onclick="selectLanguage('ar')">
-            🇲🇦 العربية
-        </button>
+            <button
+                class="language-icon"
+                onclick="toggleLanguageMenu()">
+                🌐
+            </button>
 
-        <button onclick="selectLanguage('en')">
-            🇬🇧 English
-        </button>
+            <div
+                id="language-options"
+                class="language-options">
 
-        <button onclick="selectLanguage('fr')">
-            🇫🇷 Français
-        </button>
+                <button onclick="selectLanguage('ar')">
+                    🇲🇦 العربية
+                </button>
 
-    </div>
+                <button onclick="selectLanguage('en')">
+                    🇬🇧 English
+                </button>
 
-</div>
+                <button onclick="selectLanguage('fr')">
+                    🇫🇷 Français
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Favorites -->
         <button>❤️</button>
+
+        <!-- Cart -->
         <button>🛒</button>
+
     </div>
 
 </header>
