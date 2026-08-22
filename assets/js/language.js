@@ -1,6 +1,7 @@
 const translations = {
 
     ar: {
+
         home: "الرئيسية",
         models: "موديلات 3D",
         books: "الكتب",
@@ -9,29 +10,24 @@ const translations = {
         apps: "التطبيقات",
         videos: "فيديوهات تعليمية",
 
-        welcome: "مرحبًا بك في AZZI STORE",
-        digital_products: "أفضل المنتجات الرقمية في مكان واحد",
+        favorites: "المفضلة",
+        cart: "السلة",
+        contact: "اتصل بنا",
+        about: "من نحن",
 
-        view_product: "عرض المنتج",
-        buy_now: "شراء الآن",
+        hero_title: "أفضل متجر للمنتجات الرقمية",
 
-        description: "الوصف",
-        format: "النوع",
-        file_size: "حجم الملف",
+        hero_description:
+        "الأدوات التي يستخدمها المحترفون... أصبحت بين يديك. تخيل أن تبدأ مشروعك وتجد أمامك عالماً متكاملاً من المنتجات الرقمية.",
 
-        add_favorite: "❤ إضافة إلى المفضلة",
+        shop_now: "ابدأ التسوق",
 
-        product_not_found: "المنتج غير موجود",
-        loading_error: "حدث خطأ أثناء تحميل المنتجات",
+        categories: "الأقسام"
 
-        models_description: "اكتشف أفضل موديلات 3D",
-        books_description: "كتب وروايات رقمية متنوعة",
-        scripts_description: "سكريبتات مفيدة للمشاريع",
-        mods_description: "مودات وألعاب وتعديلات",
-        apps_description: "تطبيقات مفيدة وخفيفة",
-        videos_description: "فيديوهات تعليمية مفيدة"
     },
+
     en: {
+
         home: "Home",
         models: "3D Models",
         books: "Books",
@@ -40,30 +36,23 @@ const translations = {
         apps: "Apps",
         videos: "Educational Videos",
 
-        welcome: "Welcome to AZZI STORE",
-        digital_products: "The best digital products in one place",
+        favorites: "Favorites",
+        cart: "Cart",
+        contact: "Contact Us",
+        about: "About Us",
 
-        view_product: "View Product",
-        buy_now: "Buy Now",
+        hero_title: "The Best Digital Products Store",
 
-        description: "Description",
-        format: "Format",
-        file_size: "File Size",
+        hero_description:
+        "The tools used by professionals are now in your hands. Start your project with a complete collection of digital products.",
 
-        add_favorite: "❤ Add to Favorites",
+        shop_now: "Start Shopping",
 
-        product_not_found: "Product not found",
-        loading_error: "An error occurred while loading products",
+        categories: "Categories"
 
-        models_description: "Discover the best 3D Models",
-        books_description: "Various digital books and novels",
-
-        scripts_description: "Useful scripts for your projects",
-        mods_description: "Mods, games and modifications",
-        apps_description: "Useful and lightweight applications",
-        videos_description: "Useful educational videos"
     },
     fr: {
+
         home: "Accueil",
         models: "Modèles 3D",
         books: "Livres",
@@ -72,33 +61,24 @@ const translations = {
         apps: "Applications",
         videos: "Vidéos éducatives",
 
-        welcome: "Bienvenue sur AZZI STORE",
-        digital_products: "Les meilleurs produits numériques au même endroit",
+        favorites: "Favoris",
+        cart: "Panier",
+        contact: "Contact",
+        about: "À propos",
 
-        view_product: "Voir le produit",
-        buy_now: "Acheter maintenant",
+        hero_title:
+        "Le meilleur magasin de produits numériques",
 
-        description: "Description",
-        format: "Format",
-        file_size: "Taille du fichier",
+        hero_description:
+        "Les outils utilisés par les professionnels sont maintenant entre vos mains. Commencez votre projet avec une collection complète de produits numériques.",
 
-        add_favorite: "❤ Ajouter aux favoris",
+        shop_now: "Commencer les achats",
 
-        product_not_found: "Produit introuvable",
-        loading_error: "Une erreur s'est produite lors du chargement des produits",
+        categories: "Catégories"
 
-        models_description: "Découvrez les meilleurs modèles 3D",
-        books_description: "Divers livres et romans numériques",
-
-        scripts_description: "Scripts utiles pour vos projets",
-        mods_description: "Mods, jeux et modifications",
-        apps_description: "Applications utiles et légères",
-        videos_description: "Vidéos éducatives utiles"
     }
-    };
 
-
-// تغيير اللغة
+};
 function changeLanguage(lang) {
 
     if (!translations[lang]) {
@@ -108,19 +88,22 @@ function changeLanguage(lang) {
     localStorage.setItem("language", lang);
 
     applyLanguage(lang);
+
 }
 
 
-// تطبيق اللغة
 function applyLanguage(lang) {
 
     if (!translations[lang]) {
         lang = "ar";
     }
 
-    document.querySelectorAll("[data-i18n]").forEach(element => {
+    document
+    .querySelectorAll("[data-i18n]")
+    .forEach(element => {
 
-        const key = element.getAttribute("data-i18n");
+        const key =
+            element.getAttribute("data-i18n");
 
         if (translations[lang][key]) {
 
@@ -128,9 +111,12 @@ function applyLanguage(lang) {
                 translations[lang][key];
 
         }
-        });
+
+    });
+
 
     document.documentElement.lang = lang;
+
 
     if (lang === "ar") {
 
@@ -143,20 +129,17 @@ function applyLanguage(lang) {
     }
 
 }
-
-
-// اللغة المحفوظة
 const savedLanguage =
     localStorage.getItem("language") || "ar";
 
 
-// تطبيق اللغة عند فتح الصفحة
 document.addEventListener("DOMContentLoaded", () => {
 
     applyLanguage(savedLanguage);
 
 });
-// فتح وإغلاق قائمة اللغات
+
+
 function toggleLanguageMenu() {
 
     const menu =
@@ -171,7 +154,6 @@ function toggleLanguageMenu() {
 }
 
 
-// اختيار اللغة
 function selectLanguage(lang) {
 
     changeLanguage(lang);
