@@ -54,12 +54,12 @@ async function searchProducts() {
     try {
 
         const files = [
-            "../assets/data/models.json",
-            "../assets/data/books.json",
-            "../assets/data/mods.json",
-            "../assets/data/scripts.json",
-            "../assets/data/apps.json"
-        ];
+    "assets/data/models.json",
+    "assets/data/books.json",
+    "assets/data/mods.json",
+    "assets/data/scripts.json",
+    "assets/data/apps.json"
+];
 
         const responses =
             await Promise.all(
