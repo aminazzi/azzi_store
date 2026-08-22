@@ -13,7 +13,6 @@ function toggleSearch() {
     }
 
     box = document.createElement("div");
-
     box.id = "search-box";
 
     box.innerHTML = `
@@ -28,8 +27,7 @@ function toggleSearch() {
 
     document.body.appendChild(box);
 
-    const input =
-        document.getElementById("search-input");
+    const input = document.getElementById("search-input");
 
     input.focus();
 
@@ -37,14 +35,12 @@ function toggleSearch() {
 }
 async function searchProducts() {
 
-    const input =
-        document.getElementById("search-input");
+    const input = document.getElementById("search-input");
+    const results = document.getElementById("search-results");
 
-    const results =
-        document.getElementById("search-results");
+    if (!input || !results) return;
 
-    const text =
-        input.value.trim().toLowerCase();
+    const text = input.value.trim().toLowerCase();
 
     if (text === "") {
         results.innerHTML = "";
@@ -54,72 +50,101 @@ async function searchProducts() {
     try {
 
         const files = [
-    "assets/data/models.json",
-    "assets/data/books.json",
-    "assets/data/mods.json",
-    "assets/data/scripts.json",
-    "assets/data/apps.json"
-];
+            "assets/data/models.json",
+            "assets/data/books.json",
+            "assets/data/mods.json",
+            "assets/data/scripts.json",
+            "assets/data/apps.json"
+        ];
 
-        const responses =
-            await Promise.all(
-                files.map(file => fetch(file))
-            );
+        const responses = await Promise.all(
+            files.map(file => fetch(file))
+        );
+        // التأكد من أن جميع الملفات موجودة
+        for (const response of responses) {
+            if (!response.ok) {
+                throw new Error("تعذر تحميل ملف المنتجات");
+            }
+        }
 
-        const data =
-            await Promise.all(
-                responses.map(response => response.json())
-            );
+        const data = await Promise.all(
+            responses.map(response => response.json())
+        );
 
-        const products =
-            data.flat();
+        const products = data.flat();
 
-        const found =
-            products.filter(product => {
+        const found = products.filter(product => {
 
-                const name =
-                    String(product.name || "")
-                    .toLowerCase();
+            const name = String(product.name || "")
+                .toLowerCase();
 
-                return name.includes(text);
+            return name.includes(text);
 
-            });
+        });
+
 
         if (found.length === 0) {
 
-            results.innerHTML =
-                "<p>لم يتم العثور على المنتج.</p>";
+            results.innerHTML = `
+                <p class="no-results">
+                    لم يتم العثور على المنتج.
+                </p>
+                `;
 
             return;
-
         }
+
 
         results.innerHTML = "";
 
+
         found.forEach(product => {
+
+            /*
+             * إنشاء رابط المنتج مباشرة
+             * بدل الاعتماد على product.page
+             */
+            const productLink =
+                `product.html?id=${encodeURIComponent(product.id)}`;
+
+
+            /*
+             * الصورة الموجودة في JSON
+             */
+            let image = product.image || "";
+
+
+            /*
+             * إذا كانت الصورة تبدأ بـ ../
+             * نحذفها لأن البحث موجود في الصفحة الرئيسية
+             */
+            if (image.startsWith("../")) {
+                image = image.substring(3);
+            }
+
 
             results.innerHTML += `
 
                 <a
-                    href="${product.page}"
+                    href="${productLink}"
                     class="search-result">
-
                     <img
-                        src="${product.image}"
-                        alt="${product.name}">
+                        src="${image}"
+                        alt="${product.name}"
+                        onerror="this.style.display='none';">
 
-                    <div>
+                    <div class="search-result-info">
 
                         <h3>
-                            ${product.name}
+                            ${product.name || "منتج"}
                         </h3>
 
                         <p>
-                            ⭐ ${product.rating}
+                            ⭐ ${product.rating || 0}
                         </p>
 
                         <strong>
-                            $${product.price}
+                            $${product.price || 0}
                         </strong>
 
                     </div>
@@ -130,17 +155,17 @@ async function searchProducts() {
 
         });
 
+
+    } catch (error) {
+
+        console.error("Search error:", error);
+
+        results.innerHTML = `
+            <p class="search-error">
+                حدث خطأ أثناء البحث.
+            </p>
+        `;
     }
-
-    catch (error) {
-
-        console.error(error);
-
-        results.innerHTML =
-            "<p>حدث خطأ أثناء البحث.</p>";
-
-    }
-
 }
 
 // تغيير اللغة
