@@ -4,11 +4,37 @@ const id = Number(params.get("id"));
 console.log("Product ID:", id);
 
 Promise.all([
-    fetch("assets/data/models.json").then(r => r.json()),
-    fetch("assets/data/books.json").then(r => r.json()),
-    fetch("assets/data/scripts.json").then(r => r.json()),
-    fetch("assets/data/mods.json").then(r => r.json()),
-    fetch("assets/data/apps.json").then(r => r.json())
+
+    fetch("assets/data/models.json")
+        .then(function(response) {
+            console.log("MODELS:", response.status, response.url);
+            return response.json();
+        }),
+
+    fetch("assets/data/books.json")
+        .then(function(response) {
+            console.log("BOOKS:", response.status, response.url);
+            return response.json();
+        }),
+
+    fetch("assets/data/scripts.json")
+        .then(function(response) {
+            console.log("SCRIPTS:", response.status, response.url);
+            return response.json();
+        }),
+
+    fetch("assets/data/mods.json")
+        .then(function(response) {
+            console.log("MODS:", response.status, response.url);
+            return response.json();
+        }),
+
+    fetch("assets/data/apps.json")
+        .then(function(response) {
+            console.log("APPS:", response.status, response.url);
+            return response.json();
+        })
+
 ])
 .then(([models, books, scripts, mods, apps]) => {
 
