@@ -105,7 +105,7 @@ async function searchProducts() {
              * بدل الاعتماد على product.page
              */
             const productLink =
-    `pages/product.html?id=${encodeURIComponent(product.id)}`;
+            `pages/product.html?id=${encodeURIComponent(product.id)}`;
 
 
             /*
