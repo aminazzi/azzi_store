@@ -209,6 +209,88 @@ Promise.all([
         };
 
     }
+    // ==============================
+// نظام المفضلة
+// ==============================
+
+const favoriteButton =
+    document.getElementById("favorite-btn");
+
+
+if (favoriteButton) {
+
+    // قراءة المفضلة المحفوظة
+    let favorites =
+        JSON.parse(
+            localStorage.getItem("azziFavorites") || "[]"
+        );
+
+
+    // التأكد هل المنتج موجود مسبقًا
+    const isFavorite =
+        favorites.some(
+            item => Number(item.id) === Number(product.id)
+        );
+
+
+    // تغيير شكل الزر إذا كان المنتج محفوظًا
+    if (isFavorite) {
+
+        favoriteButton.innerHTML =
+            "❤️ Added to Favorites";
+
+    } else {
+
+        favoriteButton.innerHTML =
+            "🤍 Add to Favorites";
+
+    }
+
+
+    // عند الضغط على زر المفضلة
+    favoriteButton.onclick = function () {
+
+        let favorites =
+            JSON.parse(
+                localStorage.getItem("azziFavorites") || "[]"
+            );
+
+
+        const index =
+            favorites.findIndex(
+                item =>
+                    Number(item.id) === Number(product.id)
+            );
+
+
+        // إذا كان المنتج موجودًا → حذفه
+        if (index !== -1) {
+
+            favorites.splice(index, 1);
+
+            favoriteButton.innerHTML =
+                "🤍 Add to Favorites";
+
+        }
+
+        // إذا لم يكن موجودًا → إضافته
+        else {
+
+            favorites.push(product);
+
+            favoriteButton.innerHTML =
+                "❤️ Added to Favorites";
+
+        }
+        // حفظ المفضلة
+        localStorage.setItem(
+            "azziFavorites",
+            JSON.stringify(favorites)
+        );
+
+    };
+
+}
 
 })
 
