@@ -1,147 +1,191 @@
- const params = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search);
+
 const id = Number(params.get("id"));
 
 console.log("Product ID:", id);
 
+
 Promise.all([
 
-    fetch("assets/data/models.json")
-        .then(function(response) {
-            console.log("MODELS:", response.status, response.url);
-            return response.json();
-        }),
+    fetch("../assets/data/models.json")
+        .then(response => response.json()),
 
-    fetch("assets/data/books.json")
-        .then(function(response) {
-            console.log("BOOKS:", response.status, response.url);
-            return response.json();
-        }),
+    fetch("../assets/data/books.json")
+        .then(response => response.json()),
 
-    fetch("assets/data/scripts.json")
-        .then(function(response) {
-            console.log("SCRIPTS:", response.status, response.url);
-            return response.json();
-        }),
+    fetch("../assets/data/scripts.json")
+        .then(response => response.json()),
 
-    fetch("assets/data/mods.json")
-        .then(function(response) {
-            console.log("MODS:", response.status, response.url);
-            return response.json();
-        }),
+    fetch("../assets/data/mods.json")
+        .then(response => response.json()),
 
-    fetch("assets/data/apps.json")
-        .then(function(response) {
-            console.log("APPS:", response.status, response.url);
-            return response.json();
-        })
+    fetch("../assets/data/apps.json")
+        .then(response => response.json())
 
 ])
 .then(([models, books, scripts, mods, apps]) => {
 
     const products = [
+
         ...models,
+
         ...books,
+
         ...scripts,
+
         ...mods,
+
         ...apps
+
     ];
 
     const product = products.find(
-        p => Number(p.id) === id
+        item => Number(item.id) === id
     );
 
-    console.log("Product:", product);
+    console.log("Found product:", product);
 
     if (!product) {
+
         document.body.innerHTML = `
-            <div style="text-align:center;padding:50px;">
+
+            <div style="
+                text-align:center;
+                padding:50px;
+                font-family:Arial;
+            ">
+
                 <h2>❌ المنتج غير موجود</h2>
-                <p>لم يتم العثور على هذا المنتج.</p>
+
+                <p>
+                    لم يتم العثور على هذا المنتج.
+                </p>
+
             </div>
+
         `;
+
         return;
     }
-// تصحيح مسار الصورة
-    let image = product.image || "";
+ // ==============================
+    // الصورة
+    // ==============================
 
-    if (image.startsWith("../")) {
-        image = image.substring(3);
-    }
-
-    console.log("Image:", image);
-
-
-    // عرض الصورة
     const productImage =
         document.getElementById("product-image");
 
     if (productImage) {
-        productImage.src = image;
+
+        productImage.src =
+            product.image;
+
         productImage.alt =
             product.name || "Product";
+
     }
 
 
-    // عرض الاسم
+    // ==============================
+    // الاسم
+    // ==============================
+
     const productName =
         document.getElementById("product-name");
 
     if (productName) {
+
         productName.textContent =
             product.name || "بدون اسم";
+
     }
 
 
-    // عرض التقييم
+    // ==============================
+    // التقييم
+    // ==============================
+
     const productRating =
         document.getElementById("product-rating");
 
     if (productRating) {
+
         productRating.textContent =
-            "⭐ " + (product.rating || 0);
+            "⭐ " +
+            (product.rating || 0);
+
     }
-// عرض السعر
+ // ==============================
+    // السعر
+    // ==============================
+
     const productPrice =
         document.getElementById("product-price");
 
     if (productPrice) {
+
         productPrice.textContent =
-            "$" + (product.price || 0);
+            "$" +
+            (product.price || 0);
+
     }
 
 
-    // عرض الوصف
+    // ==============================
+    // الوصف
+    // ==============================
+
     const productDescription =
-        document.getElementById("product-description");
+        document.getElementById(
+            "product-description"
+        );
 
     if (productDescription) {
+
         productDescription.textContent =
             product.description ||
             "لا يوجد وصف لهذا المنتج.";
+
     }
 
 
-    // عرض الصيغة
+    // ==============================
+    // الصيغة
+    // ==============================
+
     const productFormat =
-        document.getElementById("product-format");
+        document.getElementById(
+            "product-format"
+        );
 
     if (productFormat) {
+
         productFormat.textContent =
             product.format ||
             "غير محدد";
+
     }
 
 
-    // عرض الحجم
+    // ==============================
+    // الحجم
+    // ==============================
+
     const productSize =
-        document.getElementById("product-size");
+        document.getElementById(
+            "product-size"
+        );
 
     if (productSize) {
+
         productSize.textContent =
             product.size ||
             "غير محدد";
+
     }
-// زر الشراء
+ // ==============================
+    // زر الشراء
+    // ==============================
+
     const buyButton =
         document.getElementById("buy-btn");
 
@@ -167,6 +211,8 @@ Promise.all([
     }
 
 })
+
+
 .catch(function(error) {
 
     console.error(
@@ -175,6 +221,7 @@ Promise.all([
     );
 
     document.body.innerHTML = `
+
         <div style="
             text-align:center;
             padding:50px;
@@ -192,9 +239,7 @@ Promise.all([
             </p>
 
         </div>
+
     `;
 
 });
-
-
-
