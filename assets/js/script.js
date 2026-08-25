@@ -206,5 +206,4 @@ document.getElementById("langBtn").addEventListener("click", function () {
             "ابدأ التسوق";
     }
 
-});
                             
