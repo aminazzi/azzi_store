@@ -1,4 +1,4 @@
-// ==============================
+ // ==============================
 // نظام عرض المفضلة
 // ==============================
 
@@ -14,7 +14,7 @@ if (favoritesButton) {
                 localStorage.getItem("azziFavorites") || "[]"
             );
 
-        console.log("Favorites:", favorites);
+        console.log("Favorites:", favorites);    
         // ==============================
         // إنشاء نافذة المفضلة
         // ==============================
@@ -125,7 +125,7 @@ if (favoritesButton) {
                                 border-radius:10px;
                             "
                         >
-                              <div>
+                                <div>
 
                             <h3 style="
                                 margin:0 0 8px;
