@@ -205,5 +205,5 @@ document.getElementById("langBtn").addEventListener("click", function () {
         document.querySelector(".btn").innerText =
             "ابدأ التسوق";
     }
-
+}
                             
