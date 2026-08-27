@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>من نحن | AZZI STORE</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0b1220;
+color:white;
+line-height:1.9;
+}
+
+.about-page{
+min-height:100vh;
+padding:25px 15px 50px;
+}
+
+.container{
+width:100%;
+max-width:850px;
+margin:auto;
+}
+
+.header{
+text-align:center;
+padding:20px;
+}
+
+.logo{
+font-size:32px;
+font-weight:bold;
+}
+
+.subtitle{
+opacity:.7;
+}
+
+.languages{
+display:flex;
+justify-content:center;
+gap:10px;
+margin:20px 0;
+flex-wrap:wrap;
+}
+.lang-btn{
+border:1px solid #444;
+background:#151f32;
+color:white;
+padding:10px 18px;
+border-radius:10px;
+cursor:pointer;
+font-size:15px;
+}
+
+.lang-btn.active{
+background:white;
+color:#111;
+}
+
+.card{
+background:#111a2b;
+border:1px solid #263247;
+border-radius:20px;
+padding:30px;
+}
+
+.title{
+text-align:center;
+font-size:30px;
+margin-top:0;
+}
+
+.info{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(200px,1fr));
+gap:12px;
+margin-bottom:25px;
+}
+
+.info-box{
+background:#182337;
+border-radius:12px;
+padding:15px;
+text-align:center;
+}
+
+.info-box strong{
+display:block;
+opacity:.7;
+}
+
+.info-box span{
+font-size:18px;
+font-weight:bold;
+}
+
+.text{
+font-size:17px;
+}
+  .text p{
+margin-bottom:20px;
+}
+
+.text ul{
+padding-right:25px;
+}
+
+.lang-content{
+display:none;
+}
+
+.lang-content.active{
+display:block;
+}
+
+.back{
+display:block;
+width:fit-content;
+margin:25px auto 0;
+padding:12px 25px;
+border-radius:12px;
+background:white;
+color:#111;
+text-decoration:none;
+font-weight:bold;
+}
+
+@media(max-width:600px){
+
+.card{
+padding:20px 15px;
+}
+
+.logo{
+font-size:27px;
+}
+
+.title{
+font-size:25px;
+}
+
+.text{
+font-size:16px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+  <main class="about-page">
+
+<div class="container">
+
+<header class="header">
+
+<div class="logo">
+AZZI STORE
+</div>
+
+<div class="subtitle">
+Digital Products Store
+</div>
+
+</header>
+
+<div class="languages">
+
+<button
+class="lang-btn active"
+onclick="changeLanguage('ar',this)">
+🇲🇦 العربية
+</button>
+
+<button
+class="lang-btn"
+onclick="changeLanguage('en',this)">
+🇬🇧 English
+</button>
+
+<button
+class="lang-btn"
+onclick="changeLanguage('fr',this)">
+🇫🇷 Français
+</button>
+
+</div>
+
+<section class="card">
+
+<div
+id="ar"
+class="lang-content active"
+dir="rtl">
+
+<h1 class="title">
+ℹ️ من نحن
+</h1>
+
+<div class="info">
+
+<div class="info-box">
+<strong>الاسم</strong>
+<span>أمين عزي</span>
+</div>
+
+<div class="info-box">
+<strong>العمر</strong>
+<span>17 سنة</span>
+</div>
+
+<div class="info-box">
+<strong>الإقامة</strong>
+<span>المملكة المغربية 🇲🇦</span>
+</div>
+
+</div>
+<div class="text">
+
+<p>
+أنا أمين عزي، شاب مغربي شغوف بمجال البرمجة وريادة الأعمال الرقمية. آمنت بأن الأفكار الكبيرة لا تحتاج إلى رأس مال ضخم بقدر ما تحتاج إلى إرادة وعمل دؤوب، فقررت أن أحوّل فكرتي إلى واقع ملموس.
+</p>
+
+<p>
+قمت بتصميم وتطوير موقع إلكتروني متكامل لبيع المنتجات الرقمية بمفردي ومن دون الاعتماد على أي مساعدة خارجية.
+</p>
+
+<p>
+يهدف الموقع إلى توفير منصة عربية متخصصة تعرض وتبيع مجموعة واسعة من المنتجات الرقمية، ومنها:
+</p>
+
+<ul>
+
+<li>نماذج ثلاثية الأبعاد</li>
+
+<li>الكتب الإلكترونية</li>
+
+<li>الإضافات البرمجية</li>
+
+<li>السكريبتات</li>
+
+<li>التطبيقات</li>
+
+<li>الفيديوهات التعليمية</li>
+
+</ul>
+<p>
+لقد توليت جميع مراحل إنشاء الموقع، من البرمجة والتصميم إلى الإدارة والتسويق، إيمانًا مني بأهمية التعلم الذاتي والاعتماد على النفس.
+</p>
+
+<p>
+طموحي هو أن أجعل من هذا الموقع واحدًا من أفضل وأشهر المنصات العربية والعالمية المتخصصة في بيع المنتجات الرقمية، وأن أقدم للمبدعين العرب مساحة موثوقة لعرض إبداعاتهم، وللمستخدمين مصدرًا متكاملًا يلبي احتياجاتهم الرقمية بجودة واحترافية.
+</p>
+
+<p>
+أطمح دائمًا إلى التطوير والتعلم، وأسعى لأن أكون نموذجًا للشباب العربي القادر على بناء مشاريعه بنفسه وصناعة مستقبله الرقمي.
+</p>
+
+</div>
+
+</div>
+
+
+<div
+id="en"
+class="lang-content"
+dir="ltr">
+
+<h1 class="title">
+ℹ️ About Us
+</h1>
+
+<div class="info">
+
+<div class="info-box">
+<strong>Name</strong>
+<span>Amine Azzi</span>
+</div>
+
+<div class="info-box">
+<strong>Age</strong>
+<span>17 years old</span>
+</div>
+
+<div class="info-box">
+<strong>Residence</strong>
+<span>Kingdom of Morocco 🇲🇦</span>
+</div>
+
+</div>
+<div class="text">
+
+<p>
+I am Amine Azzi, a young Moroccan passionate about programming and digital entrepreneurship. I believe that big ideas do not require huge capital as much as they require determination and persistent work. Therefore, I decided to turn my idea into a tangible reality.
+</p>
+
+<p>
+I single-handedly designed and developed a comprehensive website for selling digital products without relying on external assistance.
+</p>
+
+<p>
+The website aims to provide a specialized Arab platform offering a wide range of digital products, including:
+</p>
+
+<ul>
+
+<li>3D models</li>
+
+<li>E-books</li>
+
+<li>Software add-ons</li>
+
+<li>Scripts</li>
+
+<li>Applications</li>
+
+<li>Educational videos</li>
+
+</ul>
+<p>
+I handled every stage of building the website, from programming and design to management and marketing, because I strongly believe in self-learning and self-reliance.
+</p>
+
+<p>
+My ambition is to make this website one of the best and most renowned Arab and international platforms specialized in selling digital products.
+</p>
+
+<p>
+I also aim to provide Arab creators with a trusted space to showcase their creations and to offer users a comprehensive source that meets their digital needs with quality and professionalism.
+</p>
+
+<p>
+I always aspire to develop and learn, and I strive to be a role model for Arab youth who are capable of building their own projects and shaping their digital future.
+</p>
+
+</div>
+
+</div>
+
+
+<div
+id="fr"
+class="lang-content"
+dir="ltr">
+
+<h1 class="title">
+ℹ️ À propos de nous
+</h1>
+
+<div class="info">
+
+<div class="info-box">
+<strong>Nom</strong>
+<span>Amine Azzi</span>
+</div>
+
+<div class="info-box">
+<strong>Âge</strong>
+<span>17 ans</span>
+</div>
+
+<div class="info-box">
+<strong>Résidence</strong>
+<span>Royaume du Maroc 🇲🇦</span>
+</div>
+
+</div>
+<div class="text">
+
+<p>
+Je suis Amine Azzi, un jeune Marocain passionné par la programmation et l'entrepreneuriat numérique.
+</p>
+
+<p>
+Je crois que les grandes idées n'ont pas besoin d'un capital énorme, mais plutôt de détermination, de volonté et de travail acharné. C'est pourquoi j'ai décidé de transformer mon idée en une réalité concrète.
+</p>
+
+<p>
+J'ai conçu et développé seul un site web complet dédié à la vente de produits numériques, sans dépendre d'une aide extérieure.
+</p>
+
+<p>
+Le site vise à offrir une plateforme arabe spécialisée proposant une large gamme de produits numériques, notamment :
+</p>
+
+<ul>
+
+<li>Modèles 3D</li>
+
+<li>Livres électroniques</li>
+
+<li>Modules complémentaires</li>
+
+<li>Scripts</li>
+
+<li>Applications</li>
+
+<li>Vidéos éducatives</li>
+
+</ul>
+
+<p>
+J'ai pris en charge toutes les étapes de création du site, de la programmation et du design à la gestion et au marketing, convaincu de l'importance de l'auto-apprentissage et de l'indépendance.
+</p>
+
+<p>
+Mon ambition est de faire de ce site l'une des meilleures et des plus renommées plateformes arabes et internationales spécialisées dans la vente de produits numériques.
+</p>
+<p>
+Je souhaite également offrir aux créateurs arabes un espace fiable pour présenter leurs créations et fournir aux utilisateurs une source complète répondant à leurs besoins numériques avec qualité et professionnalisme.
+</p>
+
+<p>
+J'aspire toujours à me développer et à apprendre, et je m'efforce d'être un modèle pour les jeunes arabes capables de construire leurs propres projets et de façonner leur avenir numérique.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<a
+href="../index.html"
+class="back">
+
+🏠 العودة إلى الرئيسية
+
+</a>
+
+</div>
+
+</main>
+
+
+<script>
+
+function changeLanguage(language,button){
+
+const contents =
+document.querySelectorAll(".lang-content");
+
+contents.forEach(function(content){
+content.classList.remove("active");
+});
+
+const selected =
+document.getElementById(language);
+
+selected.classList.add("active");
+
+const buttons =
+document.querySelectorAll(".lang-btn");
+
+buttons.forEach(function(btn){
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+if(language === "ar"){
+
+document.documentElement.lang="ar";
+document.documentElement.dir="rtl";
+
+}else{
+
+document.documentElement.lang=language;
+document.documentElement.dir="ltr";
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
