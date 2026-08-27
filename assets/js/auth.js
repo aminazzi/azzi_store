@@ -139,13 +139,11 @@ async function logoutUser() {
         );
 
         return;
-
     }
 
     window.location.href =
-        "../pages/login.html";
+        "pages/login.html";
 }
-
 
 // ================================
 // تحديث زر الحساب
