@@ -23,42 +23,67 @@
 
 <div class="top-icons">
 
-<button onclick="toggleSearch()">🔍</button>
+    <button
+        class="top-icon-btn"
+        onclick="toggleSearch()">
 
-<div class="language-menu">
+        <span class="top-icon">🔍</span>
+        <span class="top-label">البحث</span>
 
-<button
-class="language-icon"
-onclick="toggleLanguageMenu()">
-🌐
-</button>
+    </button>
 
-<div
-id="language-options"
-class="language-options">
 
-<button onclick="selectLanguage('ar')">
-🇲🇦 العربية
-</button>
+    <div class="language-menu">
 
-<button onclick="selectLanguage('en')">
-🇬🇧 English
-</button>
+        <button
+            class="top-icon-btn language-icon"
+            onclick="toggleLanguageMenu()">
 
-<button onclick="selectLanguage('fr')">
-🇫🇷 Français
-</button>
+            <span class="top-icon">🌐</span>
+            <span class="top-label">اللغة</span>
 
-</div>
+        </button>
 
-</div>
-<button
-    id="account-btn"
-    onclick="openAccount()">
-    👤 تسجيل الدخول
-</button>
-  
-<button id="favorites-btn">❤️</button>
+        <div
+            id="language-options"
+            class="language-options">
+
+            <button onclick="selectLanguage('ar')">
+                🇲🇦 العربية
+            </button>
+
+            <button onclick="selectLanguage('en')">
+                🇬🇧 English
+            </button>
+
+            <button onclick="selectLanguage('fr')">
+                🇫🇷 Français
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <button
+        id="account-btn"
+        class="top-icon-btn"
+        onclick="openAccount()">
+
+        <span class="top-icon">👤</span>
+        <span class="top-label">تسجيل الدخول</span>
+
+    </button>
+
+
+    <button
+        id="favorites-btn"
+        class="top-icon-btn">
+
+        <span class="top-icon">❤️</span>
+        <span class="top-label">المفضلة</span>
+
+    </button>
 
 </div>
 
