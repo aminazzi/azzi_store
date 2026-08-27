@@ -181,16 +181,18 @@ async function updateAccountButton() {
 
     if (user) {
 
-        button.textContent =
-            "👤 حسابي";
+        button.innerHTML =
+    '<span class="top-icon">👤</span>' +
+    '<span class="top-label">حسابي</span>';
 
         button.title =
             "الحساب: " + user.email;
 
     } else {
 
-        button.textContent =
-            "👤 تسجيل الدخول";
+        button.innerHTML =
+    '<span class="top-icon">👤</span>' +
+    '<span class="top-label">تسجيل الدخول</span>';
 
         button.title =
             "تسجيل الدخول";
