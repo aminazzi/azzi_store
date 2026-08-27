@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>تسجيل الدخول | AZZI STORE</title>
+
+<link rel="stylesheet" href="../assets/css/style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+<a href="../index.html" class="back-btn">
+←
+</a>
+
+<h1 class="logo">
+AZZI STORE
+</h1>
+
+</header>
+<main class="auth-container">
+
+<div class="auth-box">
+
+<h2 id="auth-title">
+تسجيل الدخول
+</h2>
+
+<p id="auth-description">
+سجّل الدخول إلى حسابك في AZZI STORE
+</p>
+
+
+<!-- EMAIL -->
+
+<div class="input-group">
+
+<label for="email">
+البريد الإلكتروني
+</label>
+
+<input
+type="email"
+id="email"
+placeholder="example@email.com"
+autocomplete="email"
+>
+</div>
+
+
+<!-- PASSWORD -->
+
+<div class="input-group">
+
+<label for="password">
+كلمة المرور
+</label>
+
+<div class="password-box">
+
+<input
+type="password"
+id="password"
+placeholder="••••••••"
+autocomplete="current-password"
+>
+
+<button
+type="button"
+id="show-password"
+onclick="togglePassword()">
+👁️
+</button>
+
+</div>
+
+</div>
+<!-- BUTTON -->
+
+<button
+id="auth-button"
+class="auth-btn"
+onclick="handleAuth()">
+
+تسجيل الدخول
+
+</button>
+
+
+<!-- MESSAGE -->
+
+<p id="auth-message"></p>
+
+
+<!-- SWITCH -->
+
+<div class="auth-switch">
+
+<span id="switch-text">
+ليس لديك حساب؟
+</span>
+
+<button
+type="button"
+id="switch-button"
+onclick="switchAuthMode()">
+
+إنشاء حساب
+
+</button>
+
+</div>
+<!-- BACK -->
+
+<a
+href="../index.html"
+class="back-home">
+
+← العودة إلى المتجر
+
+</a>
+
+</div>
+
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../assets/js/auth.js"></script>
+
+
+<script>
+
+function togglePassword() {
+
+    const password =
+        document.getElementById("password");
+
+    const button =
+        document.getElementById("show-password");
+  if (password.type === "password") {
+
+        password.type = "text";
+
+        button.textContent = "🙈";
+
+    } else {
+
+        password.type = "password";
+
+        button.textContent = "👁️";
+
+    }
+
+}
+
+
+let loginMode = true;
+
+
+function switchAuthMode() {
+
+    loginMode = !loginMode;
+
+    const title =
+        document.getElementById("auth-title");
+
+    const description =
+        document.getElementById("auth-description");
+
+    const button =
+        document.getElementById("auth-button");
+  const switchText =
+        document.getElementById("switch-text");
+
+    const switchButton =
+        document.getElementById("switch-button");
+
+    const password =
+        document.getElementById("password");
+
+
+    if (loginMode) {
+
+        title.textContent =
+            "تسجيل الدخول";
+
+        description.textContent =
+            "سجّل الدخول إلى حسابك في AZZI STORE";
+
+        button.textContent =
+            "تسجيل الدخول";
+
+        switchText.textContent =
+            "ليس لديك حساب؟";
+
+        switchButton.textContent =
+            "إنشاء حساب";
+      password.setAttribute(
+            "autocomplete",
+            "current-password"
+        );
+
+    } else {
+
+        title.textContent =
+            "إنشاء حساب";
+
+        description.textContent =
+            "أنشئ حسابك الجديد في AZZI STORE";
+
+        button.textContent =
+            "إنشاء حساب";
+
+        switchText.textContent =
+            "لديك حساب بالفعل؟";
+
+        switchButton.textContent =
+            "تسجيل الدخول";
+
+        password.setAttribute(
+            "autocomplete",
+            "new-password"
+        );
+
+    }
+
+}
+  async function handleAuth() {
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const message =
+        document.getElementById("auth-message");
+
+    const button =
+        document.getElementById("auth-button");
+
+
+    if (!email || !password) {
+
+        message.textContent =
+            "⚠️ يرجى إدخال البريد الإلكتروني وكلمة المرور.";
+
+        return;
+
+    }
+
+
+    if (password.length < 6) {
+
+        message.textContent =
+            "⚠️ يجب أن تكون كلمة المرور 6 أحرف على الأقل.";
+
+        return;
+
+    }
+    button.disabled = true;
+
+    button.textContent =
+        "جاري المعالجة...";
+
+    message.textContent = "";
+
+
+    try {
+
+        if (loginMode) {
+
+            await loginUser(
+                email,
+                password
+            );
+
+        } else {
+
+            await registerUser(
+                email,
+                password
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.textContent =
+            "❌ حدث خطأ، حاول مرة أخرى.";
+
+    }
+
+
+    button.disabled = false;
+
+    button.textContent =
+        loginMode
+            ? "تسجيل الدخول"
+            : "إنشاء حساب";
+
+}
+
+</script>
+
+</body>
+
+</html>
