@@ -52,7 +52,7 @@ class="language-options">
 </div>
 
 </div>
-<button id="account-btn" onclick="goToLogin()">👤</button>
+<button id="account-btn" onclick="openAccount()">👤</button>
   
 <button id="favorites-btn">❤️</button>
 
@@ -262,7 +262,35 @@ function goToLogin() {
 }
 </script> 
 
+<div id="account-modal" class="account-modal">
 
+    <div class="account-box">
+
+        <button
+            class="account-close"
+            onclick="closeAccount()">
+            ✕
+        </button>
+
+        <div class="account-icon">
+            👤
+        </div>
+
+        <h2>حسابي</h2>
+
+        <p id="account-email">
+            جاري التحميل...
+        </p>
+
+        <button
+            class="logout-btn"
+            onclick="logoutUser()">
+            🚪 تسجيل الخروج
+        </button>
+
+    </div>
+
+</div>
 </body>
 
 </html>
