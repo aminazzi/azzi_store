@@ -1,4 +1,4 @@
- // ==============================
+// ==============================
 // نظام عرض المفضلة
 // ==============================
 
@@ -14,7 +14,6 @@ if (favoritesButton) {
                 localStorage.getItem("azziFavorites") || "[]"
             );
 
-        console.log("Favorites:", favorites);    
         // ==============================
         // إنشاء نافذة المفضلة
         // ==============================
@@ -36,8 +35,7 @@ if (favoritesButton) {
             box-sizing:border-box;
             overflow-y:auto;
         `;
-
-        let html = `
+     let html = `
 
             <div style="
                 max-width:600px;
@@ -66,6 +64,9 @@ if (favoritesButton) {
                 <h2 style="text-align:center;">
                     ❤️ المفضلة
                 </h2>
+
+        `;
+
         // ==============================
         // عرض المنتجات المحفوظة
         // ==============================
@@ -83,8 +84,7 @@ if (favoritesButton) {
                 </p>
 
             `;
-
-        } else {
+         } else {
 
             favorites.forEach(function(product) {
 
@@ -98,10 +98,11 @@ if (favoritesButton) {
                         image.substring(3);
 
                 }
+
                 html += `
 
                     <a
-                        href="pages/product.html?id=${product.id}"
+                        href="pages/product.html?id=${encodeURIComponent(product.id)}"
                         style="
                             display:flex;
                             align-items:center;
@@ -117,20 +118,21 @@ if (favoritesButton) {
 
                         <img
                             src="${image}"
-                            alt="${product.name}"
+                            alt="${product.name || "Product"}"
                             style="
                                 width:80px;
                                 height:80px;
                                 object-fit:cover;
                                 border-radius:10px;
                             "
-                        >
-                                <div>
+                            >
+
+                        <div>
 
                             <h3 style="
                                 margin:0 0 8px;
                             ">
-                                ${product.name}
+                                ${product.name || "منتج"}
                             </h3>
 
                             <p style="
@@ -152,6 +154,7 @@ if (favoritesButton) {
             });
 
         }
+
         // ==============================
         // إكمال نافذة المفضلة
         // ==============================
