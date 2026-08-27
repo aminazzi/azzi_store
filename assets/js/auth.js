@@ -123,6 +123,26 @@ async function getCurrentUser() {
     return user;
 }
 // ================================
+// المستخدم الحالي
+// ================================
+
+async function getCurrentUser() {
+
+    const {
+        data: { user },
+        error
+    } = await supabaseClient.auth.getUser();
+
+    if (error) {
+        console.error(error);
+        return null;
+    }
+
+    return user;
+}
+
+
+// ================================
 // تسجيل الخروج
 // ================================
 
@@ -133,17 +153,17 @@ async function logoutUser() {
 
     if (error) {
 
-        console.error(
-            "Logout error:",
-            error
-        );
+        console.error("Logout error:", error);
+
+        alert("حدث خطأ أثناء تسجيل الخروج");
 
         return;
     }
-
+    // العودة إلى الصفحة الرئيسية
     window.location.href =
-        "pages/login.html";
+        "/azzi_store/pages/login.html";
 }
+
 
 // ================================
 // تحديث زر الحساب
@@ -161,22 +181,43 @@ async function updateAccountButton() {
 
     if (user) {
 
-        button.textContent = "👤";
+        button.textContent =
+            "👤 حسابي";
 
         button.title =
-            "حسابي: " + user.email;
+            "الحساب: " + user.email;
 
     } else {
 
-        button.textContent = "👤";
+        button.textContent =
+            "👤 تسجيل الدخول";
 
         button.title =
             "تسجيل الدخول";
     }
 }
-
+// ================================
+// تشغيل التحقق
+// ================================
 
 document.addEventListener(
     "DOMContentLoaded",
     updateAccountButton
+);
+
+
+// ================================
+// مراقبة تسجيل الدخول والخروج
+// ================================
+
+supabaseClient.auth.onAuthStateChange(
+    function(event, session) {
+
+        console.log(
+            "حالة الحساب:",
+            event
+        );
+
+        updateAccountButton();
+    }
 );
