@@ -54,10 +54,14 @@ async function registerUser(email, password) {
 async function loginUser(email, password) {
 
     const { data, error } =
-        await supabaseClient.auth.signInWithPassword({
-            email: email,
-            password: password
-        });
+        await supabaseClient.auth.signUp({
+    email: email,
+    password: password,
+    options: {
+        emailRedirectTo:
+            "https://aminazzi.github.io/azzi_store/pages/login.html"
+    }
+});
 
     if (error) {
         throw error;
