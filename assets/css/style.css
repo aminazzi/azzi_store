@@ -27,10 +27,13 @@ body{
     box-shadow:0 2px 15px rgba(0,0,0,.4);
 }
 
-.logo{
-    color:#38bdf8;
-    font-size:26px;
-    font-weight:bold;
+.logo {
+    text-align: center;
+    white-space: nowrap;
+    font-size: 28px;
+    line-height: 1;
+    margin: 0;
+    flex-shrink: 0;
 }
 
 .menu-btn,
@@ -616,6 +619,54 @@ margin:20px 0;
 
     .top-label {
         font-size: 12px;
+    }
+
+}
+/* ================================
+   إصلاح شعار AZZI STORE
+================================ */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    min-height: 80px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+}
+
+.header .logo {
+    white-space: nowrap;
+    display: block;
+    width: auto;
+    flex-shrink: 0;
+    font-size: 27px;
+    line-height: 1;
+}
+
+/* منع الأزرار من إجبار الشعار على النزول */
+
+.menu-btn {
+    flex-shrink: 0;
+}
+
+.top-icons {
+    flex-shrink: 0;
+}
+
+/* الهاتف */
+
+@media (max-width: 600px) {
+
+    .header {
+        min-height: 82px;
+        padding: 8px 8px;
+    }
+
+    .header .logo {
+        font-size: 22px;
+        white-space: nowrap;
     }
 
 }
