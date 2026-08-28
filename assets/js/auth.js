@@ -235,67 +235,111 @@ supabaseClient.auth.onAuthStateChange(
 // الجزء 5/5
 // ================================
 
-async function checkLoginStatus() {
+async  function  checkLoginStatus ( )  {
 
-    const {
-        data: { session },
-        error
-    } = await supabaseClient.auth.getSession();
+    const  {
+        البيانات : {  الجلسة  } ،
+        خطأ
+    } = await  supabaseClient.auth.getSession ( ) ;​​​​
+
+    إذا  ( حدث خطأ )  {
+
+        console.error (​​
+            "خطأ في الجلسة: "
+            خطأ
+        ) ;
+
+        إرجاع  قيمة فارغة (null )؛
+    }
+
+    إذا  ( جلسة )  {
+
+        console.log (​​
+            "الجلسة موجودة:" ,
+            جلسة . مستخدم . بريد إلكتروني
+        ) ;
+
+    }  آخر  {
+
+        console.log (​​
+            "لا توجد جلسة حالية"
+        ) ;
+    }
+
+    إعادة  الجلسة ؛
+}
+
+
+// ================================
+// فحص النظر
+// ================================
+
+تحقق من حالة تسجيل الدخول ( ) ؛
+// ==========================================
+// متجر AZZI - ملف تعريف المستخدم
+// ربط بيانات الموقع بحساب المستخدم
+// ==========================================
+
+async  function  createUserProfile ( user )  {
+
+    إذا  لم يكن هناك مستخدم ،  فقم بالخروج .
+
+    const  {  error  } =
+        انتظر  عميل قاعدة البيانات الفائقة
+            من ( " الملفات الشخصية" )
+            . upsert ( {
+                المعرّف : معرّف المستخدم ،​
+                البريد الإلكتروني : user.email​
+            } ) ;
+
+    إذا  ( حدث خطأ )  {
+        console.error (​​
+            "خطأ في الملف الشخصي: "
+            خطأ
+        ) ;
+    }
+}
+// ==========================================
+// AZZI STORE - USER DATA
+// ==========================================
+
+async function getUserId() {
+
+    const user = await getCurrentUser();
+
+    if (!user) {
+        return null;
+    }
+
+    return user.id;
+}
+
+
+// الحصول على بيانات المستخدم
+async function getUserProfile() {
+
+    const user = await getCurrentUser();
+
+    if (!user) {
+        return null;
+    }
+
+    const { data, error } =
+        await supabaseClient
+            .from("profiles")
+            .select("*")
+            .eq("id", user.id)
+            .single();
 
     if (error) {
 
         console.error(
-            "Session error:",
+            "Profile error:",
             error
         );
 
         return null;
     }
 
-    if (session) {
-
-        console.log(
-            "الجلسة موجودة:",
-            session.user.email
-        );
-
-    } else {
-
-        console.log(
-            "لا توجد جلسة حالية"
-        );
-    }
-
-    return session;
-}
-
-
-// ================================
-// تشغيل فحص الجلسة
-// ================================
-
-checkLoginStatus();
-// ==========================================
-// AZZI STORE - USER PROFILE
-// ربط بيانات الموقع بحساب المستخدم
-// ==========================================
-
-async function createUserProfile(user) {
-
-    if (!user) return;
-
-    const { error } =
-        await supabaseClient
-            .from("profiles")
-            .upsert({
-                id: user.id,
-                email: user.email
-            });
-
-    if (error) {
-        console.error(
-            "Profile error:",
-            error
-        );
-    }
+    return data;
 }
