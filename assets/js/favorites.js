@@ -7,13 +7,29 @@ const favoritesButton =
 
 if (favoritesButton) {
 
-    favoritesButton.addEventListener("click", function () {
+    favoritesButton.addEventListener("click", async function () {
+
+        // الحصول على المستخدم الحالي
+        const user = await getCurrentUser();
+
+        // إذا لم يكن مسجل الدخول
+        if (!user) {
+
+            alert(
+                "⚠️ يجب تسجيل الدخول أولاً لعرض المفضلة."
+            );
+
+            return;
+        }
+
+        // مفتاح المفضلة الخاص بالمستخدم
+        const favoritesKey =
+            "azziFavorites_" + user.id;
 
         const favorites =
             JSON.parse(
-                localStorage.getItem("azziFavorites") || "[]"
+                localStorage.getItem(favoritesKey) || "[]"
             );
-
         // ==============================
         // إنشاء نافذة المفضلة
         // ==============================
@@ -35,7 +51,8 @@ if (favoritesButton) {
             box-sizing:border-box;
             overflow-y:auto;
         `;
-     let html = `
+
+        let html = `
 
             <div style="
                 max-width:600px;
@@ -46,8 +63,7 @@ if (favoritesButton) {
                 color:white;
                 direction:rtl;
             ">
-
-                <button
+            <button
                     id="close-favorites"
                     style="
                         float:left;
@@ -64,7 +80,6 @@ if (favoritesButton) {
                 <h2 style="text-align:center;">
                     ❤️ المفضلة
                 </h2>
-
         `;
 
         // ==============================
@@ -76,7 +91,7 @@ if (favoritesButton) {
             html += `
 
                 <p style="
-                    text-align:center;
+                text-align:center;
                     padding:40px 10px;
                     font-size:18px;
                 ">
@@ -84,7 +99,8 @@ if (favoritesButton) {
                 </p>
 
             `;
-         } else {
+
+        } else {
 
             favorites.forEach(function(product) {
 
@@ -115,8 +131,7 @@ if (favoritesButton) {
                             text-decoration:none;
                         "
                     >
-
-                        <img
+                    <img
                             src="${image}"
                             alt="${product.name || "Product"}"
                             style="
@@ -125,7 +140,7 @@ if (favoritesButton) {
                                 object-fit:cover;
                                 border-radius:10px;
                             "
-                            >
+                        >
 
                         <div>
 
@@ -152,13 +167,7 @@ if (favoritesButton) {
                 `;
 
             });
-
         }
-
-        // ==============================
-        // إكمال نافذة المفضلة
-        // ==============================
-
         html += `
 
             </div>
@@ -168,6 +177,7 @@ if (favoritesButton) {
         box.innerHTML = html;
 
         document.body.appendChild(box);
+
         // ==============================
         // زر إغلاق المفضلة
         // ==============================
