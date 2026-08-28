@@ -209,52 +209,70 @@ Promise.all([
         };
 
     }
-    // ==============================
-// نظام المفضلة
+// ==============================
+// نظام المفضلة - خاص بكل مستخدم
 // ==============================
 
-const favoriteButton =
-    document.getElementById("favorite-btn");
+async function initFavoriteButton() {
 
+    const favoriteButton =
+        document.getElementById("favorite-btn");
 
-if (favoriteButton) {
+    if (!favoriteButton) return;
 
-    // قراءة المفضلة المحفوظة
+    // الحصول على المستخدم الحالي
+    const user = await getCurrentUser();
+
+    // إذا لم يكن المستخدم مسجل الدخول
+    if (!user) {
+
+        favoriteButton.innerHTML =
+            "🤍 Add to Favorites";
+
+        favoriteButton.onclick = function () {
+
+            alert("⚠️ يجب تسجيل الدخول أولاً لإضافة المنتجات إلى المفضلة.");
+
+        };        
+    return;
+    }
+
+    // مفتاح خاص بهذا المستخدم
+    const favoritesKey =
+        "azziFavorites_" + user.id;
+
+    // قراءة مفضلة هذا المستخدم فقط
     let favorites =
         JSON.parse(
-            localStorage.getItem("azziFavorites") || "[]"
+            localStorage.getItem(favoritesKey) || "[]"
         );
-
 
     // التأكد هل المنتج موجود مسبقًا
     const isFavorite =
         favorites.some(
-            item => Number(item.id) === Number(product.id)
+            item =>
+                Number(item.id) === Number(product.id)
         );
 
-
-    // تغيير شكل الزر إذا كان المنتج محفوظًا
+    // تغيير شكل الزر
     if (isFavorite) {
 
         favoriteButton.innerHTML =
             "❤️ Added to Favorites";
 
     } else {
-
         favoriteButton.innerHTML =
             "🤍 Add to Favorites";
 
     }
-
 
     // عند الضغط على زر المفضلة
     favoriteButton.onclick = function () {
 
         let favorites =
             JSON.parse(
-                localStorage.getItem("azziFavorites") || "[]"
+                localStorage.getItem(favoritesKey) || "[]"
             );
-
 
         const index =
             favorites.findIndex(
@@ -262,10 +280,8 @@ if (favoriteButton) {
                     Number(item.id) === Number(product.id)
             );
 
-
         // إذا كان المنتج موجودًا → حذفه
         if (index !== -1) {
-
             favorites.splice(index, 1);
 
             favoriteButton.innerHTML =
@@ -282,46 +298,15 @@ if (favoriteButton) {
                 "❤️ Added to Favorites";
 
         }
-        // حفظ المفضلة
+
+        // حفظ مفضلة المستخدم فقط
         localStorage.setItem(
-            "azziFavorites",
+            favoritesKey,
             JSON.stringify(favorites)
         );
 
     };
-
 }
 
-})
-
-
-.catch(function(error) {
-
-    console.error(
-        "Product Error:",
-        error
-    );
-
-    document.body.innerHTML = `
-
-        <div style="
-            text-align:center;
-            padding:50px;
-            font-family:Arial;
-        ">
-
-            <h2>❌ حدث خطأ</h2>
-
-            <p>
-                لم نتمكن من تحميل بيانات المنتج.
-            </p>
-
-            <p>
-                ${error.message}
-            </p>
-
-        </div>
-
-    `;
-
-});
+// تشغيل نظام المفضلة
+initFavoriteButton();
