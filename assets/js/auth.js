@@ -82,6 +82,7 @@ async function loginUser(email, password) {
         throw error;
 
     }
+    await createUserProfile(data.user);
 
     const message =
         document.getElementById("auth-message");
@@ -274,3 +275,27 @@ async function checkLoginStatus() {
 // ================================
 
 checkLoginStatus();
+// ==========================================
+// AZZI STORE - USER PROFILE
+// ربط بيانات الموقع بحساب المستخدم
+// ==========================================
+
+async function createUserProfile(user) {
+
+    if (!user) return;
+
+    const { error } =
+        await supabaseClient
+            .from("profiles")
+            .upsert({
+                id: user.id,
+                email: user.email
+            });
+
+    if (error) {
+        console.error(
+            "Profile error:",
+            error
+        );
+    }
+}
