@@ -1,5 +1,6 @@
 // ================================
 // AZZI STORE - SUPABASE AUTH
+// الجزء 1/5
 // ================================
 
 const SUPABASE_URL =
@@ -13,6 +14,8 @@ const supabaseClient =
         SUPABASE_URL,
         SUPABASE_KEY
     );
+
+
 // ================================
 // إنشاء حساب جديد
 // ================================
@@ -21,8 +24,16 @@ async function registerUser(email, password) {
 
     const { data, error } =
         await supabaseClient.auth.signUp({
+
             email: email,
-            password: password
+
+            password: password,
+
+            options: {
+                emailRedirectTo:
+                    "https://aminazzi.github.io/azzi_store/pages/login.html"
+            }
+
         });
 
     if (error) {
@@ -43,28 +54,33 @@ async function registerUser(email, password) {
             "✅ تم إنشاء الحساب بنجاح!";
 
         setTimeout(() => {
-            window.location.href = "../index.html";
+
+            window.location.href =
+                "../index.html";
+
         }, 1500);
     }
 }
 // ================================
 // تسجيل الدخول
+// الجزء 2/5
 // ================================
 
 async function loginUser(email, password) {
 
     const { data, error } =
-        await supabaseClient.auth.signUp({
-    email: email,
-    password: password,
-    options: {
-        emailRedirectTo:
-            "https://aminazzi.github.io/azzi_store/pages/login.html"
-    }
-});
+        await supabaseClient.auth.signInWithPassword({
+
+            email: email,
+
+            password: password
+
+        });
 
     if (error) {
+
         throw error;
+
     }
 
     const message =
@@ -80,15 +96,119 @@ async function loginUser(email, password) {
 
     }, 1000);
 }
+
+
 // ================================
-// مراقبة حالة تسجيل الدخول
+// الحصول على المستخدم الحالي
+// ================================
+
+async function getCurrentUser() {
+
+    const {
+        data: { user },
+        error
+    } = await supabaseClient.auth.getUser();
+
+    if (error) {
+
+        console.error(
+            "Get user error:",
+            error
+        );
+
+        return null;
+    }
+
+    return user;
+}
+// ================================
+// تسجيل الخروج
+// الجزء 3/5
+// ================================
+
+async function logoutUser() {
+
+    const { error } =
+        await supabaseClient.auth.signOut();
+
+    if (error) {
+
+        console.error(
+            "Logout error:",
+            error
+        );
+
+        alert(
+            "حدث خطأ أثناء تسجيل الخروج"
+        );
+
+        return;
+    }
+
+    window.location.href =
+        "/azzi_store/pages/login.html";
+}
+
+
+// ================================
+// تحديث زر الحساب
+// ================================
+
+async function updateAccountButton() {
+
+    const button =
+        document.getElementById(
+            "account-btn"
+        );
+
+    if (!button) return;
+
+    const user =
+        await getCurrentUser();
+
+    if (user) {
+
+        button.innerHTML =
+            '<span class="top-icon">👤</span>' +
+            '<span class="top-label">حسابي</span>';
+
+        button.title =
+            "الحساب: " + user.email;
+
+    } else {
+
+        button.innerHTML =
+            '<span class="top-icon">👤</span>' +
+            '<span class="top-label">تسجيل الدخول</span>';
+
+        button.title =
+            "تسجيل الدخول";
+    }
+}
+// ================================
+// تشغيل التحقق عند فتح الصفحة
+// الجزء 4/5
+// ================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function() {
+
+        await updateAccountButton();
+
+    }
+);
+
+
+// ================================
+// مراقبة حالة الحساب
 // ================================
 
 supabaseClient.auth.onAuthStateChange(
-    (event, session) => {
+    function(event, session) {
 
         console.log(
-            "Auth event:",
+            "حالة الحساب:",
             event
         );
 
@@ -104,122 +224,53 @@ supabaseClient.auth.onAuthStateChange(
             console.log(
                 "لا يوجد مستخدم مسجل الدخول"
             );
-
         }
-    }
-);
-
-
-// ================================
-// الحصول على المستخدم الحالي
-// ================================
-
-async function getCurrentUser() {
-
-    const {
-        data: { user }
-    } = await supabaseClient.auth.getUser();
-
-    return user;
-}
-// ================================
-// المستخدم الحالي
-// ================================
-
-async function getCurrentUser() {
-
-    const {
-        data: { user },
-        error
-    } = await supabaseClient.auth.getUser();
-
-    if (error) {
-        console.error(error);
-        return null;
-    }
-
-    return user;
-}
-
-
-// ================================
-// تسجيل الخروج
-// ================================
-
-async function logoutUser() {
-
-    const { error } =
-        await supabaseClient.auth.signOut();
-
-    if (error) {
-
-        console.error("Logout error:", error);
-
-        alert("حدث خطأ أثناء تسجيل الخروج");
-
-        return;
-    }
-    // العودة إلى الصفحة الرئيسية
-    window.location.href =
-        "/azzi_store/pages/login.html";
-}
-
-
-// ================================
-// تحديث زر الحساب
-// ================================
-
-async function updateAccountButton() {
-
-    const button =
-        document.getElementById("account-btn");
-
-    if (!button) return;
-
-    const user =
-        await getCurrentUser();
-
-    if (user) {
-
-        button.innerHTML =
-    '<span class="top-icon">👤</span>' +
-    '<span class="top-label">حسابي</span>';
-
-        button.title =
-            "الحساب: " + user.email;
-
-    } else {
-
-        button.innerHTML =
-    '<span class="top-icon">👤</span>' +
-    '<span class="top-label">تسجيل الدخول</span>';
-
-        button.title =
-            "تسجيل الدخول";
-    }
-}
-// ================================
-// تشغيل التحقق
-// ================================
-
-document.addEventListener(
-    "DOMContentLoaded",
-    updateAccountButton
-);
-
-
-// ================================
-// مراقبة تسجيل الدخول والخروج
-// ================================
-
-supabaseClient.auth.onAuthStateChange(
-    function(event, session) {
-
-        console.log(
-            "حالة الحساب:",
-            event
-        );
 
         updateAccountButton();
     }
 );
+// ================================
+// التحقق الإضافي من الجلسة
+// الجزء 5/5
+// ================================
+
+async function checkLoginStatus() {
+
+    const {
+        data: { session },
+        error
+    } = await supabaseClient.auth.getSession();
+
+    if (error) {
+
+        console.error(
+            "Session error:",
+            error
+        );
+
+        return null;
+    }
+
+    if (session) {
+
+        console.log(
+            "الجلسة موجودة:",
+            session.user.email
+        );
+
+    } else {
+
+        console.log(
+            "لا توجد جلسة حالية"
+        );
+    }
+
+    return session;
+}
+
+
+// ================================
+// تشغيل فحص الجلسة
+// ================================
+
+checkLoginStatus();
