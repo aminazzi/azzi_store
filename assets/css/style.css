@@ -2012,71 +2012,142 @@ a {
     gap: 14px;
 }
 
-.smart-options button {
-    display: flex;
+/* =========================================
+   ✨ زر اختر لي
+========================================= */
 
+.smart-picker-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 18px 15px 35px;
+
+    box-sizing: border-box;
+}
+
+
+/* الزر */
+
+.smart-picker-button {
+    width: 330px;
+    max-width: 90%;
+
+    min-height: 85px;
+
+    display: flex;
     flex-direction: column;
 
     align-items: center;
+    justify-content: center;
 
-    gap: 6px;
+    gap: 4px;
 
-    padding: 20px 12px;
+    padding: 14px 20px;
 
-    border: 2px solid #eee;
+    border: none;
+    border-radius: 22px;
 
-    border-radius: 18px;
+    background: linear-gradient(
+        135deg,
+        #8b3dff,
+        #ec3ca8
+    );
 
-    background: #fafafa;
+    color: white;
+
+    text-align: center;
 
     cursor: pointer;
 
-    transition: .25s ease;
+    box-shadow:
+        0 8px 25px rgba(155, 60, 255, 0.28);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
-.smart-options button:hover {
-    transform: translateY(-4px);
 
-    border-color: #a855f7;
+/* ✨ الأيقونة */
 
-    background: #faf5ff;
+.smart-picker-icon {
+    font-size: 27px;
+
+    line-height: 1;
+}
+/* كلمة اختر لي */
+
+.smart-picker-button > span:not(.smart-picker-icon) {
+    font-size: 21px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
 }
 
-.smart-options button:first-letter {
-    font-size: 30px;
-}
 
-.smart-options strong {
-    font-size: 16px;
-}
+/* الوصف الصغير */
 
-.smart-options span {
+.smart-picker-button small {
+    display: block;
+
+    margin-top: 3px;
+
     font-size: 12px;
 
-    color: #777;
+    font-weight: 400;
+
+    opacity: 0.9;
+
+    line-height: 1.3;
 }
-/* Mobile */
+
+
+/* حركة بسيطة عند لمس الزر */
+
+.smart-picker-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(155, 60, 255, 0.38);
+}
+
+.smart-picker-button:active {
+    transform: scale(0.97);
+}
+
+
+/* الهاتف */
 
 @media (max-width: 600px) {
 
+    .smart-picker-section {
+        padding: 12px 15px 30px;
+    }
+
     .smart-picker-button {
-        flex-wrap: wrap;
+        width: 300px;
+        max-width: 88%;
 
-        justify-content: center;
+        min-height: 78px;
 
-        text-align: center;
+        padding: 12px 16px;
+
+        border-radius: 20px;
+    }
+
+    .smart-picker-icon {
+        font-size: 24px;
+    }
+
+    .smart-picker-button > span:not(.smart-picker-icon) {
+        font-size: 19px;
     }
 
     .smart-picker-button small {
-        width: 100%;
-    }
-
-    .smart-picker-box {
-        padding: 30px 15px;
-    }
-
-    .smart-options {
-        grid-template-columns: 1fr;
+        font-size: 11px;
     }
 
 }
