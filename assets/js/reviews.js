@@ -1,132 +1,90 @@
-// ==========================================
-// AZZI STORE - REVIEWS SYSTEM
-// ==========================================
-
 const REVIEWS_TABLE = "site_reviews";
 
-
 function escapeReviewText(value) {
-
     return String(value ?? "")
         .replace(/[&<>'"]/g, char => ({
-
             "&": "&amp;",
             "<": "&lt;",
             ">": "&gt;",
             "'": "&#039;",
             '"': "&quot;"
-
         }[char]));
-
 }
-
 
 function getDisplayName(email) {
-
-    const name =
-        String(email || "مستخدم")
+    return String(email || "مستخدم")
         .split("@")[0]
-        .trim();
-
-    return name || "مستخدم";
-
+        .trim() || "مستخدم";
 }
 
-
+/* نجوم التقييم */
 function starsHTML(rating, interactive = false) {
 
-    return Array.from(
-        { length: 5 },
-        (_, i) => {
+    rating = Number(rating) || 0;
 
-            const star = i + 1;
+    return Array.from({ length: 5 }, (_, i) => {
 
-            if (interactive) {
+        const star = i + 1;
 
-                return `
-                <button
-                        type="button"
-                        class="review-star ${
-                            star <= rating
-                                ? "selected"
-                                : ""
-                        }"
-                        data-rating="${star}"
-                        aria-label="${star} نجوم">
-                        ★
-                    </button>
-                `;
-
-            }
-
+        if (interactive) {
             return `
-                <span
-                    class="review-star-static ${
-                        star <= rating
-                            ? "filled"
-                            : ""
-                    }">
+                <button
+                    type="button"
+                    class="review-star ${star <= rating ? "selected" : ""}"
+                    data-rating="${star}"
+                    aria-label="${star} نجوم">
                     ★
-                </span>
+                </button>
             `;
-
         }
-    ).join("");
 
+        return `
+            <span class="review-star-static ${star <= rating ? "filled" : ""}">
+                ★
+            </span>
+        `;
+    }).join("");
 }
 /* تحميل التقييمات */
-
 async function loadReviews() {
 
-    const list =
-        document.getElementById("reviews-list");
+    const list = document.getElementById("reviews-list");
 
     if (!list) return;
 
     list.innerHTML =
         '<p class="reviews-loading">جاري تحميل التقييمات...</p>';
 
-
     const { data, error } =
         await supabaseClient
             .from(REVIEWS_TABLE)
-            .select(
-                "id, user_email, rating, comment, created_at"
-            )
-            .order(
-                "created_at",
-                { ascending: false }
-            );
-
+            .select("id,user_id,user_email,rating,comment,created_at")
+            .order("created_at", { ascending: false });
 
     if (error) {
 
-        console.error(
-            "Reviews error:",
-            error
-        );
+        console.error("Reviews error:", error);
 
         list.innerHTML =
-            '<p class="reviews-empty">تعذر تحميل التقييمات حاليًا.</p>';
+            '<p class="reviews-empty">تعذر تحميل التقييمات.</p>';
 
         return;
     }
-
 
     const reviews = data || [];
 
     renderReviews(reviews);
 
     updateReviewsSummary(reviews);
-
 }
-/* عرض التعليقات */
 
+
+/* عرض التقييمات */
 function renderReviews(reviews) {
 
-    const list =
-        document.getElementById("reviews-list");
+    const list = document.getElementById("reviews-list");
 
+    if (!list) return;
 
     if (!reviews.length) {
 
@@ -135,23 +93,17 @@ function renderReviews(reviews) {
 
         return;
     }
-
-
     list.innerHTML = reviews.map(review => {
 
-        const name =
-            getDisplayName(review.user_email);
+        const name = getDisplayName(review.user_email);
 
         return `
-
             <article class="review-card">
 
                 <div class="review-card-top">
 
                     <div class="review-avatar">
-                        ${escapeReviewText(
-                            name
-                        ).charAt(0).toUpperCase()}
+                        ${escapeReviewText(name).charAt(0).toUpperCase()}
                     </div>
 
                     <div class="review-user">
@@ -161,101 +113,73 @@ function renderReviews(reviews) {
                         </strong>
 
                         <time>
-                            ${formatReviewDate(
-                                review.created_at
-                            )}
-                            </time>
-
-                    </div>
-
-                    <div
-                        class="review-stars"
-                        aria-label="تقييم ${
-                            review.rating
-                        } من 5">
-
-                        ${starsHTML(
-                            Number(review.rating)
-                        )}
+                            ${formatReviewDate(review.created_at)}
+                        </time>
 
                     </div>
 
                 </div>
 
+
+                <!-- النجوم فوق التعليق -->
+                <div
+                    class="review-rating-stars"
+                    aria-label="تقييم ${review.rating} من 5">
+
+                    ${starsHTML(Number(review.rating))}
+
+                </div>
+
+
+                <!-- التعليق -->
                 <p class="review-comment">
-                    ${escapeReviewText(
-                        review.comment
-                    )}
+                    ${escapeReviewText(review.comment)}
                 </p>
 
             </article>
-
         `;
 
     }).join("");
-
 }
-/* حساب المتوسط */
-
+/* المتوسط */
 function updateReviewsSummary(reviews) {
 
     const average =
         reviews.length
-
             ? reviews.reduce(
                 (sum, review) =>
-                    sum +
-                    Number(review.rating || 0),
+                    sum + Number(review.rating || 0),
                 0
             ) / reviews.length
-
             : 0;
 
-
     const averageElement =
-        document.getElementById(
-            "reviews-average"
-        );
+        document.getElementById("reviews-average");
 
     const countElement =
-        document.getElementById(
-            "reviews-count"
-        );
+        document.getElementById("reviews-count");
 
     const summaryStars =
-        document.getElementById(
-            "reviews-summary-stars"
-        );
-
+        document.getElementById("reviews-summary-stars");
 
     if (averageElement) {
-
         averageElement.textContent =
             average.toFixed(1);
-
     }
-
 
     if (countElement) {
-
         countElement.textContent =
             `${reviews.length} تقييم`;
-
     }
-  if (summaryStars) {
 
+    if (summaryStars) {
         summaryStars.innerHTML =
-            starsHTML(
-                Math.round(average)
-            );
-
+            starsHTML(Math.round(average));
     }
-
 }
 
 
 /* التاريخ */
-
 function formatReviewDate(date) {
 
     if (!date) return "";
@@ -266,136 +190,103 @@ function formatReviewDate(date) {
             dateStyle: "medium"
         }
     ).format(new Date(date));
-
 }
-
-
-/* إعداد نموذج التقييم */
-
+/* تجهيز نموذج التقييم */
 async function setupReviewForm() {
 
     const form =
-        document.getElementById(
-            "review-form"
-        );
+        document.getElementById("review-form");
 
     const loginMessage =
-        document.getElementById(
-            "review-login-message"
-        );
+        document.getElementById("review-login-message");
 
     const formArea =
-        document.getElementById(
-            "review-form-area"
-        );
+        document.getElementById("review-form-area");
 
     const stars =
-        document.getElementById(
-            "review-stars-input"
-        );
+        document.getElementById("review-stars-input");
 
     const ratingInput =
-        document.getElementById(
-            "review-rating"
-        );
+        document.getElementById("review-rating");
 
-
-    if (
-        !form ||
-        !stars ||
-        !ratingInput
-    ) {
+    if (!form || !stars || !ratingInput) {
         return;
     }
-
 
     const user =
         await getCurrentUser();
-  /* غير مسجل */
 
+
+    /* المستخدم غير مسجل */
     if (!user) {
 
         if (formArea)
-            formArea.style.display =
-                "none";
+            formArea.style.display = "none";
 
         if (loginMessage)
-            loginMessage.style.display =
-                "block";
+            loginMessage.style.display = "block";
 
         return;
     }
-
-
-    /* مسجل */
-
+    /* المستخدم مسجل */
     if (formArea)
-        formArea.style.display =
-            "block";
+        formArea.style.display = "block";
 
     if (loginMessage)
-        loginMessage.style.display =
-            "none";
+        loginMessage.style.display = "none";
+
+
+    /* منع تكرار إضافة الأحداث */
+    if (form.dataset.ready === "true") {
+        return;
+    }
+
+    form.dataset.ready = "true";
 
 
     stars.innerHTML =
         starsHTML(0, true);
 
 
-    stars
-        .querySelectorAll(".review-star")
+    /* اختيار النجوم */
+    stars.querySelectorAll(".review-star")
         .forEach(button => {
 
-            button.addEventListener(
-                "click",
-                () => {
+            button.addEventListener("click", () => {
 
-                    const rating =
-                        Number(
-                            button.dataset.rating
+                const rating =
+                    Number(button.dataset.rating);
+
+                ratingInput.value = rating;
+
+
+                stars.querySelectorAll(".review-star")
+                    .forEach(star => {
+
+                        star.classList.toggle(
+                            "selected",
+                            Number(star.dataset.rating) <= rating
                         );
 
-                    ratingInput.value =
-                        rating;
+                    });
 
-
-                    stars
-                        .querySelectorAll(
-                            ".review-star"
-                        )
-                        .forEach(star => {
-
-                            star.classList.toggle(
-                                "selected",
-                                Number(
-                                    star.dataset.rating
-                                ) <= rating
-                            );
-
-                        });
-
-                }
-            );
+            });
 
         });
-  form.addEventListener(
+    form.addEventListener(
         "submit",
         submitReview
     );
-
 }
 
 
 /* إرسال التقييم */
-
 async function submitReview(event) {
 
     event.preventDefault();
 
-
     const user =
         await getCurrentUser();
-
 
     if (!user) {
 
@@ -433,18 +324,19 @@ async function submitReview(event) {
         );
 
 
-    if (
-        rating < 1 ||
-        rating > 5
-    ) {
+    /* التحقق من النجوم */
+    if (rating < 1 || rating > 5) {
 
         message.textContent =
-            "⭐ اختر تقييمًا من نجمة إلى 5 نجوم.";
+            "⭐ اختر تقييمًا من 1 إلى 5 نجوم.";
 
         return;
     }
-  message.textContent =
-            "✍️ اكتب رأيًا من 3 أحرف على الأقل.";
+    /* التحقق من التعليق */
+    if (comment.length < 3) {
+
+        message.textContent =
+            "✍️ اكتب تعليقًا من 3 أحرف على الأقل.";
 
         return;
     }
@@ -458,6 +350,7 @@ async function submitReview(event) {
     message.textContent = "";
 
 
+    /* إرسال إلى Supabase */
     const { error } =
         await supabaseClient
             .from(REVIEWS_TABLE)
@@ -482,16 +375,20 @@ async function submitReview(event) {
         );
 
 
-        message.textContent =
-            error.code === "23505"
+        if (error.code === "23505") {
 
-                ? "⚠️ لديك تقييم منشور بالفعل."
+            message.textContent =
+                "⚠️ لديك تقييم منشور بالفعل.";
 
-                : "❌ تعذر نشر التقييم، حاول مرة أخرى.";
+        } else {
 
-    }
+            message.textContent =
+                "❌ تعذر نشر التقييم. تأكد من إعداد جدول Supabase.";
 
-    else {
+        }
+
+    } else {
+        /* تنظيف النموذج */
 
         document.getElementById(
             "review-comment"
@@ -502,23 +399,38 @@ async function submitReview(event) {
         ).value = "0";
 
 
+        document.getElementById(
+            "review-stars-input"
+        ).innerHTML =
+            starsHTML(0, true);
+
+
         message.textContent =
-            "✅ تم نشر تقييمك، شكرًا لك!";
+            "✅ تم نشر تقييمك بنجاح!";
 
 
+        /* إعادة تحميل التقييمات */
         await loadReviews();
 
+
+        /* إعادة تشغيل النجوم */
+        const form =
+            document.getElementById("review-form");
+
+        form.dataset.ready = "false";
+
+        await setupReviewForm();
     }
-button.disabled = false;
+
+
+    button.disabled = false;
 
     button.textContent =
         "نشر التقييم";
-
 }
 
 
-/* تشغيل النظام */
-
+/* تشغيل */
 document.addEventListener(
     "DOMContentLoaded",
     async () => {
@@ -529,12 +441,17 @@ document.addEventListener(
 
     }
 );
-
-
+/* عند تسجيل الدخول / الخروج */
 supabaseClient.auth.onAuthStateChange(
     async () => {
 
-        await setupReviewForm();
+        const form =
+            document.getElementById("review-form");
 
+        if (form) {
+            form.dataset.ready = "false";
+        }
+
+        await setupReviewForm();
     }
 );
