@@ -1835,3 +1835,248 @@ a {
 .show-more-reviews:active {
     transform: scale(.97);
 }
+/* =========================================
+   ✨ SMART PICKER
+========================================= */
+
+.smart-picker-section {
+    display: flex;
+    justify-content: center;
+    padding: 25px 15px;
+}
+
+.smart-picker-button {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 15px 28px;
+
+    border: 0;
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #ec4899
+    );
+
+    color: #fff;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(124, 58, 237, .25);
+
+    transition: .3s ease;
+}
+
+.smart-picker-button:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+.smart-picker-button small {
+    font-size: 11px;
+    font-weight: 400;
+    opacity: .85;
+}
+
+.smart-picker-icon {
+    font-size: 25px;
+}
+/* Modal */
+
+.smart-picker-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, .65);
+
+    backdrop-filter: blur(10px);
+}
+
+.smart-picker-modal.active {
+    display: flex;
+}
+
+
+/* Box */
+
+.smart-picker-box {
+    position: relative;
+
+    width: 100%;
+    max-width: 550px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 35px 25px;
+
+    border-radius: 28px;
+
+    background: #fff;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, .25);
+
+    animation: smartPickerIn .35s ease;
+}
+@keyframes smartPickerIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* Close */
+
+.smart-picker-close {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    width: 38px;
+    height: 38px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: #f3f4f6;
+
+    color: #333;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+/* Step */
+
+.smart-picker-step {
+    text-align: center;
+}
+
+.smart-picker-emoji {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 45px;
+}
+
+.smart-picker-step h2 {
+    margin: 0;
+
+    font-size: 25px;
+}
+
+.smart-picker-step p {
+    margin: 8px 0 25px;
+
+    color: #777;
+}
+/* Options */
+
+.smart-options {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+}
+
+.smart-options button {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 20px 12px;
+
+    border: 2px solid #eee;
+
+    border-radius: 18px;
+
+    background: #fafafa;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+.smart-options button:hover {
+    transform: translateY(-4px);
+
+    border-color: #a855f7;
+
+    background: #faf5ff;
+}
+
+.smart-options button:first-letter {
+    font-size: 30px;
+}
+
+.smart-options strong {
+    font-size: 16px;
+}
+
+.smart-options span {
+    font-size: 12px;
+
+    color: #777;
+}
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .smart-picker-button {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        text-align: center;
+    }
+
+    .smart-picker-button small {
+        width: 100%;
+    }
+
+    .smart-picker-box {
+        padding: 30px 15px;
+    }
+
+    .smart-options {
+        grid-template-columns: 1fr;
+    }
+
+}
