@@ -1352,3 +1352,289 @@ a {
     }
 
 }
+/* ==========================================
+   تقييمات وآراء المستخدمين
+========================================== */
+
+#reviews-section {
+    padding: 70px 20px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.reviews-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.reviews-heading h2 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.reviews-heading p {
+    color: #cbd5e1;
+}
+
+.reviews-summary {
+    background: #1f2937;
+    border: 1px solid #334155;
+    border-radius: 18px;
+    padding: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 20px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.reviews-average {
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.review-stars {
+    direction: ltr;
+    white-space: nowrap;
+}
+
+.review-star-static {
+    color: #475569;
+    font-size: 21px;
+}
+
+.review-star-static.filled {
+    color: #facc15;
+}
+
+.reviews-count {
+    color: #cbd5e1;
+}
+/* نموذج إضافة التقييم */
+
+.review-form-area {
+    background: #1d2433;
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 28px;
+}
+
+.review-form-area h3 {
+    margin-bottom: 15px;
+}
+
+#review-stars-input {
+    display: flex;
+    direction: ltr;
+    gap: 4px;
+    margin-bottom: 14px;
+}
+
+.review-star {
+    border: 0;
+    background: transparent;
+
+    color: #475569;
+
+    font-size: 34px;
+    line-height: 1;
+
+    cursor: pointer;
+    padding: 0 2px;
+
+    transition:
+        transform .15s,
+        color .15s;
+}
+
+.review-star:hover,
+.review-star.selected {
+    color: #facc15;
+    transform: scale(1.08);
+}
+
+#review-comment {
+    width: 100%;
+    min-height: 100px;
+
+    resize: vertical;
+
+    border: 1px solid #475569;
+    border-radius: 12px;
+
+    background: #111827;
+    color: #fff;
+
+    padding: 13px;
+
+    font: inherit;
+    outline: none;
+
+    box-sizing: border-box;
+}
+#review-comment:focus {
+    border-color: #38bdf8;
+}
+
+#review-submit {
+    margin-top: 12px;
+
+    border: 0;
+    cursor: pointer;
+
+    background: #38bdf8;
+    color: #fff;
+
+    padding: 12px 22px;
+    border-radius: 10px;
+
+    font-size: 16px;
+}
+
+#review-submit:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+#review-form-message {
+    margin-top: 10px;
+    color: #cbd5e1;
+}
+
+
+/* تسجيل الدخول */
+
+#review-login-message {
+    display: none;
+
+    text-align: center;
+
+    background: #1d2433;
+
+    border-radius: 18px;
+
+    padding: 22px;
+    margin-bottom: 28px;
+}
+
+.review-login-link {
+    display: inline-block;
+
+    margin-top: 12px;
+
+    color: #38bdf8;
+
+    text-decoration: none;
+    font-weight: bold;
+}
+/* قائمة التعليقات */
+
+#reviews-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 16px;
+}
+
+.review-card {
+    background: #1f2937;
+
+    border: 1px solid #334155;
+
+    border-radius: 16px;
+
+    padding: 18px;
+}
+
+.review-card-top {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 14px;
+}
+
+.review-avatar {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #38bdf8;
+
+    display: grid;
+    place-items: center;
+
+    color: #fff;
+
+    font-weight: bold;
+
+    flex-shrink: 0;
+}
+
+.review-user {
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    flex: 1;
+}
+.review-user strong {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+.review-user time {
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    margin-top: 3px;
+}
+
+.review-comment {
+    color: #e2e8f0;
+
+    line-height: 1.8;
+
+    overflow-wrap: anywhere;
+}
+
+.reviews-loading,
+.reviews-empty {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    color: #94a3b8;
+
+    padding: 25px;
+}
+
+
+/* الهاتف */
+
+@media (max-width: 600px) {
+
+    #reviews-section {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .review-card-top {
+        flex-wrap: wrap;
+    }
+
+}
