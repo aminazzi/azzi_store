@@ -78,7 +78,6 @@ async function loadReviews() {
     updateReviewsSummary(reviews);
 }
 
-
 /* عرض التقييمات */
 function renderReviews(reviews) {
 
@@ -93,7 +92,14 @@ function renderReviews(reviews) {
 
         return;
     }
-    list.innerHTML = reviews.map(review => {
+
+    // أحدث 3 تعليقات فقط
+    const visibleReviews = reviews.slice(0, 3);
+
+    // بقية التعليقات
+    const hiddenReviews = reviews.slice(3);
+
+    const reviewHTML = review => {
 
         const name = getDisplayName(review.user_email);
 
@@ -120,8 +126,6 @@ function renderReviews(reviews) {
 
                 </div>
 
-
-                <!-- النجوم فوق التعليق -->
                 <div
                     class="review-rating-stars"
                     aria-label="تقييم ${review.rating} من 5">
@@ -130,16 +134,58 @@ function renderReviews(reviews) {
 
                 </div>
 
-
-                <!-- التعليق -->
                 <p class="review-comment">
                     ${escapeReviewText(review.comment)}
                 </p>
-
-            </article>
+                </article>
         `;
+    };
 
-    }).join("");
+    list.innerHTML = `
+
+        <div id="visible-reviews">
+            ${visibleReviews.map(reviewHTML).join("")}
+        </div>
+
+        ${
+            hiddenReviews.length > 0
+            ? `
+                <div id="hidden-reviews" class="hidden-reviews">
+                    ${hiddenReviews.map(reviewHTML).join("")}
+                </div>
+
+                <button
+                    id="show-more-reviews"
+                    class="show-more-reviews"
+                    type="button">
+
+                    عرض المزيد (${hiddenReviews.length})
+
+                </button>
+            `
+            : ""
+        }
+
+    `;
+
+    // زر عرض المزيد
+    const showMoreButton =
+        document.getElementById("show-more-reviews");
+
+    const hiddenReviewsContainer =
+        document.getElementById("hidden-reviews");
+
+    if (showMoreButton && hiddenReviewsContainer) {
+
+        showMoreButton.addEventListener("click", () => {
+
+            hiddenReviewsContainer.classList.add("show");
+
+            showMoreButton.style.display = "none";
+
+        });
+
+    }
 }
 /* المتوسط */
 function updateReviewsSummary(reviews) {
