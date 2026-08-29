@@ -735,3 +735,620 @@ margin:20px 0;
     }
 
 }
+/* =========================================================
+   AZZI STORE - NEON CYBERPUNK THEME
+   مستوحى من تصميم AZZI STORE
+   لا يغيّر بنية الموقع أو وظائفه
+========================================================= */
+
+:root {
+    --azzi-bg: #050816;
+    --azzi-bg-2: #0a1024;
+    --azzi-card: #10162e;
+    --azzi-card-2: #151b38;
+
+    --azzi-purple: #a855f7;
+    --azzi-pink: #ec4899;
+    --azzi-blue: #38bdf8;
+    --azzi-cyan: #22d3ee;
+
+    --azzi-text: #ffffff;
+    --azzi-text-soft: #cbd5e1;
+
+    --azzi-border: rgba(168, 85, 247, 0.45);
+
+    --azzi-glow-purple:
+        0 0 10px rgba(168, 85, 247, .7),
+        0 0 25px rgba(168, 85, 247, .35);
+
+    --azzi-glow-blue:
+        0 0 10px rgba(56, 189, 248, .7),
+        0 0 25px rgba(56, 189, 248, .35);
+}
+/* =========================
+   BODY
+========================= */
+
+body {
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(109, 40, 217, .18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(236, 72, 153, .12),
+            transparent 30%
+        ),
+        var(--azzi-bg);
+
+    color: var(--azzi-text);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    background:
+        linear-gradient(
+            90deg,
+            #050816,
+            #0b1028,
+            #12091f
+        );
+
+    border-bottom: 1px solid rgba(168, 85, 247, .35);
+
+    box-shadow:
+        0 2px 20px rgba(0, 0, 0, .65),
+        0 0 20px rgba(168, 85, 247, .12);
+}
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    color: #fff;
+
+    text-shadow:
+        0 0 5px #fff,
+        0 0 12px var(--azzi-blue),
+        0 0 25px var(--azzi-purple),
+        0 0 40px var(--azzi-pink);
+}
+
+
+/* =========================
+   TOP BUTTONS
+========================= */
+
+.menu-btn,
+.top-icons button,
+.close-btn {
+    color: #fff;
+}
+
+.top-icon-btn:hover {
+    color: var(--azzi-cyan);
+
+    text-shadow:
+        0 0 8px var(--azzi-cyan),
+        0 0 18px var(--azzi-blue);
+
+    transition: .2s;
+}
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    background:
+        linear-gradient(
+            180deg,
+            #080b1c,
+            #11152d,
+            #090b19
+        );
+
+    border-right: 1px solid var(--azzi-border);
+
+    box-shadow:
+        5px 0 30px rgba(0, 0, 0, .65),
+        0 0 25px rgba(168, 85, 247, .15);
+}
+
+.sidebar a {
+    color: #fff;
+
+    border-bottom:
+        1px solid rgba(168, 85, 247, .18);
+
+    transition: .2s;
+}
+
+.sidebar a:hover {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(168, 85, 247, .2),
+            rgba(56, 189, 248, .12)
+        );
+
+    color: var(--azzi-cyan);
+
+    padding-right: 18px;
+
+    text-shadow:
+        0 0 8px rgba(34, 211, 238, .7);
+}
+
+.close-btn {
+    color: var(--azzi-pink);
+}
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(168, 85, 247, .10),
+            transparent 60%
+        );
+}
+
+.hero h2 {
+    color: #fff;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,.5),
+        0 0 18px var(--azzi-purple),
+        0 0 35px var(--azzi-pink);
+}
+
+.hero p {
+    color: var(--azzi-text-soft);
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+    background:
+        linear-gradient(
+            135deg,
+            var(--azzi-purple),
+            var(--azzi-pink),
+            var(--azzi-blue)
+        );
+
+    color: #fff;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    box-shadow:
+        0 0 10px rgba(168, 85, 247, .5),
+        0 0 25px rgba(236, 72, 153, .25);
+
+    transition: .25s;
+}
+
+.btn:hover {
+    background:
+        linear-gradient(
+            135deg,
+            var(--azzi-blue),
+            var(--azzi-purple),
+            var(--azzi-pink)
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 15px rgba(56, 189, 248, .7),
+        0 0 35px rgba(168, 85, 247, .4);
+}
+/* =========================
+   PRODUCTS / CARDS
+========================= */
+
+#products {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(56, 189, 248, .04),
+            transparent 60%
+        );
+}
+
+.card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(21, 27, 56, .95),
+            rgba(9, 13, 32, .98)
+        );
+
+    border:
+        1px solid rgba(168, 85, 247, .35);
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, .35);
+
+    transition:
+        transform .25s,
+        box-shadow .25s,
+        border-color .25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--azzi-blue);
+
+    box-shadow:
+        0 0 12px rgba(56, 189, 248, .35),
+        0 0 30px rgba(168, 85, 247, .2);
+}
+
+.card h3 {
+    color: #fff;
+}
+/* =========================
+   PRICE
+========================= */
+
+.price {
+    color: var(--azzi-cyan);
+
+    text-shadow:
+        0 0 8px rgba(34, 211, 238, .7),
+        0 0 18px rgba(56, 189, 248, .35);
+}
+
+
+/* =========================
+   RATING
+========================= */
+
+.rating {
+    color: #facc15;
+
+    text-shadow:
+        0 0 8px rgba(250, 204, 21, .5);
+}
+
+
+/* =========================
+   PRODUCT PAGE
+========================= */
+
+.product-card {
+    background:
+        linear-gradient(
+            145deg,
+            #11172f,
+            #080c1d
+        );
+
+    border:
+        1px solid rgba(168, 85, 247, .35);
+
+    box-shadow:
+        0 0 20px rgba(0, 0, 0, .5),
+        0 0 30px rgba(168, 85, 247, .12);
+}
+
+.product-image {
+    background: #080b18;
+}
+
+.product-info {
+    background: #090d20;
+
+    border:
+        1px solid rgba(56, 189, 248, .18);
+}
+/* =========================
+   PRICE
+========================= */
+
+.price {
+    color: var(--azzi-cyan);
+
+    text-shadow:
+        0 0 8px rgba(34, 211, 238, .7),
+        0 0 18px rgba(56, 189, 248, .35);
+}
+
+
+/* =========================
+   RATING
+========================= */
+
+.rating {
+    color: #facc15;
+
+    text-shadow:
+        0 0 8px rgba(250, 204, 21, .5);
+}
+
+
+/* =========================
+   PRODUCT PAGE
+========================= */
+
+.product-card {
+    background:
+        linear-gradient(
+            145deg,
+            #11172f,
+            #080c1d
+        );
+
+    border:
+        1px solid rgba(168, 85, 247, .35);
+
+    box-shadow:
+        0 0 20px rgba(0, 0, 0, .5),
+        0 0 30px rgba(168, 85, 247, .12);
+}
+
+.product-image {
+    background: #080b18;
+}
+
+.product-info {
+    background: #090d20;
+
+    border:
+        1px solid rgba(56, 189, 248, .18);
+}
+/* =========================
+   BUY BUTTON
+========================= */
+
+.buy-btn {
+    background:
+        linear-gradient(
+            90deg,
+            var(--azzi-purple),
+            var(--azzi-pink),
+            var(--azzi-blue)
+        );
+
+    box-shadow:
+        0 0 12px rgba(168, 85, 247, .45);
+
+    transition: .25s;
+}
+
+.buy-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 15px rgba(56, 189, 248, .7),
+        0 0 30px rgba(236, 72, 153, .3);
+}
+
+
+/* =========================
+   FAVORITES
+========================= */
+
+.favorite-btn {
+    background: #11172f;
+
+    border:
+        1px solid rgba(168, 85, 247, .3);
+}
+
+.favorite-btn:hover {
+    background: #171d3b;
+
+    border-color: var(--azzi-pink);
+
+    box-shadow:
+        0 0 15px rgba(236, 72, 153, .25);
+}
+/* =========================
+   SEARCH
+========================= */
+
+#search-box {
+    background:
+        linear-gradient(
+            145deg,
+            #0c1128,
+            #151a35
+        );
+
+    border:
+        1px solid rgba(168, 85, 247, .45);
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.7),
+        0 0 25px rgba(168,85,247,.2);
+}
+
+#search-input {
+    background: #070b1b;
+
+    color: #fff;
+
+    border:
+        1px solid rgba(56, 189, 248, .35);
+}
+
+#search-input:focus {
+    border-color: var(--azzi-cyan);
+
+    box-shadow:
+        0 0 0 3px rgba(34, 211, 238, .12),
+        0 0 15px rgba(34, 211, 238, .25);
+}
+
+.search-result {
+    background: #11172f;
+
+    color: #fff;
+
+    border:
+        1px solid rgba(168, 85, 247, .15);
+}
+
+.search-result:hover {
+    background: #171e3d;
+
+    border-color: var(--azzi-purple);
+}
+/* =========================
+   LANGUAGE MENU
+========================= */
+
+.language-options {
+    background:
+        linear-gradient(
+            145deg,
+            #0c1128,
+            #151a35
+        );
+
+    border:
+        1px solid rgba(168, 85, 247, .4);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.6),
+        0 0 20px rgba(168,85,247,.15);
+}
+
+.language-options button {
+    color: #fff;
+
+    background: transparent;
+}
+
+.language-options button:hover {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(168,85,247,.18),
+            rgba(56,189,248,.12)
+        );
+
+    color: var(--azzi-cyan);
+}
+/* =========================
+   ACCOUNT MODAL
+========================= */
+
+.account-modal {
+    background: rgba(0, 0, 10, .78);
+}
+
+.account-box {
+    background:
+        linear-gradient(
+            145deg,
+            #11172f,
+            #080c1d
+        );
+
+    color: #fff;
+
+    border:
+        1px solid rgba(168,85,247,.45);
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.7),
+        0 0 35px rgba(168,85,247,.2);
+}
+
+#account-email {
+    color: #94a3b8;
+}
+
+.account-close {
+    color: #fff;
+}
+
+.logout-btn {
+    background:
+        linear-gradient(
+            90deg,
+            #7e22ce,
+            #db2777
+        );
+
+    box-shadow:
+        0 0 15px rgba(236,72,153,.25);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background:
+        linear-gradient(
+            90deg,
+            #050816,
+            #0d1027,
+            #12091f
+        );
+
+    color: #94a3b8;
+
+    border-top:
+        1px solid rgba(168,85,247,.3);
+
+    padding: 25px;
+
+    text-align: center;
+
+    box-shadow:
+        0 -5px 25px rgba(0,0,0,.35);
+}
+/* =========================
+   HORIZONTAL LINE
+========================= */
+
+hr {
+    border-top:
+        1px solid rgba(168,85,247,.25);
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+a {
+    transition: .2s;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .hero h2 {
+        text-shadow:
+            0 0 8px var(--azzi-purple),
+            0 0 18px var(--azzi-pink);
+    }
+
+    .card:hover {
+        transform: none;
+    }
+
+}
