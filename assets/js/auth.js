@@ -231,77 +231,49 @@ supabaseClient.auth.onAuthStateChange(
     }
 );
 // ================================
-// التحقق الإضافي من الجلسة
-// الجزء 5/5
+// التحقق من حالة الجلسة
 // ================================
 
-async  function  checkLoginStatus ( )  {
+async function checkLoginStatus() {
+    const {
+        data: { session },
+        error
+    } = await supabaseClient.auth.getSession();
 
-    const  {
-        البيانات : {  الجلسة  } ،
-        خطأ
-    } = await  supabaseClient.auth.getSession ( ) ;​​​​
-
-    إذا  ( حدث خطأ )  {
-
-        console.error (​​
-            "خطأ في الجلسة: "
-            خطأ
-        ) ;
-
-        إرجاع  قيمة فارغة (null )؛
+    if (error) {
+        console.error("Session error:", error);
+        return null;
     }
 
-    إذا  ( جلسة )  {
-
-        console.log (​​
-            "الجلسة موجودة:" ,
-            جلسة . مستخدم . بريد إلكتروني
-        ) ;
-
-    }  آخر  {
-
-        console.log (​​
-            "لا توجد جلسة حالية"
-        ) ;
-    }
-
-    إعادة  الجلسة ؛
+    return session;
 }
 
 
 // ================================
-// فحص النظر
+// إنشاء ملف تعريف المستخدم
 // ================================
 
-تحقق من حالة تسجيل الدخول ( ) ؛
-// ==========================================
-// متجر AZZI - ملف تعريف المستخدم
-// ربط بيانات الموقع بحساب المستخدم
-// ==========================================
+async function createUserProfile(user) {
 
-async  function  createUserProfile ( user )  {
+    if (!user) return;
 
-    إذا  لم يكن هناك مستخدم ،  فقم بالخروج .
+    const { error } = await supabaseClient
+        .from("profiles")
+        .upsert({
+            id: user.id,
+            email: user.email
+        });
 
-    const  {  error  } =
-        انتظر  عميل قاعدة البيانات الفائقة
-            من ( " الملفات الشخصية" )
-            . upsert ( {
-                المعرّف : معرّف المستخدم ،​
-                البريد الإلكتروني : user.email​
-            } ) ;
-
-    إذا  ( حدث خطأ )  {
-        console.error (​​
-            "خطأ في الملف الشخصي: "
-            خطأ
-        ) ;
+    if (error) {
+        console.error(
+            "Profile error:",
+            error
+        );
     }
 }
-// ==========================================
-// AZZI STORE - USER DATA
-// ==========================================
+// ================================
+// الحصول على ID المستخدم
+// ================================
 
 async function getUserId() {
 
@@ -315,7 +287,10 @@ async function getUserId() {
 }
 
 
+// ================================
 // الحصول على بيانات المستخدم
+// ================================
+
 async function getUserProfile() {
 
     const user = await getCurrentUser();
@@ -343,3 +318,8 @@ async function getUserProfile() {
 
     return data;
 }
+// ================================
+// فحص حالة تسجيل الدخول
+// ================================
+
+checkLoginStatus();
