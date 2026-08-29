@@ -2151,3 +2151,206 @@ a {
     }
 
 }
+/* =========================================
+   🎯 نتائج زر اختر لي
+========================================= */
+
+.smart-products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+    margin: 12px 0 20px;
+}
+
+.smart-product-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 0;
+
+    text-decoration: none;
+    color: inherit;
+
+    background: #fff;
+
+    border: 1px solid rgba(139, 61, 255, 0.12);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 22px rgba(20, 10, 40, 0.08);
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
+}
+
+.smart-product-card:hover {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(139, 61, 255, 0.35);
+
+    box-shadow:
+        0 14px 30px rgba(20, 10, 40, 0.14);
+}
+
+.smart-product-number {
+    position: absolute;
+
+    top: 9px;
+    right: 9px;
+
+    z-index: 2;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(30, 20, 45, 0.82);
+
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+.smart-product-image {
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    display: block;
+
+    object-fit: cover;
+
+    background: #f4f1f8;
+}
+
+.smart-product-info {
+    padding: 12px;
+}
+
+.smart-product-info h3 {
+    margin: 0 0 10px;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+.smart-product-meta {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    font-size: 12px;
+}
+
+.smart-product-meta strong {
+    font-size: 15px;
+}
+
+.smart-picker-restart {
+    min-width: 190px;
+
+    border: 1px solid
+        rgba(139, 61, 255, 0.22);
+
+    border-radius: 14px;
+
+    padding: 11px 18px;
+
+    background: #fff;
+
+    color: #6e2be2;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+.smart-picker-restart:hover {
+    background: #f7f1ff;
+
+    transform:
+        translateY(-2px);
+}
+
+.smart-picker-results-loading
+.smart-picker-emoji {
+    animation:
+        smart-picker-spin 1.1s linear infinite;
+}
+
+@keyframes smart-picker-spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* الهاتف */
+@media (max-width: 700px) {
+
+    .smart-products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .smart-product-card {
+
+        display: grid;
+
+        grid-template-columns:
+            105px minmax(0, 1fr);
+
+        align-items: stretch;
+    }
+
+    .smart-product-image {
+
+        height: 100%;
+
+        min-height: 105px;
+
+        aspect-ratio: auto;
+    }
+
+    .smart-product-info {
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+    }
+
+}
