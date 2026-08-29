@@ -167,7 +167,82 @@ Tutorial Videos
 
 </div>
     
+<!-- ================================
+     WHEEL OF PRODUCTS
+================================ -->
 
+<section id="wheel-section">
+
+    <div class="wheel-title">
+        <span>🎁</span>
+        <h2>عجلة الحظ</h2>
+        <p>
+            ادفع 5$ واحصل على منتج رقمي عشوائي
+        </p>
+    </div>
+
+    <button
+        id="open-wheel-btn"
+        class="open-wheel-btn"
+        onclick="openWheel()">
+
+        🎡 جرب حظك بـ 5$
+
+    </button>
+
+</section>
+
+
+<!-- WHEEL MODAL -->
+
+<div id="wheel-modal" class="wheel-modal">
+
+    <div class="wheel-box">
+
+        <button
+            class="wheel-close"
+            onclick="closeWheel()">
+            ✕
+        </button>
+
+        <h2>🎡 عجلة الحظ</h2>
+
+        <p class="wheel-price">
+            سعر الدوران: <strong>$5.00</strong>
+        </p>
+
+        <div class="wheel-container">
+
+            <div class="wheel-pointer">
+                ▼
+            </div>
+
+            <canvas
+                id="wheel-canvas"
+                width="500"
+                height="500">
+            </canvas>
+
+        </div>
+
+        <div
+            id="wheel-status"
+            class="wheel-status">
+            اختر الدفع للبدء
+        </div>
+
+        <div
+            id="paypal-wheel-button">
+        </div>
+
+        <div
+            id="wheel-result"
+            class="wheel-result">
+        </div>
+
+    </div>
+
+</div>
 
 <!-- HERO -->
 
