@@ -704,7 +704,7 @@ return (
                             minPrice,
                             maxPrice
                         );
-t ratingNorm =
+                    const ratingNorm =
                         normalize(
                             rating,
                             minRating,
