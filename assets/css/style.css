@@ -1781,3 +1781,57 @@ a {
     }
 
 }
+/* =================================
+   زر عرض المزيد للتعليقات
+================================= */
+
+.hidden-reviews {
+    display: none;
+}
+
+.hidden-reviews.show {
+    display: block;
+}
+
+.show-more-reviews {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin: 20px auto 10px;
+
+    padding: 13px 20px;
+
+    background: linear-gradient(
+        135deg,
+        #a855f7,
+        #ec4899
+    );
+
+    color: white;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 10px rgba(168, 85, 247, .5),
+        0 0 20px rgba(236, 72, 153, .25);
+
+    transition: .25s;
+}
+
+.show-more-reviews:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 15px rgba(168, 85, 247, .7),
+        0 0 30px rgba(236, 72, 153, .4);
+}
+
+.show-more-reviews:active {
+    transform: scale(.97);
+}
