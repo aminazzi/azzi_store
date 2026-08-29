@@ -1638,3 +1638,146 @@ a {
     }
 
 }
+/* ==========================================
+   إصلاح وتصغير قسم التقييمات
+========================================== */
+
+#reviews-section {
+    max-width: 900px !important;
+    margin: 0 auto !important;
+    padding: 40px 15px !important;
+}
+
+#reviews-section .reviews-heading h2 {
+    font-size: 24px !important;
+    margin-bottom: 6px !important;
+}
+
+#reviews-section .reviews-heading p {
+    font-size: 14px !important;
+    margin-bottom: 20px !important;
+}
+
+
+/* صندوق متوسط التقييم */
+#reviews-section .reviews-summary {
+    padding: 14px 18px !important;
+    margin-bottom: 18px !important;
+    border-radius: 14px !important;
+}
+
+#reviews-section .reviews-average {
+    font-size: 32px !important;
+}
+/* خانة كتابة التعليق */
+#reviews-section #review-comment {
+    width: 100% !important;
+    height: 70px !important;
+    min-height: 70px !important;
+    max-height: 120px !important;
+
+    resize: vertical !important;
+
+    padding: 10px 12px !important;
+
+    font-size: 14px !important;
+
+    border-radius: 10px !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* صندوق إضافة التقييم */
+#reviews-section .review-form-area {
+    padding: 16px !important;
+    margin-bottom: 20px !important;
+    border-radius: 14px !important;
+}
+
+#reviews-section .review-form-area h3 {
+    font-size: 18px !important;
+    margin-bottom: 10px !important;
+}
+/* نجوم اختيار التقييم */
+#reviews-section #review-stars-input {
+    margin-bottom: 8px !important;
+}
+
+#reviews-section .review-star {
+    font-size: 28px !important;
+}
+
+
+/* زر النشر */
+#reviews-section #review-submit {
+    padding: 9px 18px !important;
+    font-size: 14px !important;
+    border-radius: 8px !important;
+}
+
+
+/* التعليقات */
+#reviews-section #reviews-list {
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr)) !important;
+
+    gap: 12px !important;
+}
+
+
+/* بطاقة التعليق */
+#reviews-section .review-card {
+    padding: 14px !important;
+    border-radius: 12px !important;
+}
+
+
+/* النجوم الخاصة بكل تعليق */
+#reviews-section .review-rating-stars {
+    direction: ltr;
+    margin: 5px 0 8px;
+    line-height: 1;
+}
+#reviews-section .review-rating-stars
+.review-star-static {
+    font-size: 18px !important;
+}
+
+
+/* نص التعليق */
+#reviews-section .review-comment {
+    font-size: 13px !important;
+    line-height: 1.7 !important;
+
+    margin: 5px 0 0 !important;
+}
+
+
+/* اسم المستخدم والتاريخ */
+#reviews-section .review-user strong {
+    font-size: 14px !important;
+}
+
+#reviews-section .review-user time {
+    font-size: 10px !important;
+}
+
+
+/* الهاتف */
+@media (max-width: 600px) {
+
+    #reviews-section {
+        padding: 30px 10px !important;
+    }
+
+    #reviews-section #reviews-list {
+        grid-template-columns: 1fr !important;
+    }
+
+    #reviews-section #review-comment {
+        height: 65px !important;
+        min-height: 65px !important;
+    }
+
+}
