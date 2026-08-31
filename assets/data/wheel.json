@@ -1,0 +1,38 @@
+[
+  {
+    "id": "chames",
+    "name": "Chames",
+    "image": "assets/images/wheel/chames.png",
+    "download": "https://raw.githubusercontent.com/aminazzi/azzi_store/main/products/chames.pdf"
+  },
+  {
+    "id": "dragon",
+    "name": "Dragon",
+    "image": "assets/images/wheel/dragon.png",
+    "download": "https://raw.githubusercontent.com/aminazzi/azzi_store/main/products/dragon.rar"
+  },
+  {
+    "id": "zombie",
+    "name": "Strong Zombie",
+    "image": "assets/images/wheel/zombie.png",
+    "download": "https://raw.githubusercontent.com/aminazzi/azzi_store/main/products/zombie.zip"
+  },
+  {
+    "id": "city",
+    "name": "Modern City",
+    "image": "assets/images/wheel/city.jpg",
+    "download": "https://raw.githubusercontent.com/aminazzi/azzi_store/main/products/city.zip"
+  },
+  {
+    "id": "wifi",
+    "name": "Open WiFi",
+    "image": "assets/images/wheel/wifi.jpeg",
+    "download": "https://raw.githubusercontent.com/aminazzi/azzi_store/main/products/wifi.apk"
+  },
+  {
+    "id": "stadium",
+    "name": "Football Stadium",
+    "image": "assets/images/wheel/stade.jpg",
+    "download": "https://raw.githubusercontent.com/aminazzi/azzi_store/main/products/stadium.rar"
+  }
+]
