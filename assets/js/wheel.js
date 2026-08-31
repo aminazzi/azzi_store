@@ -1,13 +1,18 @@
 /* =========================================
    AZZI STORE - WHEEL
+   GitHub products + Supabase payment only
 ========================================= */
 
 const WHEEL_API =
     "https://swfiagrlqebsnvgshipu.supabase.co/functions/v1/wheel";
 
+const WHEEL_DATA =
+    "assets/data/wheel.json";
+
 let wheelProducts = [];
 let wheelRotation = 0;
 let isSpinning = false;
+let currentOrderID = null;
 
 
 /* =========================================
@@ -23,7 +28,8 @@ async function openWheel() {
 
     document.getElementById(
         "wheel-status"
-    ).textContent = "جاري تحميل المنتجات...";
+    ).textContent =
+        "جاري تحميل المنتجات...";
 
     document.getElementById(
         "wheel-result"
@@ -32,17 +38,23 @@ async function openWheel() {
     try {
 
         const response =
-            await fetch(WHEEL_API + "?action=products");
+            await fetch(WHEEL_DATA, {
+                cache: "no-store"
+            });
 
         if (!response.ok) {
-            throw new Error("Products error");
+            throw new Error(
+                "تعذر تحميل منتجات العجلة"
+            );
         }
 
         wheelProducts =
             await response.json();
 
-        if (wheelProducts.length !== 6) {
-
+        if (
+            !Array.isArray(wheelProducts) ||
+            wheelProducts.length !== 6
+        ) {
             throw new Error(
                 "يجب أن تحتوي العجلة على 6 منتجات"
             );
@@ -54,8 +66,7 @@ async function openWheel() {
             "wheel-status"
         ).textContent =
             "ادفع 5$ ثم ستدور العجلة تلقائياً";
-
-        renderPayPal();
+renderPayPal();
 
     } catch (error) {
 
@@ -69,6 +80,8 @@ async function openWheel() {
     }
 
 }
+
+
 /* =========================================
    إغلاق العجلة
 ========================================= */
@@ -93,11 +106,16 @@ function drawWheel() {
     const canvas =
         document.getElementById("wheel-canvas");
 
+    if (!canvas) return;
+
     const ctx =
         canvas.getContext("2d");
 
-    const center = 250;
-    const radius = 235;
+    const center =
+        canvas.width / 2;
+
+    const radius =
+        center - 15;
 
     ctx.clearRect(
         0,
@@ -125,8 +143,7 @@ function drawWheel() {
                 center,
                 center
             );
-
-            ctx.arc(
+ctx.arc(
                 center,
                 center,
                 radius,
@@ -149,7 +166,6 @@ function drawWheel() {
             ctx.lineWidth = 3;
 
             ctx.stroke();
-/* اسم المنتج */
 
             ctx.save();
 
@@ -159,8 +175,7 @@ function drawWheel() {
             );
 
             ctx.rotate(
-                start +
-                segment / 2
+                start + segment / 2
             );
 
             ctx.textAlign =
@@ -176,11 +191,13 @@ function drawWheel() {
                 product.name || "منتج";
 
             if (name.length > 18) {
+
                 name =
                     name.substring(
                         0,
                         18
                     ) + "...";
+
             }
 
             ctx.fillText(
@@ -193,7 +210,8 @@ function drawWheel() {
 
         }
     );
-/* الدائرة الوسطى */
+
+    /* الدائرة الوسطى */
 
     ctx.beginPath();
 
@@ -203,9 +221,8 @@ function drawWheel() {
         48,
         0,
         Math.PI * 2
-    );
-
-    ctx.fillStyle =
+    );      
+ctx.fillStyle =
         "#111827";
 
     ctx.fill();
@@ -216,7 +233,6 @@ function drawWheel() {
     ctx.lineWidth = 4;
 
     ctx.stroke();
-
 
     ctx.fillStyle =
         "#ffffff";
@@ -242,7 +258,12 @@ function drawWheel() {
 
 function spinWheel(winnerIndex) {
 
-    if (isSpinning) return;
+    if (
+        isSpinning ||
+        !wheelProducts[winnerIndex]
+    ) {
+        return;
+    }
 
     isSpinning = true;
 
@@ -250,16 +271,9 @@ function spinWheel(winnerIndex) {
         document.getElementById(
             "wheel-canvas"
         );
-/*
-       كل قطعة = 60 درجة
-    */
 
     const segment =
         360 / wheelProducts.length;
-
-    /*
-       نضع القطعة الفائزة أمام السهم
-    */
 
     const targetAngle =
         360 -
@@ -290,7 +304,7 @@ function spinWheel(winnerIndex) {
 
 }
 /* =========================================
-   إظهار المنتج
+   إظهار الفائز
 ========================================= */
 
 function showWinner(product) {
@@ -300,6 +314,20 @@ function showWinner(product) {
     ).textContent =
         "🎉 مبروك! لقد ربحت:";
 
+    const safeName =
+        escapeHtml(
+            product.name || "منتج"
+        );
+
+    const safeImage =
+        escapeHtml(
+            product.image || ""
+        );
+
+    const safeId =
+        escapeHtml(
+            product.id || ""
+        );
 
     document.getElementById(
         "wheel-result"
@@ -308,11 +336,11 @@ function showWinner(product) {
         <div class="winner-card">
 
             <img
-                src="${product.image_url}"
-                alt="${product.name}">
+                src="${safeImage}"
+                alt="${safeName}">
 
             <h3>
-                ${product.name}
+                ${safeName}
             </h3>
 
             <p>
@@ -321,7 +349,7 @@ function showWinner(product) {
 
             <button
                 class="download-wheel-btn"
-                onclick="downloadWheelProduct('${product.id}')">
+                onclick="downloadWheelProduct('${safeId}')">
 
                 ⬇️ تحميل المنتج
 
@@ -336,7 +364,9 @@ function showWinner(product) {
    تحميل المنتج
 ========================================= */
 
-async function downloadWheelProduct(productId) {
+async function downloadWheelProduct(
+    productId
+) {
 
     const status =
         document.getElementById(
@@ -346,24 +376,48 @@ async function downloadWheelProduct(productId) {
     status.textContent =
         "جاري تجهيز رابط التحميل...";
 
-
     try {
+
+        if (!currentOrderID) {
+
+            throw new Error(
+                "رقم الطلب غير موجود"
+            );
+
+        }
 
         const response =
             await fetch(
                 WHEEL_API +
-                "?action=download&id=" +
-                encodeURIComponent(productId)
+                "?action=download" +
+                "&orderID=" +
+                encodeURIComponent(
+                    currentOrderID
+                ) +
+                "&productId=" +
+                encodeURIComponent(
+                    productId
+                )
             );
 
         const data =
             await response.json();
 
         if (!response.ok) {
+
             throw new Error(
                 data.error ||
-                "Download error"
+                "تعذر إنشاء رابط التحميل"
             );
+
+        }
+
+        if (!data.url) {
+
+            throw new Error(
+                "رابط التحميل غير موجود"
+            );
+
         }
 
         window.location.href =
@@ -390,8 +444,23 @@ function renderPayPal() {
             "paypal-wheel-button"
         );
 
+    if (!container) return;
+
     container.innerHTML = "";
 
+    if (
+        typeof paypal ===
+        "undefined"
+    ) {
+
+        document.getElementById(
+            "wheel-status"
+        ).textContent =
+            "PayPal غير متاح حالياً.";
+
+        return;
+
+    }
 
     paypal.Buttons({
 
@@ -406,63 +475,15 @@ function renderPayPal() {
         },
 
 
-        /* إنشاء طلب */
+        /* إنشاء الطلب */
 
-        createOrder: async function () {
-
-            const response =
-                await fetch(
-                    WHEEL_API +
-                    "?action=create-order",
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type":
-                                "application/json"
-                        }
-                    }
-                );
-
-
-            const data =
-                await response.json();
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    data.error ||
-                    "Could not create order"
-                );
-
-            }
-return data.id;
-
-        },
-
-
-        /* بعد نجاح الدفع */
-
-        onApprove: async function (data) {
-
-            document.getElementById(
-                "paypal-wheel-button"
-            ).style.display =
-                "none";
-
-
-            document.getElementById(
-                "wheel-status"
-            ).textContent =
-                "تم الدفع بنجاح! 🎉 جاري تدوير العجلة...";
-
-
-            try {
+        createOrder:
+            async function () {
 
                 const response =
                     await fetch(
                         WHEEL_API +
-                        "?action=capture-order",
+                        "?action=create-order",
                         {
                             method: "POST",
 
@@ -473,71 +494,154 @@ return data.id;
 
                             body:
                                 JSON.stringify({
-                                    orderID:
-                                        data.orderID
+                                    amount: "5.00",
+                                    currency:
+                                        "USD"
                                 })
                         }
                     );
-const result =
+const data =
                     await response.json();
-
 
                 if (!response.ok) {
 
                     throw new Error(
-                        result.error
+                        data.error ||
+                        "تعذر إنشاء طلب الدفع"
                     );
 
                 }
 
+                currentOrderID =
+                    data.id;
 
-                /*
-                   الفائز يحدده السيرفر
-                */
+                return data.id;
 
-                spinWheel(
-                    result.winnerIndex
-                );
+            },
 
 
-            } catch (error) {
+        /* بعد موافقة PayPal */
+
+        onApprove:
+            async function (data) {
+
+                document.getElementById(
+                    "paypal-wheel-button"
+                ).style.display =
+                    "none";
+
+                document.getElementById(
+                    "wheel-status"
+                ).textContent =
+                    "جاري تأكيد الدفع...";
+
+                try {
+
+                    const response =
+                        await fetch(
+                            WHEEL_API +
+                            "?action=capture-order",
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+body:
+                                    JSON.stringify({
+                                        orderID:
+                                            data.orderID
+                                    })
+                            }
+                        );
+
+                    const result =
+                        await response.json();
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            result.error ||
+                            "فشل تأكيد الدفع"
+                        );
+
+                    }
+
+                    currentOrderID =
+                        data.orderID;
+
+                    document.getElementById(
+                        "wheel-status"
+                    ).textContent =
+                        "تم الدفع بنجاح! 🎉 جاري تدوير العجلة...";
+
+                    spinWheel(
+                        Number(
+                            result.winnerIndex
+                        )
+                    );
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    document.getElementById(
+                        "wheel-status"
+                    ).textContent =
+                        "حدث خطأ بعد الدفع. تواصل معنا.";
+
+                    document.getElementById(
+                        "paypal-wheel-button"
+                    ).style.display =
+                        "";
+
+                }
+
+            },
+onCancel:
+            function () {
+
+                document.getElementById(
+                    "wheel-status"
+                ).textContent =
+                    "تم إلغاء الدفع.";
+
+            },
+
+
+        onError:
+            function (error) {
 
                 console.error(error);
 
                 document.getElementById(
                     "wheel-status"
                 ).textContent =
-                    "حدث خطأ بعد الدفع. تواصل معنا.";
+                    "حدث خطأ في PayPal.";
 
             }
-
-        },
-
-
-        onCancel: function () {
-
-            document.getElementById(
-                "wheel-status"
-            ).textContent =
-                "تم إلغاء الدفع.";
-
-        },
-
-
-        onError: function (error) {
-
-            console.error(error);
-
-            document.getElementById(
-                "wheel-status"
-            ).textContent =
-                "حدث خطأ في PayPal.";
-
-        }
 
     }).render(
         "#paypal-wheel-button"
     );
 
 }
+
+
+/* =========================================
+   حماية HTML
+========================================= */
+
+function escapeHtml(value) {
+
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
 
