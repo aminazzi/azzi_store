@@ -2738,4 +2738,141 @@ a {
         transform .25s ease,
         opacity .25s ease;
 }
+/* =========================================
+   THEME SYSTEM - AZZI STORE
+========================================= */
 
+/* الوضع الليلي - الوضع الأساسي */
+body {
+    --bg-main: #0f172a;
+    --bg-header: #111827;
+    --bg-card: #1e293b;
+    --bg-sidebar: #111827;
+    --text-main: #ffffff;
+    --text-secondary: #cbd5e1;
+    --border-color: #334155;
+    --hover-color: #1e293b;
+}
+
+/* الوضع النهاري */
+body.light-mode {
+    --bg-main: #f4f7fb;
+    --bg-header: #ffffff;
+    --bg-card: #ffffff;
+    --bg-sidebar: #ffffff;
+    --text-main: #172033;
+    --text-secondary: #475569;
+    --border-color: #dbe2ea;
+    --hover-color: #eef2f7;
+}
+
+/* الخلفية والنص */
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+    transition:
+        background-color .3s ease,
+        color .3s ease;
+}
+
+/* الهيدر */
+.header {
+    background: var(--bg-header);
+    transition: background-color .3s ease;
+}
+
+/* القائمة الجانبية */
+.sidebar {
+    background: var(--bg-sidebar);
+    transition:
+        background-color .3s ease,
+        color .3s ease;
+}
+
+/* روابط القائمة */
+.sidebar a {
+    color: var(--text-main);
+    border-bottom-color: var(--border-color);
+}
+
+.sidebar a:hover {
+    background: var(--hover-color);
+}
+/* =========================================
+   THEME BUTTON
+========================================= */
+
+.theme-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 15px 10px;
+
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+
+    color: var(--text-main);
+
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+
+    cursor: pointer;
+    text-align: right;
+
+    transition:
+        background-color .25s ease,
+        color .25s ease;
+}
+
+.theme-toggle:hover {
+    background: var(--hover-color);
+}
+
+.theme-icon {
+    font-size: 21px;
+    width: 28px;
+    text-align: center;
+}
+
+.theme-text {
+    flex: 1;
+}
+
+/* =========================================
+   CARDS
+========================================= */
+
+body.light-mode .card,
+body.light-mode .product-card,
+body.light-mode .book-card,
+body.light-mode .model-card,
+body.light-mode .mod-card,
+body.light-mode .app-card {
+    background: var(--bg-card);
+    color: var(--text-main);
+}
+/* =========================================
+   INPUTS
+========================================= */
+
+body.light-mode input,
+body.light-mode textarea,
+body.light-mode select {
+    background: #ffffff;
+    color: #172033;
+    border-color: #cbd5e1;
+}
+
+/* =========================================
+   GENERAL ELEMENTS
+========================================= */
+
+body.light-mode .modal,
+body.light-mode .dropdown,
+body.light-mode .search-box {
+    background: #ffffff;
+    color: #172033;
+}
