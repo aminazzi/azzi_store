@@ -1,8 +1,9 @@
 (() => {
     "use strict";
 
+    // GitHub فقط
     const BASE_URL =
-        "https://cdn.jsdelivr.net/gh/shuding/fluentui-emoji-unicode/assets/";
+        "https://raw.githubusercontent.com/shuding/fluentui-emoji-unicode/main/assets/";
 
     const SKIP_TAGS = new Set([
         "SCRIPT",
@@ -17,150 +18,231 @@
         "SVG"
     ]);
 
-    // دعم الإيموجيات المركبة مثل:
-    // ❤️ 🏳️‍🌈 👨‍👩‍👧‍👦 👍🏽
+    /*
+     * تقسيم النص إلى Grapheme Clusters
+     *
+     * هذا مهم جدًا للإيموجيات المركبة:
+     * 👨‍👩‍👧‍👦
+     * 🏳️‍🌈
+     * ❤️
+     * 👍🏽
+     */
     const segmenter =
         typeof Intl !== "undefined" && Intl.Segmenter
-            ? new Intl.Segmenter(undefined, {
+            ? new Intl.Segmenter("en", {
                   granularity: "grapheme"
               })
             : null;
 
-    function isEmoji(cluster) {
-        return /[\p{Extended_Pictographic}\p{Emoji_Presentation}]/u.test(
-            cluster
-        );
-    }
+    function splitGraphemes(text) {
+        if (segmenter) {
+            return [...segmenter.segment(text)].map(x => x.segment);
+        }
 
-    function unicodeName(text) {
-        return [...text]
-            .map(char => char.codePointAt(0).toString(16))
+        return [...text];
+    }
+/*
+     * تحويل الإيموجي الكامل إلى Unicode filename
+     *
+     * مثال:
+     * ❤️
+     * تصبح:
+     * 2764-fe0f
+     */
+    function unicodeName(emoji) {
+        return [...emoji]
+            .map(char =>
+                char.codePointAt(0)
+                    .toString(16)
+                    .padStart(4, "0")
+            )
             .join("-");
     }
 
-    function emojiURL(emoji) {
-        return `${BASE_URL}${unicodeName(emoji)}_3d.png`;
+    /*
+     * بعض المستودعات تستخدم أسماء بدون FE0F
+     * لذلك نجرب أكثر من احتمال.
+     */
+    function getPossibleNames(emoji) {
+        const normal = unicodeName(emoji);
+
+        const withoutVariation = [...emoji]
+            .filter(char => char.codePointAt(0) !== 0xfe0f)
+            .map(char =>
+                char.codePointAt(0)
+                    .toString(16)
+                    .padStart(4, "0")
+            )
+            .join("-");
+
+        return [
+            normal,
+            withoutVariation
+        ].filter((value, index, array) =>
+            value && array.indexOf(value) === index
+        );
     }
 
+    function isEmojiCluster(cluster) {
+/*
+         * Extended_Pictographic يغطي أغلب الإيموجيات
+         * بما فيها الإيموجيات المركبة.
+         */
+        return /[\p{Extended_Pictographic}]/u.test(cluster);
+    }
+
+    /*
+     * إنشاء صورة 3D
+     */
     function createEmojiImage(emoji) {
         const img = document.createElement("img");
-img.src = emojiURL(emoji);
+
+        img.className = "realistic-emoji";
         img.alt = emoji;
         img.title = emoji;
-        img.className = "realistic-emoji";
 
         img.draggable = false;
         img.decoding = "async";
 
-        // إذا لم توجد نسخة 3D لهذا الإيموجي
-        img.onerror = () => {
-            img.replaceWith(document.createTextNode(emoji));
-        };
+        const names = getPossibleNames(emoji);
+
+        let index = 0;
+
+        function tryNext() {
+            if (index >= names.length) {
+                /*
+                 * إذا لم نجد نسخة 3D لهذا الإيموجي،
+                 * نعيد الإيموجي الأصلي بدل كسر الصفحة.
+                 */
+                img.replaceWith(
+                    document.createTextNode(emoji)
+                );
+
+                return;
+            }
+
+            img.src =
+                `${BASE_URL}${names[index]}_3d.png`;
+
+            index++;
+        }
+
+        img.onerror = tryNext;
+
+        tryNext();
 
         return img;
     }
-
+/*
+     * استبدال الإيموجيات داخل Text Node
+     */
     function replaceTextNode(node) {
         const text = node.nodeValue;
 
-        if (!text || !isEmoji(text)) return;
+        if (!text) return;
 
         const parent = node.parentElement;
 
-        if (!parent || SKIP_TAGS.has(parent.tagName)) return;
+        if (!parent) return;
 
-        const parts = segmenter
-            ? [...segmenter.segment(text)].map(x => x.segment)
-            : [...text];
+        if (SKIP_TAGS.has(parent.tagName)) return;
 
-        let hasEmoji = false;
+        const parts = splitGraphemes(text);
 
-        const fragment = document.createDocumentFragment();
+        let containsEmoji = false;
 
         for (const part of parts) {
-            if (isEmoji(part)) {
-                fragment.appendChild(createEmojiImage(part));
-                hasEmoji = true;
-            } else {
-                fragment.appendChild(document.createTextNode(part));
+            if (isEmojiCluster(part)) {
+                containsEmoji = true;
+                break;
             }
         }
 
-        if (hasEmoji) {
-            node.replaceWith(fragment);
+        if (!containsEmoji) return;
+
+        const fragment =
+            document.createDocumentFragment();
+
+        for (const part of parts) {
+            if (isEmojiCluster(part)) {
+                fragment.appendChild(
+                    createEmojiImage(part)
+                );
+            } else {
+                fragment.appendChild(
+                    document.createTextNode(part)
+                );
+            }
         }
+
+        node.replaceWith(fragment);
     }
-function scan(root = document.body) {
+/*
+     * فحص الصفحة كاملة
+     */
+    function scan(root) {
         if (!root) return;
 
-        const walker = document.createTreeWalker(
-            root,
-            NodeFilter.SHOW_TEXT,
-            {
-                acceptNode(node) {
-                    const parent = node.parentElement;
-
-                    if (!parent) {
-                        return NodeFilter.FILTER_REJECT;
-                    }
-
-                    if (SKIP_TAGS.has(parent.tagName)) {
-                        return NodeFilter.FILTER_REJECT;
-                    }
-
-                    if (
-                        parent.classList &&
-                        parent.classList.contains("realistic-emoji")
-                    ) {
-                        return NodeFilter.FILTER_REJECT;
-                    }
-
-                    return isEmoji(node.nodeValue)
-                        ? NodeFilter.FILTER_ACCEPT
-                        : NodeFilter.FILTER_REJECT;
-                }
-            }
-        );
+        const walker =
+            document.createTreeWalker(
+                root,
+                NodeFilter.SHOW_TEXT
+            );
 
         const nodes = [];
 
-        let current;
+        let node;
 
-        while ((current = walker.nextNode())) {
-            nodes.push(current);
+        while ((node = walker.nextNode())) {
+            nodes.push(node);
         }
 
         nodes.forEach(replaceTextNode);
     }
-function addCSS() {
-        if (document.getElementById("realistic-emoji-style")) return;
 
-        const style = document.createElement("style");
+    /*
+     * CSS
+     */
+    function addCSS() {
+        if (
+            document.getElementById(
+                "realistic-emoji-style"
+            )
+        ) {
+            return;
+        }
 
-        style.id = "realistic-emoji-style";
+        const style =
+            document.createElement("style");
+
+        style.id =
+            "realistic-emoji-style";
 
         style.textContent = `
             .realistic-emoji {
                 display: inline-block;
+
                 width: 1.25em;
                 height: 1.25em;
+
                 object-fit: contain;
 
                 vertical-align: -0.2em;
 
-                margin-left: 0.04em;
-                margin-right: 0.04em;
+                margin: 0 0.04em;
 
                 user-select: none;
+
                 -webkit-user-drag: none;
 
                 filter:
-                    drop-shadow(0 2px 1px rgba(0,0,0,.18))
-                    drop-shadow(0 4px 4px rgba(0,0,0,.12));
-
-                transform: translateZ(0);
-
-                transition:
+                    drop-shadow(
+                        0 2px 1px rgba(0,0,0,.18)
+                    )
+                    drop-shadow(
+                        0 4px 5px rgba(0,0,0,.12)
+                    );
+transition:
                     transform .18s ease,
                     filter .18s ease;
             }
@@ -171,37 +253,57 @@ function addCSS() {
                     scale(1.08);
 
                 filter:
-                    drop-shadow(0 4px 2px rgba(0,0,0,.20))
-                    drop-shadow(0 7px 7px rgba(0,0,0,.15));
+                    drop-shadow(
+                        0 4px 2px rgba(0,0,0,.20)
+                    )
+                    drop-shadow(
+                        0 7px 7px rgba(0,0,0,.15)
+                    );
             }
 
             button .realistic-emoji,
             a .realistic-emoji {
                 pointer-events: none;
-}
+            }
         `;
 
         document.head.appendChild(style);
     }
 
+    /*
+     * تشغيل النظام
+     */
     function start() {
         addCSS();
 
         scan(document.body);
 
-        const observer = new MutationObserver(mutations => {
-            for (const mutation of mutations) {
-                for (const node of mutation.addedNodes) {
-                    if (node.nodeType === Node.TEXT_NODE) {
-                        replaceTextNode(node);
-                    }
+        /*
+         * مراقبة أي Emoji يتم إضافته
+         * لاحقًا بواسطة JavaScript.
+         */
+        const observer =
+            new MutationObserver(mutations => {
 
-                    if (node.nodeType === Node.ELEMENT_NODE) {
-                        scan(node);
+                for (const mutation of mutations) {
+
+                    for (const added of mutation.addedNodes) {
+
+                        if (
+                            added.nodeType ===
+                            Node.TEXT_NODE
+                        ) {
+                            replaceTextNode(added);
+                        }
+else if (
+                            added.nodeType ===
+                            Node.ELEMENT_NODE
+                        ) {
+                            scan(added);
+                        }
                     }
                 }
-            }
-        });
+            });
 
         observer.observe(document.body, {
             childList: true,
@@ -209,9 +311,16 @@ function addCSS() {
         });
     }
 
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", start);
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+        document.addEventListener(
+            "DOMContentLoaded",
+            start
+        );
     } else {
         start();
     }
+
 })();
