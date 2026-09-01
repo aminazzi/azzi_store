@@ -2704,5 +2704,38 @@ a {
     }
 
 }
+.menu-btn {
+    width: 32px;
+    height: 32px;
 
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 0;
+
+    background: none;
+    border: none;
+
+    cursor: pointer;
+}
+
+.menu-btn span {
+    display: block;
+
+    width: 22px;
+    height: 3px;
+
+    border-radius: 10px;
+
+    background: white;
+
+    transition:
+        transform .25s ease,
+        opacity .25s ease;
+}
 
