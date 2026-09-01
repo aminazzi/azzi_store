@@ -26,6 +26,8 @@
      * 🏳️‍🌈
      * ❤️
      * 👍🏽
+     * 🎮
+     * ⭐⭐⭐⭐⭐
      */
     const segmenter =
         typeof Intl !== "undefined" && Intl.Segmenter
