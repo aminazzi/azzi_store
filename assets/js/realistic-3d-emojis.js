@@ -2,48 +2,17 @@
     "use strict";
 
     /*
-     * GitHub فقط
-     * Fluent UI Emoji 3D
+     * إذا لم نجد نسخة 3D:
+     * نترك الإيموجي الأصلي ظاهرًا.
      */
-    const GITHUB =
-        "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/";
 
-    /*
-     * الإيموجيات المطلوبة في AZZI STORE
-     *
-     * نحدد اسم المجلد/الملف بدل التخمين.
-     */
     const EMOJI_MAP = {
-
-        // Mods
-        "🎮": "video-game/3D/video-game_3d.png",
-
-        // النجمة
-        "⭐": "star/3D/star_3d.png",
-
-        // القلب
-        "❤️": "red-heart/3D/red-heart_3d.png",
-
-        // رموز أخرى موجودة في الموقع
-        "🔍": "magnifying-glass-tilted-left/3D/magnifying-glass-tilted-left_3d.png",
-        "🌐": "globe-with-meridians/3D/globe-with-meridians_3d.png",
-        "👤": "bust-in-silhouette/3D/bust-in-silhouette_3d.png",
-        "✕": "multiply/3D/multiply_3d.png",
-        "❌": "cross-mark/3D/cross-mark_3d.png",
-        "✅": "check-mark-button/3D/check-mark-button_3d.png",
-        "⚠️": "warning/3D/warning_3d.png",
-        "📦": "package/3D/package_3d.png",
-        "📚": "books/3D/books_3d.png",
-        "💻": "laptop/3D/laptop_3d.png",
-        "🤖": "robot/3D/robot_3d.png",
-        "🎥": "video-camera/3D/video-camera_3d.png",
-        "📞": "telephone-receiver/3D/telephone-receiver_3d.png",
-        "🎁": "wrapped-gift/3D/wrapped-gift_3d.png",
-        "🔐": "locked-with-key/3D/locked-with-key_3d.png",
-        "🚪": "door/3D/door_3d.png",
-        "🏠": "house/3D/house_3d.png"
+        "🎮": "video-game",
+        "⭐": "star",
+        "❤️": "red-heart"
     };
-const SKIP_TAGS = new Set([
+
+    const SKIP = new Set([
         "SCRIPT",
         "STYLE",
         "NOSCRIPT",
@@ -56,10 +25,6 @@ const SKIP_TAGS = new Set([
         "SVG"
     ]);
 
-
-    /*
-     * ضروري للإيموجيات المركبة
-     */
     const segmenter =
         typeof Intl !== "undefined" &&
         Intl.Segmenter
@@ -70,7 +35,6 @@ const SKIP_TAGS = new Set([
 
 
     function splitGraphemes(text) {
-
         if (segmenter) {
             return [...segmenter.segment(text)]
                 .map(x => x.segment);
@@ -80,20 +44,32 @@ const SKIP_TAGS = new Set([
     }
 
 
-    /*
-     * إنشاء صورة من GitHub
-     */
-    function createEmojiImage(emoji) {
+    function isEmoji(text) {
+        return (
+            text in EMOJI_MAP
+        );
+    }
 
-        const path = EMOJI_MAP[emoji];
 
-        if (!path) {
+    function createEmoji(emoji) {
+/*
+         * نستخدم GitHub فقط.
+         *
+         * إذا كان الملف غير موجود،
+         * لا نحذف الإيموجي.
+         */
+
+        const name = EMOJI_MAP[emoji];
+
+        if (!name) {
             return null;
         }
 
-        const img = document.createElement("img");
+        const img =
+            document.createElement("img");
 
-        img.className = "realistic-emoji";
+        img.className =
+            "realistic-emoji";
 
         img.alt = emoji;
 
@@ -103,15 +79,24 @@ const SKIP_TAGS = new Set([
 
         img.decoding = "async";
 
-        img.src = GITHUB + path;
-/*
-         * إذا فشل ملف GitHub،
-         * نعيد الإيموجي الأصلي.
+
+        /*
+         * مسار GitHub
+         */
+        img.src =
+            `https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/${name}/3D/${name}_3d.png`;
+
+
+        /*
+         * إذا لم يوجد الملف:
+         * نرجع الإيموجي الأصلي.
          */
         img.onerror = () => {
 
             img.replaceWith(
-                document.createTextNode(emoji)
+                document.createTextNode(
+                    emoji
+                )
             );
         };
 
@@ -120,39 +105,39 @@ const SKIP_TAGS = new Set([
     }
 
 
-    /*
-     * استبدال Text Nodes
-     */
     function replaceTextNode(node) {
 
-        const text = node.nodeValue;
+        const text =
+            node.nodeValue;
 
         if (!text) return;
 
-        const parent = node.parentElement;
+        const parent =
+            node.parentElement;
 
         if (!parent) return;
 
-        if (SKIP_TAGS.has(parent.tagName)) {
+        if (
+            SKIP.has(parent.tagName)
+        ) {
             return;
         }
-
-
-        const parts = splitGraphemes(text);
+const parts =
+            splitGraphemes(text);
 
         let found = false;
 
 
         for (const part of parts) {
 
-            if (EMOJI_MAP[part]) {
-
+            if (isEmoji(part)) {
                 found = true;
-
                 break;
             }
         }
-if (!found) return;
+
+
+        if (!found) return;
 
 
         const fragment =
@@ -162,17 +147,25 @@ if (!found) return;
         for (const part of parts) {
 
             const image =
-                createEmojiImage(part);
+                createEmoji(part);
 
 
             if (image) {
 
-                fragment.appendChild(image);
+                fragment.appendChild(
+                    image
+                );
 
             } else {
 
+                /*
+                 * مهم جدًا:
+                 * أي شيء لا نعرفه يبقى ظاهرًا.
+                 */
                 fragment.appendChild(
-                    document.createTextNode(part)
+                    document.createTextNode(
+                        part
+                    )
                 );
             }
         }
@@ -182,9 +175,6 @@ if (!found) return;
     }
 
 
-    /*
-     * فحص الصفحة
-     */
     function scan(root) {
 
         if (!root) return;
@@ -195,9 +185,7 @@ if (!found) return;
                 root,
                 NodeFilter.SHOW_TEXT
             );
-
-
-        const nodes = [];
+const nodes = [];
 
         let node;
 
@@ -205,6 +193,7 @@ if (!found) return;
         while (
             (node = walker.nextNode())
         ) {
+
             nodes.push(node);
         }
 
@@ -213,14 +202,13 @@ if (!found) return;
             replaceTextNode
         );
     }
-/*
-     * تصميم الإيموجيات
-     */
-    function addCSS() {
+
+
+    function addStyle() {
 
         if (
             document.getElementById(
-                "azzi-realistic-emoji-css"
+                "azzi-realistic-emoji"
             )
         ) {
             return;
@@ -232,28 +220,25 @@ if (!found) return;
 
 
         style.id =
-            "azzi-realistic-emoji-css";
+            "azzi-realistic-emoji";
 
 
         style.textContent = `
 
             .realistic-emoji {
 
+                display: inline-block;
+
                 width: 1.25em;
                 height: 1.25em;
-
-                display: inline-block;
 
                 object-fit: contain;
 
                 vertical-align: -0.2em;
 
-                margin:
-                    0 .03em;
+                margin: 0 .04em;
 
                 user-select: none;
-
-                pointer-events: none;
 
                 -webkit-user-drag: none;
 
@@ -264,88 +249,62 @@ if (!found) return;
                     );
 
                 transition:
-                    transform .15s ease,
-                    filter .15s ease;
+                    transform .15s ease;
             }
 
 
-            button .realistic-emoji,
-            a .realistic-emoji {
-
-                pointer-events: none;
-            }
-.realistic-emoji:hover {
+            .realistic-emoji:hover {
 
                 transform:
                     scale(1.08)
                     translateY(-1px);
-
-                filter:
-                    drop-shadow(
-                        0 4px 4px
-                        rgba(0,0,0,.20)
-                    );
             }
 
-
-            /*
-             * النجوم
-             */
-            .review-stars .realistic-emoji,
-            .rating .realistic-emoji {
-
-                width: 1.05em;
-                height: 1.05em;
-
-                vertical-align: -0.14em;
-            }
         `;
-
-
-        document.head.appendChild(style);
+document.head.appendChild(style);
     }
 
 
-    /*
-     * التشغيل
-     */
     function start() {
 
-        addCSS();
+        addStyle();
 
         scan(document.body);
 
 
         /*
-         * مراقبة العناصر التي ينشئها JavaScript
+         * الإيموجيات التي يتم إنشاؤها
+         * لاحقًا بواسطة JavaScript.
          */
         const observer =
             new MutationObserver(
                 mutations => {
 
                     for (
-                        const mutation of mutations
+                        const mutation
+                        of mutations
                     ) {
 
                         for (
-                            const added
+                            const node
                             of mutation.addedNodes
                         ) {
 
                             if (
-                                added.nodeType ===
+                                node.nodeType ===
                                 Node.TEXT_NODE
                             ) {
 
                                 replaceTextNode(
-                                    added
+                                    node
                                 );
-} else if (
-                                added.nodeType ===
+
+                            } else if (
+                                node.nodeType ===
                                 Node.ELEMENT_NODE
                             ) {
 
-                                scan(added);
+                                scan(node);
                             }
                         }
                     }
@@ -361,9 +320,7 @@ if (!found) return;
             }
         );
     }
-
-
-    if (
+if (
         document.readyState ===
         "loading"
     ) {
