@@ -1,338 +1,283 @@
-(() => {
+(function () {
     "use strict";
 
-    /*
-     * إذا لم نجد نسخة 3D:
-     * نترك الإيموجي الأصلي ظاهرًا.
-     */
+    // GitHub فقط
+    const GITHUB_BASE =
+        "https://raw.githubusercontent.com/shuding/fluentui-emoji-unicode/main/assets/";
 
-    const EMOJI_MAP = {
-        "🎮": "video-game",
-        "⭐": "star",
-        "❤️": "red-heart"
-    };
-
-    const SKIP = new Set([
+    // العناصر التي لا نريد تعديل محتواها
+    const SKIP_TAGS = new Set([
         "SCRIPT",
         "STYLE",
-        "NOSCRIPT",
         "TEXTAREA",
         "INPUT",
-        "OPTION",
         "SELECT",
+        "OPTION",
         "CODE",
-        "PRE",
-        "SVG"
+        "PRE"
     ]);
 
-    const segmenter =
-        typeof Intl !== "undefined" &&
-        Intl.Segmenter
-            ? new Intl.Segmenter("ar", {
-                granularity: "grapheme"
-            })
-            : null;
+    // Emoji detection
+    const emojiRegex = /\p{Extended_Pictographic}/u;
 
-
-    function splitGraphemes(text) {
-        if (segmenter) {
-            return [...segmenter.segment(text)]
-                .map(x => x.segment);
-        }
-
-        return [...text];
+    function codePoints(text) {
+        return Array.from(text)
+            .map(char => char.codePointAt(0).toString(16).toLowerCase())
+            .join("-");
     }
 
+    function removeVariationSelector(text) {
+        return Array.from(text)
+            .filter(char => char.codePointAt(0) !== 0xfe0f)
+            .map(char => char.codePointAt(0).toString(16).toLowerCase())
+            .join("-");
+    }
 
     function isEmoji(text) {
-        return (
-            text in EMOJI_MAP
-        );
+        return emojiRegex.test(text);
     }
 
+    function loadImage(url) {
+        return new Promise(resolve => {
+            const img = new Image();
 
-    function createEmoji(emoji) {
-/*
-         * نستخدم GitHub فقط.
-         *
-         * إذا كان الملف غير موجود،
-         * لا نحذف الإيموجي.
-         */
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
 
-        const name = EMOJI_MAP[emoji];
+            img.src = url;
+        });
+    }
 
-        if (!name) {
-            return null;
+    async function findEmojiImage(emoji) {
+        const fullCode = codePoints(emoji);
+        const noVariation = removeVariationSelector(emoji);
+
+        const urls = [];
+// الطريقة الأساسية
+        urls.push(
+            `${GITHUB_BASE}${fullCode}_3d.png`
+        );
+
+        // بدون Variation Selector
+        if (noVariation !== fullCode) {
+            urls.push(
+                `${GITHUB_BASE}${noVariation}_3d.png`
+            );
         }
 
-        const img =
-            document.createElement("img");
+        // جرب أيضًا نسخة بدون أجزاء غير أساسية
+        const uniqueUrls = [...new Set(urls)];
 
-        img.className =
-            "realistic-emoji";
+        for (const url of uniqueUrls) {
+            if (await loadImage(url)) {
+                return url;
+            }
+        }
 
+        return null;
+    }
+
+    function createEmojiImage(emoji, url) {
+        const img = document.createElement("img");
+
+        img.className = "realistic-emoji";
+        img.src = url;
         img.alt = emoji;
-
         img.title = emoji;
 
-        img.draggable = false;
-
-        img.decoding = "async";
-
-
-        /*
-         * مسار GitHub
-         */
-        img.src =
-            `https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/${name}/3D/${name}_3d.png`;
-
-
-        /*
-         * إذا لم يوجد الملف:
-         * نرجع الإيموجي الأصلي.
-         */
-        img.onerror = () => {
-
-            img.replaceWith(
-                document.createTextNode(
-                    emoji
-                )
-            );
-        };
-
+        img.style.width = "1.2em";
+        img.style.height = "1.2em";
+        img.style.objectFit = "contain";
+        img.style.display = "inline-block";
+        img.style.verticalAlign = "-0.18em";
+        img.style.margin = "0 2px";
 
         return img;
     }
 
+    async function replaceTextNode(textNode) {
+        const text = textNode.nodeValue;
 
-    function replaceTextNode(node) {
-
-        const text =
-            node.nodeValue;
-
-        if (!text) return;
-
-        const parent =
-            node.parentElement;
-
-        if (!parent) return;
-
-        if (
-            SKIP.has(parent.tagName)
-        ) {
+        if (!text || !isEmoji(text)) {
             return;
         }
-const parts =
-            splitGraphemes(text);
 
-        let found = false;
+        const parent = textNode.parentElement;
 
+        if (!parent || SKIP_TAGS.has(parent.tagName)) {
+            return;
+        }
+if (parent.closest(".realistic-emoji-container")) {
+            return;
+        }
 
-        for (const part of parts) {
+        const fragment = document.createDocumentFragment();
 
-            if (isEmoji(part)) {
-                found = true;
-                break;
+        // تقسيم النص إلى أحرف/Emoji
+        const chars = Array.from(text);
+
+        let buffer = "";
+
+        async function flushBuffer() {
+            if (buffer) {
+                fragment.appendChild(
+                    document.createTextNode(buffer)
+                );
+                buffer = "";
             }
         }
 
+        for (let i = 0; i < chars.length; i++) {
 
-        if (!found) return;
+            let emoji = chars[i];
 
+            // دعم Emoji المركبة مثل ❤️ و 👨‍👩‍👧‍👦
+            if (
+                chars[i + 1] === "\u200d" &&
+                chars[i + 2]
+            ) {
+                emoji =
+                    chars[i] +
+                    chars[i + 1] +
+                    chars[i + 2];
 
-        const fragment =
-            document.createDocumentFragment();
-
-
-        for (const part of parts) {
-
-            const image =
-                createEmoji(part);
-
-
-            if (image) {
-
-                fragment.appendChild(
-                    image
-                );
-
-            } else {
-
-                /*
-                 * مهم جدًا:
-                 * أي شيء لا نعرفه يبقى ظاهرًا.
-                 */
-                fragment.appendChild(
-                    document.createTextNode(
-                        part
-                    )
-                );
+                i += 2;
             }
+
+            // نجرب Emoji الحالي
+            if (isEmoji(emoji)) {
+
+                const url = await findEmojiImage(emoji);
+
+                if (url) {
+                    await flushBuffer();
+
+                    const img = createEmojiImage(
+                        emoji,
+                        url
+                    );
+
+                    fragment.appendChild(img);
+                    continue;
+                }
+            }
+
+            buffer += emoji;
         }
+await flushBuffer();
 
-
-        node.replaceWith(fragment);
+        if (textNode.parentNode) {
+            textNode.parentNode.replaceChild(
+                fragment,
+                textNode
+            );
+        }
     }
 
-
-    function scan(root) {
+    async function scan(root) {
 
         if (!root) return;
-
 
         const walker =
             document.createTreeWalker(
                 root,
-                NodeFilter.SHOW_TEXT
+                NodeFilter.SHOW_TEXT,
+                {
+                    acceptNode(node) {
+
+                        const parent =
+                            node.parentElement;
+
+                        if (!parent) {
+                            return NodeFilter.FILTER_REJECT;
+                        }
+
+                        if (
+                            SKIP_TAGS.has(
+                                parent.tagName
+                            )
+                        ) {
+                            return NodeFilter.FILTER_REJECT;
+                        }
+
+                        if (
+                            parent.classList.contains(
+                                "realistic-emoji"
+                            )
+) {
+                            return NodeFilter.FILTER_REJECT;
+                        }
+
+                        if (!isEmoji(node.nodeValue)) {
+                            return NodeFilter.FILTER_REJECT;
+                        }
+
+                        return NodeFilter.FILTER_ACCEPT;
+                    }
+                }
             );
-const nodes = [];
+
+        const nodes = [];
 
         let node;
-
 
         while (
             (node = walker.nextNode())
         ) {
-
             nodes.push(node);
         }
 
-
-        nodes.forEach(
-            replaceTextNode
-        );
+        for (const textNode of nodes) {
+            await replaceTextNode(textNode);
+        }
     }
 
-
-    function addStyle() {
+    function addCSS() {
 
         if (
             document.getElementById(
-                "azzi-realistic-emoji"
+                "realistic-emoji-style"
             )
         ) {
             return;
         }
 
-
         const style =
             document.createElement("style");
 
-
         style.id =
-            "azzi-realistic-emoji";
-
+            "realistic-emoji-style";
 
         style.textContent = `
-
             .realistic-emoji {
-
-                display: inline-block;
-
-                width: 1.25em;
-                height: 1.25em;
-
+                width: 1.2em !important;
+                height: 1.2em !important;
                 object-fit: contain;
-
-                vertical-align: -0.2em;
-
-                margin: 0 .04em;
-
-                user-select: none;
-
-                -webkit-user-drag: none;
-
-                filter:
-                    drop-shadow(
-                        0 2px 2px
-                        rgba(0,0,0,.18)
-                    );
-
-                transition:
-                    transform .15s ease;
+                display: inline-block;
+                vertical-align: -0.18em;
+                margin: 0 2px;
             }
-
-
-            .realistic-emoji:hover {
-
-                transform:
-                    scale(1.08)
-                    translateY(-1px);
-            }
-
         `;
 document.head.appendChild(style);
     }
 
+    async function start() {
 
-    function start() {
+        addCSS();
 
-        addStyle();
-
-        scan(document.body);
-
-
-        /*
-         * الإيموجيات التي يتم إنشاؤها
-         * لاحقًا بواسطة JavaScript.
-         */
-        const observer =
-            new MutationObserver(
-                mutations => {
-
-                    for (
-                        const mutation
-                        of mutations
-                    ) {
-
-                        for (
-                            const node
-                            of mutation.addedNodes
-                        ) {
-
-                            if (
-                                node.nodeType ===
-                                Node.TEXT_NODE
-                            ) {
-
-                                replaceTextNode(
-                                    node
-                                );
-
-                            } else if (
-                                node.nodeType ===
-                                Node.ELEMENT_NODE
-                            ) {
-
-                                scan(node);
-                            }
-                        }
-                    }
-                }
-            );
-
-
-        observer.observe(
-            document.body,
-            {
-                childList: true,
-                subtree: true
-            }
-        );
+        await scan(document.body);
     }
-if (
-        document.readyState ===
-        "loading"
-    ) {
 
+    if (
+        document.readyState === "loading"
+    ) {
         document.addEventListener(
             "DOMContentLoaded",
             start
         );
-
     } else {
-
         start();
     }
 
 })();
+
