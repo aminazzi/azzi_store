@@ -1,0 +1,101 @@
+/* =========================================
+   AZZI STORE - 3D Emoji Style
+   ========================================= */
+
+.realistic-emoji {
+    width: 1.35em;
+    height: 1.35em;
+
+    display: inline-block;
+    vertical-align: -0.25em;
+
+    object-fit: contain;
+
+    /* إحساس ثلاثي الأبعاد */
+    filter:
+        drop-shadow(0 2px 1px rgba(0, 0, 0, 0.35))
+        drop-shadow(0 4px 3px rgba(0, 0, 0, 0.25));
+
+    transform:
+        perspective(120px)
+        translateZ(0)
+        scale(1);
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* عند مرور المؤشر */
+.realistic-emoji:hover {
+    transform:
+        perspective(120px)
+        translateY(-3px)
+        rotateX(5deg)
+        rotateY(-5deg)
+        scale(1.12);
+
+    filter:
+        drop-shadow(0 4px 2px rgba(0, 0, 0, 0.35))
+        drop-shadow(0 8px 6px rgba(0, 0, 0, 0.3));
+}
+/* الإيموجي داخل الأزرار */
+button .realistic-emoji,
+a .realistic-emoji {
+    width: 1.35em;
+    height: 1.35em;
+}
+
+/* الإيموجي داخل العناوين */
+h1 .realistic-emoji,
+h2 .realistic-emoji,
+h3 .realistic-emoji {
+    width: 1.2em;
+    height: 1.2em;
+}
+
+/* تأثير خفيف للأيقونات الكبيرة */
+.emoji-large .realistic-emoji {
+    width: 2.5em;
+    height: 2.5em;
+
+    filter:
+        drop-shadow(0 4px 2px rgba(0, 0, 0, 0.4))
+        drop-shadow(0 8px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* حركة خفيفة للإيموجيات */
+@keyframes emoji3DFloat {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-3px) scale(1.03);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+.emoji-float .realistic-emoji {
+    animation: emoji3DFloat 2.5s ease-in-out infinite;
+}
+
+/* على الهاتف */
+@media (max-width: 600px) {
+
+    .realistic-emoji {
+        width: 1.3em;
+        height: 1.3em;
+    }
+
+    .emoji-large .realistic-emoji {
+        width: 2.2em;
+        height: 2.2em;
+    }
+}
