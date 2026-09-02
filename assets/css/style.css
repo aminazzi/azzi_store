@@ -3093,3 +3093,96 @@ body.light-mode .bottom-nav-button:hover {
         font-size: 11px;
     }
 }
+/* =========================================
+   زر الخروج 3D - نفس الشكل الأصلي
+========================================= */
+
+.exit-emoji {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    /* نفس الألوان الأصلية */
+    background: linear-gradient(
+        145deg,
+        #b06cff 0%,
+        #8b5cf6 45%,
+        #ec4899 100%
+    );
+
+    /* تأثير 3D */
+    box-shadow:
+        inset 2px 2px 4px rgba(255,255,255,0.45),
+        inset -3px -4px 6px rgba(80,20,120,0.45),
+        0 3px 0 #6d28d9,
+        0 6px 12px rgba(0,0,0,0.35),
+        0 0 12px rgba(139,92,246,0.55);
+
+    border: 2px solid rgba(255,255,255,0.45);
+
+    box-sizing: border-box;
+
+    /* يعطي إحساسًا بالحجم */
+    transform: translateY(-1px);
+}
+
+/* لمعة 3D أعلى الدائرة */
+.exit-emoji::before {
+    content: "";
+
+    position: absolute;
+
+    top: 4px;
+    left: 6px;
+
+    width: 14px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.35);
+
+    transform: rotate(-25deg);
+
+    filter: blur(1px);
+
+    pointer-events: none;
+}
+/* السهم */
+.exit-arrow {
+    color: white;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    line-height: 1;
+
+    transform: translateX(1px);
+
+    text-shadow:
+        0 2px 1px rgba(0,0,0,0.35),
+        0 3px 5px rgba(0,0,0,0.35);
+
+    position: relative;
+
+    z-index: 2;
+}
+
+/* تأثير الضغط */
+.bottom-nav-button:active .exit-emoji {
+    transform: translateY(2px);
+
+    box-shadow:
+        inset 2px 2px 5px rgba(255,255,255,0.35),
+        inset -3px -3px 5px rgba(80,20,120,0.5),
+        0 1px 0 #6d28d9,
+        0 3px 6px rgba(0,0,0,0.3);
+}
