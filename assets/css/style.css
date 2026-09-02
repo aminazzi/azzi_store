@@ -3462,3 +3462,49 @@ body.light-mode .bottom-nav-button {
     outline: none !important;
     box-shadow: none !important;
 }
+/* =========================================
+   تحسين القائمة الجانبية
+   - الصفحة الرئيسية لا تتحرك أثناء التمرير
+   - القائمة الجانبية تتحرك وحدها
+   - السماح بالوصول إلى آخر زر
+========================================= */
+
+html.sidebar-open,
+body.sidebar-open {
+    overflow: hidden !important;
+    overscroll-behavior: none !important;
+}
+
+.sidebar {
+    box-sizing: border-box !important;
+
+    /* السماح للقائمة نفسها بالتمرير */
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+
+    /* منع انتقال التمرير للصفحة الرئيسية */
+    overscroll-behavior: contain !important;
+    -webkit-overflow-scrolling: touch !important;
+
+    /*
+       مساحة إضافية في الأسفل حتى لا تغطي
+       القائمة السفلية آخر زر
+    */
+    padding-bottom: calc(var(--nav-height) + 50px) !important;
+
+    /*
+       السماح بالوصول الكامل لآخر عنصر
+    */
+    scroll-padding-bottom: calc(var(--nav-height) + 50px) !important;
+}
+
+/* عند فتح القائمة */
+.sidebar.active {
+    overscroll-behavior: contain !important;
+}
+
+/* منع تفاعل عناصر القائمة مع تمرير الصفحة */
+.sidebar,
+.sidebar * {
+    touch-action: pan-y;
+}
