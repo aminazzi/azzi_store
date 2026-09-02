@@ -4230,3 +4230,342 @@ body.sidebar-open {
 
     outline: none !important;
 }
+/* =========================================================
+   AZZI STORE - FINAL SIDEBAR FIX
+   هذا الكود خاص بالقائمة الجانبية فقط
+   لا يغير تصميم الموقع الأساسي
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   القائمة الجانبية
+--------------------------------------------------------- */
+
+.sidebar {
+    position: fixed !important;
+
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -320px !important;
+
+    width: 280px !important;
+
+    /*
+       الارتفاع الكامل للشاشة
+    */
+    height: 100vh !important;
+    height: 100dvh !important;
+
+    /*
+       مهم جداً:
+       القائمة نفسها هي التي تتحرك
+    */
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+
+    /*
+       منع انتقال السحب إلى الصفحة الرئيسية
+    */
+    overscroll-behavior: contain !important;
+    -webkit-overflow-scrolling: touch !important;
+
+    /*
+       الحفاظ على شكل القائمة الحالي
+    */
+    box-sizing: border-box !important;
+
+    padding: 20px !important;
+
+    /*
+       مساحة أسفل القائمة حتى لا يغطي
+       الـ bottom navigation آخر زر
+    */
+    padding-bottom: calc(var(--nav-height, 65px) + 35px) !important;
+
+    z-index: 2000 !important;
+
+    transition: left .35s ease !important;
+}
+
+
+/* ---------------------------------------------------------
+   عند فتح القائمة
+--------------------------------------------------------- */
+
+.sidebar.active {
+    left: 0 !important;
+}
+/* ---------------------------------------------------------
+   جميع روابط القائمة
+--------------------------------------------------------- */
+
+.sidebar > a {
+    width: 100% !important;
+
+    min-height: 58px !important;
+
+    box-sizing: border-box !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: flex-start !important;
+
+    gap: 10px !important;
+
+    padding: 15px 10px !important;
+
+    margin: 0 !important;
+
+    /*
+       يمنع اختلاف حجم العناصر
+    */
+    line-height: 1.25 !important;
+
+    font-size: 18px !important;
+
+    text-decoration: none !important;
+
+    flex-shrink: 0 !important;
+}
+
+
+/* ---------------------------------------------------------
+   ترتيب النص العربي
+--------------------------------------------------------- */
+
+.sidebar > a span {
+    flex: 1 !important;
+
+    text-align: right !important;
+}
+
+
+/* ---------------------------------------------------------
+   منع الـ hover من تكبير الخانة
+--------------------------------------------------------- */
+
+.sidebar > a:hover {
+    padding-right: 18px !important;
+}
+/* ---------------------------------------------------------
+   زر الوضع النهاري
+   نفس ارتفاع روابط القائمة
+--------------------------------------------------------- */
+
+.sidebar > .theme-toggle {
+
+    width: 100% !important;
+
+    min-height: 58px !important;
+
+    height: 58px !important;
+
+    box-sizing: border-box !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    flex-shrink: 0 !important;
+
+    gap: 10px !important;
+
+    padding: 15px 10px !important;
+
+    margin: 0 !important;
+
+    /*
+       إزالة أي ارتفاع إضافي
+    */
+    line-height: 1.25 !important;
+
+    font-size: 18px !important;
+
+    text-align: right !important;
+
+    background: transparent !important;
+
+    border: none !important;
+
+    border-bottom:
+        1px solid var(--border-color) !important;
+}
+
+
+/* أيقونة الوضع */
+
+.sidebar > .theme-toggle .theme-icon {
+
+    width: 28px !important;
+
+    min-width: 28px !important;
+
+    height: 28px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    font-size: 21px !important;
+
+    line-height: 1 !important;
+}
+
+
+/* نص الوضع */
+
+.sidebar > .theme-toggle .theme-text {
+
+    flex: 1 !important;
+
+    text-align: right !important;
+
+    line-height: 1.25 !important;
+}
+/* ---------------------------------------------------------
+   زر الإغلاق
+--------------------------------------------------------- */
+
+.sidebar > .close-btn {
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    width: 42px !important;
+
+    height: 42px !important;
+
+    padding: 0 !important;
+
+    margin: 0 0 10px auto !important;
+
+    flex-shrink: 0 !important;
+
+    background: transparent !important;
+
+    border: none !important;
+
+    font-size: 25px !important;
+
+    cursor: pointer !important;
+}
+
+
+/* ---------------------------------------------------------
+   آخر عنصر
+--------------------------------------------------------- */
+
+.sidebar > a:last-child {
+
+    margin-bottom: 15px !important;
+}
+
+
+/* ---------------------------------------------------------
+   منع عناصر القائمة من التمدد الغريب
+--------------------------------------------------------- */
+
+.sidebar > * {
+
+    flex-grow: 0 !important;
+}
+
+
+/* ---------------------------------------------------------
+   شريط التمرير
+   صغير وهادئ حتى لا يخرب الشكل
+--------------------------------------------------------- */
+
+.sidebar::-webkit-scrollbar {
+
+    width: 5px !important;
+}
+.sidebar::-webkit-scrollbar-track {
+
+    background: transparent !important;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(168, 85, 247, .45) !important;
+
+    border-radius: 10px !important;
+}
+
+
+/* ---------------------------------------------------------
+   Firefox
+--------------------------------------------------------- */
+
+.sidebar {
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        rgba(168, 85, 247, .45)
+        transparent;
+}
+
+
+/* ---------------------------------------------------------
+   الهاتف
+--------------------------------------------------------- */
+
+@media (max-width: 480px) {
+
+    .sidebar {
+
+        width: 285px !important;
+
+        left: -305px !important;
+
+        padding:
+            15px 18px
+            calc(var(--nav-height, 65px) + 30px)
+            18px !important;
+    }
+
+
+    .sidebar.active {
+
+        left: 0 !important;
+    }
+
+
+    .sidebar > a {
+
+        min-height: 56px !important;
+
+        padding: 14px 8px !important;
+
+        font-size: 18px !important;
+    }
+
+
+    .sidebar > .theme-toggle {
+
+        height: 56px !important;
+
+        min-height: 56px !important;
+
+        padding: 14px 8px !important;
+
+        font-size: 18px !important;
+    }
+.sidebar > .close-btn {
+
+        width: 40px !important;
+
+        height: 40px !important;
+
+        font-size: 24px !important;
+    }
+}
