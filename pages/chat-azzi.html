@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Chat AZZI</title>
+
+    <link
+        rel="stylesheet"
+        href="../assets/css/style.css">
+
+    <link
+        rel="stylesheet"
+        href="../assets/css/chat-azzi.css">
+
+</head>
+
+<body class="chat-azzi-page">
+
+
+<header class="header">
+
+    <button
+        class="menu-btn"
+        onclick="window.location.href='../index.html'"
+        aria-label="العودة">
+
+        <span></span>
+        <span></span>
+
+    </button>
+
+    <h1 class="logo">CHAT AZZI</h1>
+
+</header>
+<main class="chat-azzi-container">
+
+
+    <section class="chat-azzi-hero">
+
+        <div class="chat-azzi-logo">
+            ✦
+        </div>
+
+        <div>
+
+            <h2>
+                Chat AZZI
+            </h2>
+
+            <p>
+                انشر، ناقش، اسأل، وأجب.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- إنشاء منشور -->
+
+    <section class="create-post-card">
+
+        <textarea
+            id="postInput"
+            maxlength="500"
+            placeholder="ماذا تريد أن تقول؟"
+            dir="rtl"></textarea>
+
+
+        <div class="create-post-footer">
+
+            <span id="postCounter">
+                0 / 500
+            </span>
+
+            <button
+                id="publishPostBtn"
+                type="button">
+
+                نشر 🚀
+
+            </button>
+
+        </div>
+
+    </section>
+<!-- الفلاتر -->
+
+    <div class="chat-tabs">
+
+        <button
+            class="chat-tab active"
+            data-filter="latest">
+
+            🕐 الأحدث
+
+        </button>
+
+        <button
+            class="chat-tab"
+            data-filter="popular">
+
+            🔥 الأكثر تفاعلًا
+
+        </button>
+
+    </div>
+
+
+
+    <!-- المنشورات -->
+
+    <section
+        id="postsContainer"
+        class="posts-container">
+
+    </section>
+
+
+</main>
+
+
+<script src="../assets/js/chat-azzi.js"></script>
+
+</body>
+
+</html>
