@@ -1,28 +1,64 @@
 (function () {
+
     "use strict";
 
     function updateNavigationSize() {
-        const header = document.querySelector(".header");
 
-        if (!header) return;
+        const header =
+            document.querySelector(".header");
 
-        const height = header.getBoundingClientRect().height;
+        const bottomNav =
+            document.querySelector(".bottom-nav");
 
-        document.documentElement.style.setProperty(
-            "--nav-height",
-            height + "px"
-        );
+        /* ارتفاع الهيدر */
+        if (header) {
+
+            const headerHeight =
+                header.getBoundingClientRect().height;
+
+            document.documentElement.style.setProperty(
+                "--header-height",
+                headerHeight + "px"
+            );
+        }
+
+        /* ارتفاع القائمة السفلية */
+        if (bottomNav) {
+
+            const navHeight =
+                bottomNav.getBoundingClientRect().height;
+
+            document.documentElement.style.setProperty(
+                "--nav-height",
+                navHeight + "px"
+            );
+        }
     }
+
 
     function exitSite() {
-
-        window.close();
+/*
+         * محاولة إغلاق النافذة
+         * إذا كان المتصفح يمنع ذلك
+         * ننتقل إلى صفحة فارغة
+         */
+        try {
+            window.close();
+        } catch (error) {
+            console.log(error);
+        }
 
         setTimeout(function () {
-            window.location.href = "about:blank";
-        }, 150);
 
+            try {
+                window.location.href = "about:blank";
+            } catch (error) {
+                console.log(error);
+            }
+
+        }, 150);
     }
+
 
     function init() {
 
@@ -42,11 +78,11 @@
             "load",
             updateNavigationSize
         );
-
-        const exitButton =
+const exitButton =
             document.getElementById("exitSiteButton");
 
         if (exitButton) {
+
             exitButton.addEventListener(
                 "click",
                 exitSite
@@ -54,7 +90,10 @@
         }
     }
 
-    if (document.readyState === "loading") {
+
+    if (
+        document.readyState === "loading"
+    ) {
 
         document.addEventListener(
             "DOMContentLoaded",
@@ -64,7 +103,6 @@
     } else {
 
         init();
-
     }
 
 })();
