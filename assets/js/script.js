@@ -1,6 +1,23 @@
 // فتح وإغلاق القائمة الجانبية
 function toggleMenu() {
-    document.getElementById("sidebar").classList.toggle("active");
+
+    const sidebar = document.getElementById("sidebar");
+
+    if (!sidebar) return;
+
+    sidebar.classList.toggle("active");
+
+    const isOpen = sidebar.classList.contains("active");
+
+    document.documentElement.classList.toggle(
+        "sidebar-open",
+        isOpen
+    );
+
+    document.body.classList.toggle(
+        "sidebar-open",
+        isOpen
+    );
 }
 
 function toggleSearch() {
