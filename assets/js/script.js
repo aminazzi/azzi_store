@@ -1,22 +1,25 @@
-// فتح وإغلاق القائمة الجانبية
 function toggleMenu() {
 
     const sidebar = document.getElementById("sidebar");
 
     if (!sidebar) return;
 
-    sidebar.classList.toggle("active");
+    const opened = sidebar.classList.toggle("active");
 
-    const isOpen = sidebar.classList.contains("active");
-
+    /*
+     * عند فتح القائمة:
+     * نوقف تمرير الصفحة الرئيسية
+     *
+     * القائمة نفسها تبقى قابلة للتمرير
+     */
     document.documentElement.classList.toggle(
         "sidebar-open",
-        isOpen
+        opened
     );
 
     document.body.classList.toggle(
         "sidebar-open",
-        isOpen
+        opened
     );
 }
 
