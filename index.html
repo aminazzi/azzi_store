@@ -96,36 +96,62 @@
 </div>
 
 </header>
-<!-- =========================================
-     AZZI STORE - BOTTOM NAVIGATION
-========================================= -->
-
 <nav class="bottom-nav" id="bottomNav">
 
-    <!-- الزر الأول - فارغ حالياً -->
-    <button class="bottom-nav-button" type="button"></button>
+    <button
+        class="bottom-nav-button"
+        type="button"
+        aria-label="الرئيسية"
+        onclick="window.location.href='index.html'">
 
-    <!-- الزر الثاني - فارغ حالياً -->
-    <button class="bottom-nav-button" type="button"></button>
+        <span class="bottom-nav-icon">⌂</span>
+    </button>
 
 
-<button
-    class="bottom-nav-button exit-button"
-    id="exitSiteButton"
-    type="button"
-    aria-label="الخروج من الموقع">
+    <button
+        class="bottom-nav-button chat-azzi-nav-button"
+        type="button"
+        aria-label="Chat AZZI"
+        onclick="window.location.href='pages/chat-azzi.html'">
 
-    <span class="exit-orb">
-        <span class="exit-symbol">⟶</span>
-    </span>
+        <span class="chat-azzi-nav-orb">
+            <span>✦</span>
+        </span>
 
-</button>
+    </button>
 
-    <!-- الزر الرابع - فارغ حالياً -->
-    <button class="bottom-nav-button" type="button"></button>
 
-    <!-- الزر الخامس - فارغ حالياً -->
-    <button class="bottom-nav-button" type="button"></button>
+    <button
+        class="bottom-nav-button exit-button"
+        id="exitSiteButton"
+        type="button"
+        aria-label="الخروج">
+
+        <span class="exit-orb">
+            <span class="exit-symbol">⟶</span>
+        </span>
+
+    </button>
+
+
+    <button
+        class="bottom-nav-button"
+        type="button"
+        aria-label="المفضلة"
+        onclick="document.getElementById('favorites-btn')?.click()">
+
+        <span class="bottom-nav-icon">♡</span>
+    </button>
+
+
+    <button
+        class="bottom-nav-button"
+        type="button"
+        aria-label="البحث"
+        onclick="toggleSearch()">
+
+        <span class="bottom-nav-icon">⌕</span>
+    </button>
 
 </nav>
 <!-- SIDEBAR -->
