@@ -3508,3 +3508,23 @@ body.sidebar-open {
 .sidebar * {
     touch-action: pan-y;
 }
+/* =========================================
+   الوصول الكامل إلى آخر عناصر القائمة
+========================================= */
+
+.sidebar {
+    padding-top: 20px !important;
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+
+    /* مساحة كافية أسفل القائمة */
+    padding-bottom: calc(var(--nav-height) + 80px) !important;
+
+    box-sizing: border-box !important;
+}
+
+/* آخر زر / رابط */
+.sidebar > a:last-of-type,
+.sidebar > button:last-of-type {
+    margin-bottom: 30px !important;
+}
