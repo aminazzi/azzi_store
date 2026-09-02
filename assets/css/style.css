@@ -4150,4 +4150,83 @@ body.sidebar-open {
     }
 
 }
+/* =========================================
+   إصلاح حجم زر الوضع النهاري
+   ليكون مطابقاً لبقية عناصر القائمة
+========================================= */
 
+.sidebar .theme-toggle {
+    width: 100% !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    box-sizing: border-box !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    padding: 15px 10px !important;
+
+    margin: 0 !important;
+
+    gap: 12px !important;
+
+    border: none !important;
+    border-bottom: 1px solid var(--border-color) !important;
+
+    background: transparent !important;
+
+    color: var(--text-main) !important;
+
+    font-size: 18px !important;
+    font-family: Arial, sans-serif !important;
+
+    line-height: normal !important;
+
+    cursor: pointer !important;
+}
+
+
+/* الأيقونة */
+
+.sidebar .theme-icon {
+    width: 28px !important;
+    min-width: 28px !important;
+
+    height: 22px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    font-size: 21px !important;
+
+    line-height: 1 !important;
+}
+
+
+/* النص */
+
+.sidebar .theme-text {
+    flex: 1 !important;
+
+    display: block !important;
+
+    line-height: 1.2 !important;
+
+    text-align: right !important;
+}
+
+
+/* عند الضغط أو التحويم */
+
+.sidebar .theme-toggle:hover,
+.sidebar .theme-toggle:focus,
+.sidebar .theme-toggle:active {
+
+    border-bottom:
+        1px solid var(--border-color) !important;
+
+    outline: none !important;
+}
