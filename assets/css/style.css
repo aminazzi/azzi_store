@@ -3666,3 +3666,488 @@ body.sidebar-open {
         font-size: 24px !important;
     }
 }
+/* =========================================================
+   AZZI STORE
+   FINAL SIDEBAR + BOTTOM NAV FIX
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   المتغيرات
+--------------------------------------------------------- */
+
+:root {
+    --header-height: 65px;
+    --nav-height: 65px;
+}
+
+
+/* ---------------------------------------------------------
+   الصفحة
+--------------------------------------------------------- */
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+
+/*
+   مهم:
+   الهيدر له مساحته الخاصة
+   والقائمة السفلية لها مساحتها الخاصة
+*/
+
+body {
+
+    padding-top: var(--header-height) !important;
+
+    padding-bottom:
+        calc(var(--nav-height) + env(safe-area-inset-bottom))
+        !important;
+
+    box-sizing: border-box !important;
+}
+/* ---------------------------------------------------------
+   عندما تكون القائمة الجانبية مفتوحة
+--------------------------------------------------------- */
+
+html.sidebar-open,
+body.sidebar-open {
+
+    overflow: hidden !important;
+
+    overscroll-behavior: none !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   القائمة الجانبية
+--------------------------------------------------------- */
+
+.sidebar {
+
+    position: fixed !important;
+
+    top: 0 !important;
+
+    left: -300px !important;
+
+    width: 280px !important;
+
+    height: 100dvh !important;
+
+    max-height: 100dvh !important;
+
+    box-sizing: border-box !important;
+
+    z-index: 10000 !important;
+/*
+       القائمة نفسها هي التي تتحرك
+       وليس الصفحة الرئيسية
+    */
+    overflow-x: hidden !important;
+
+    overflow-y: auto !important;
+
+    overscroll-behavior:
+        contain !important;
+
+    -webkit-overflow-scrolling:
+        touch !important;
+
+    /*
+       نحافظ على شكل القائمة الموجود
+    */
+    padding:
+        20px
+        20px
+        calc(var(--nav-height) + 45px)
+        20px !important;
+
+    /*
+       لا نغير الخلفية أو الألوان
+       الموجودة في تصميمك
+    */
+
+    transition:
+        left .30s ease !important;
+}
+
+
+/* القائمة مفتوحة */
+
+.sidebar.active {
+
+    left: 0 !important;
+
+}
+/* ---------------------------------------------------------
+   عناصر القائمة
+--------------------------------------------------------- */
+
+.sidebar a,
+.sidebar .theme-toggle {
+
+    flex-shrink: 0 !important;
+
+}
+
+
+/*
+   آخر عنصر لا يختفي خلف القائمة السفلية
+*/
+
+.sidebar a:last-child {
+
+    margin-bottom: 20px !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   زر إغلاق القائمة
+--------------------------------------------------------- */
+
+.sidebar .close-btn {
+
+    display: block !important;
+
+    flex-shrink: 0 !important;
+
+    cursor: pointer !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   منع تمرير الصفحة أثناء لمس القائمة
+--------------------------------------------------------- */
+
+.sidebar {
+
+    touch-action: pan-y !important;
+
+}
+/* ---------------------------------------------------------
+   القائمة السفلية
+--------------------------------------------------------- */
+
+.bottom-nav {
+
+    position: fixed !important;
+
+    left: 0 !important;
+
+    right: 0 !important;
+
+    bottom: 0 !important;
+
+    width: 100% !important;
+
+    /*
+       نستخدم ارتفاعها الحقيقي
+    */
+    height: var(--nav-height) !important;
+
+    min-height: 58px !important;
+
+    box-sizing: border-box !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: space-around !important;
+
+    padding:
+        4px 8px
+        env(safe-area-inset-bottom)
+        8px !important;
+
+    z-index: 9998 !important;
+
+}
+/* ---------------------------------------------------------
+   أزرار القائمة السفلية
+--------------------------------------------------------- */
+
+.bottom-nav-button {
+
+    flex: 1 1 0 !important;
+
+    height: 100% !important;
+
+    min-width: 0 !important;
+
+    padding: 4px !important;
+
+    margin: 0 !important;
+
+    border: none !important;
+
+    background: transparent !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    cursor: pointer !important;
+
+}
+
+
+/*
+   لا نغير شكل الأزرار الأخرى
+   عند التحويم
+*/
+
+.bottom-nav-button:hover {
+
+    background: transparent !important;
+
+}
+/* ---------------------------------------------------------
+   زر الخروج الجديد
+   كرة 3D + سهم
+--------------------------------------------------------- */
+
+.exit-button {
+
+    position: relative !important;
+
+    background: transparent !important;
+
+    border: none !important;
+
+    outline: none !important;
+
+    box-shadow: none !important;
+
+}
+
+
+/* الكرة */
+
+.exit-orb {
+
+    width: 42px !important;
+
+    height: 42px !important;
+
+    border-radius: 50% !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    position: relative !important;
+
+    box-sizing: border-box !important;
+/*
+       جسم الكرة
+    */
+
+    background:
+        radial-gradient(
+            circle at 32% 25%,
+            #ffffff 0%,
+            #dbeafe 8%,
+            #60a5fa 30%,
+            #2563eb 63%,
+            #172554 100%
+        ) !important;
+
+
+    /*
+       عمق 3D
+    */
+
+    border:
+        1px solid
+        rgba(255,255,255,.65) !important;
+
+
+    box-shadow:
+
+        inset
+        4px 4px 7px
+        rgba(255,255,255,.65),
+
+        inset
+        -5px -6px 9px
+        rgba(15,23,42,.65),
+
+        0 4px 0
+        #172554,
+
+        0 7px 14px
+        rgba(0,0,0,.35) !important;
+
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease !important;
+}
+/*
+   لمعة صغيرة على الكرة
+*/
+
+.exit-orb::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 7px;
+
+    left: 10px;
+
+    width: 14px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.65);
+
+    transform:
+        rotate(-25deg);
+
+    filter:
+        blur(.5px);
+
+    pointer-events:
+        none;
+
+}
+
+
+/*
+   السهم
+*/
+
+.exit-symbol {
+
+    position: relative !important;
+
+    z-index: 2 !important;
+
+    color: #ffffff !important;
+
+    font-size: 26px !important;
+
+    font-weight: 900 !important;
+
+    line-height: 1 !important;
+
+    transform:
+        translateX(1px)
+        translateY(1px) !important;
+
+    text-shadow:
+
+        0 1px 0
+        rgba(255,255,255,.6),
+
+        0 2px 3px
+        rgba(0,0,0,.65) !important;
+
+}
+/*
+   ضغط الزر
+*/
+
+.exit-button:active {
+
+    background:
+        transparent !important;
+
+    box-shadow:
+        none !important;
+
+}
+
+
+.exit-button:active
+.exit-orb {
+
+    transform:
+        translateY(3px)
+        scale(.94) !important;
+
+    box-shadow:
+
+        inset
+        3px 3px 7px
+        rgba(255,255,255,.5),
+
+        inset
+        -4px -5px 8px
+        rgba(15,23,42,.7),
+
+        0 1px 0
+        #172554,
+
+        0 3px 7px
+        rgba(0,0,0,.3) !important;
+
+}
+
+
+/*
+   إخفاء أي نص قديم داخل زر الخروج
+*/
+
+.exit-button
+.bottom-nav-text {
+
+    display: none !important;
+
+}
+/* ---------------------------------------------------------
+   الهاتف
+--------------------------------------------------------- */
+
+@media (max-width: 480px) {
+
+    .sidebar {
+
+        width: 285px !important;
+
+        left: -305px !important;
+
+    }
+
+
+    .sidebar.active {
+
+        left: 0 !important;
+
+    }
+
+
+    .exit-orb {
+
+        width: 38px !important;
+
+        height: 38px !important;
+
+    }
+
+
+    .exit-symbol {
+
+        font-size: 24px !important;
+
+    }
+
+}
+
