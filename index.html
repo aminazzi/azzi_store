@@ -108,55 +108,17 @@
     <!-- الزر الثاني - فارغ حالياً -->
     <button class="bottom-nav-button" type="button"></button>
 
-    /* =========================================
-   زر الخروج الجديد
-   سهم فقط داخل دائرة 3D
-========================================= */
+    <button
+    class="bottom-nav-button exit-button"
+    id="exitSiteButton"
+    type="button"
+    aria-label="الخروج من الموقع">
 
-.exit-button {
-    background: transparent !important;
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
+    <span class="exit-emoji">
+        <span class="exit-arrow">↪</span>
+    </span>
 
-    padding: 0 !important;
-}
-
-/* الدائرة */
-.exit-button .exit-emoji {
-    width: 40px !important;
-    height: 40px !important;
-
-    border-radius: 50% !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    background:
-        radial-gradient(
-            circle at 30% 25%,
-            #d8a8ff 0%,
-            #a855f7 28%,
-            #7c3aed 58%,
-            #4c1d95 100%
-        ) !important;
-
-    border: 1px solid rgba(255,255,255,.45) !important;
-
-    box-shadow:
-        inset 3px 3px 5px rgba(255,255,255,.45),
-        inset -4px -5px 7px rgba(40,10,80,.65),
-        0 3px 0 #3b0764,
-        0 6px 14px rgba(0,0,0,.35),
-        0 0 14px rgba(168,85,247,.45) !important;
-
-    position: relative !important;
-
-    transition:
-        transform .15s ease,
-        box-shadow .15s ease !important;
-}
+</button>
 
     <!-- الزر الرابع - فارغ حالياً -->
     <button class="bottom-nav-button" type="button"></button>
