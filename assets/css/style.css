@@ -2953,3 +2953,143 @@ body {
     padding-bottom: var(--nav-height);
     box-sizing: border-box;
 }
+/* =========================================
+   أزرار القائمة السفلية
+========================================= */
+
+.bottom-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 8px;
+}
+
+/* كل زر يأخذ نفس المساحة */
+.bottom-nav-button {
+    flex: 1;
+    height: 100%;
+    min-width: 0;
+
+    padding: 6px 2px;
+    margin: 0;
+
+    background: transparent;
+    border: none;
+
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 4px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
+}
+
+/* عند الضغط */
+.bottom-nav-button:active {
+    transform: scale(0.90);
+}
+
+/* عند تمرير المؤشر */
+.bottom-nav-button:hover {
+    background: rgba(255,255,255,0.07);
+}
+
+/* زر الخروج */
+.exit-emoji {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    background: linear-gradient(
+        145deg,
+        #8b5cf6,
+        #ec4899
+    );
+    box-shadow:
+        0 0 8px rgba(139,92,246,0.65),
+        0 0 15px rgba(236,72,153,0.35);
+
+    border: 2px solid rgba(255,255,255,0.35);
+
+    box-sizing: border-box;
+}
+
+/* السهم داخل زر الخروج */
+.exit-arrow {
+    color: white;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    line-height: 1;
+
+    transform: translateX(1px);
+
+    text-shadow:
+        0 2px 4px rgba(0,0,0,0.35);
+}
+
+/* اسم الزر */
+.bottom-nav-text {
+    font-size: 12px;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    text-align: center;
+}
+
+/* الوضع النهاري */
+body.light-mode .bottom-nav-button {
+    color: #172033;
+}
+
+body.light-mode .bottom-nav-button:hover {
+    background: rgba(0,0,0,0.06);
+}
+
+/* الهاتف */
+@media (max-width: 480px) {
+
+    .bottom-nav {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .bottom-nav-button {
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+
+    .exit-emoji {
+        width: 32px;
+        height: 32px;
+    }
+
+    .exit-arrow {
+        font-size: 22px;
+    }
+
+    .bottom-nav-text {
+        font-size: 11px;
+    }
+}
