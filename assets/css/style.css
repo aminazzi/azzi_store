@@ -4568,11 +4568,4 @@ body.sidebar-open {
 
         font-size: 24px !important;
     }
-
-.chat-azzi-nav-button,
-.exit-button,
-#bottomNav .bottom-nav-button:nth-of-type(4),
-#bottomNav .bottom-nav-button:nth-of-type(5) {
-    display: none !important;
-  }
 }
