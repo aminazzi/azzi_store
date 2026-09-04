@@ -14,7 +14,6 @@
 <body>
 
     <header class="chat-header">
-
         <button
             class="chat-back"
             type="button"
@@ -26,25 +25,18 @@
             <strong>Chat AZZI</strong>
             <small>مجتمع AZZI</small>
         </div>
-
     </header>
 
     <main class="chat-container">
 
         <section class="chat-hero">
+            <div class="chat-logo">💬</div>
 
-            <div class="chat-logo">
-                💬
-            </div>
-
-            <h1>
-                Chat AZZI
-            </h1>
+            <h1>Chat AZZI</h1>
 
             <p>
                 شارك أفكارك وتفاعل مع مجتمع AZZI
             </p>
-
         </section>
 <section class="create-card">
 
@@ -56,9 +48,7 @@
 
             <div class="create-bottom">
 
-                <span id="counter">
-                    0 / 500
-                </span>
+                <span id="counter">0 / 500</span>
 
                 <button
                     id="publishBtn"
@@ -88,47 +78,17 @@
         </div>
 
         <section id="postsContainer">
-
             <div class="loading">
                 جاري تحميل المنشورات...
             </div>
-
         </section>
 </main>
 
-    <!-- ================================================= -->
     <!-- Supabase -->
-    <!-- يجب أن يكون قبل auth.js و chat-azzi.js -->
-    <!-- ================================================= -->
-
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- ================================================= -->
-    <!-- نظام تسجيل الدخول -->
-    <!-- ================================================= -->
-
-    <script src="../assets/js/auth.js"></script>
-
-    <!-- ================================================= -->
     <!-- Chat AZZI -->
-    <!-- ================================================= -->
-
     <script src="../assets/js/chat-azzi.js"></script>
-<!-- ================================================= -->
-    <!-- إظهار أخطاء JavaScript في Console -->
-    <!-- ================================================= -->
-
-    <script>
-        window.addEventListener("error", function (event) {
-            console.error(
-                "AZZI ERROR:",
-                event.message,
-                event.filename,
-                event.lineno
-            );
-        });
-    </script>
 
 </body>
-
 </html>
