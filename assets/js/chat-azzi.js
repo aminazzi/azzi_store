@@ -185,113 +185,101 @@ async function ensureChatProfile(user) {
 // تحميل المنشورات
 // ============================================
 
-async function loadPosts() {
-
-    const postsContainer =
-        document.getElementById("postsContainer");
-
-    if (!postsContainer) {
-        return;
-    }
-
-    postsContainer.innerHTML =
-        `<div class="loading">
-            جاري تحميل المنشورات...
-        </div>`;
+async function loadPosts(sort = "latest") {
+    const postsContainer = document.getElementById("postsContainer");
 
     try {
+        postsContainer.innerHTML =
+            '<div class="loading">جاري تحميل المنشورات...</div>';
 
-        let query =
-            chatSupabase
-                .from("chat_azzi_posts")
-                .select(`
-                    id,
-                    user_id,
-                    content,
-                    likes_count,
-                    created_at,
-                    chat_azzi_profiles (
-                        username,
-                        display_name
-                    )
-                `);
+        let query = chatSupabase
+            .from("chat_azzi_posts")
+            .select("id, user_id, content, likes_count, created_at");
 
-        if (currentSort === "popular") {
-
-            query =
-                query.order(
-                    "likes_count",
-                    {
-                        ascending: false
-                    }
-                );
-
+        if (sort === "popular") {
+            query = query
+                .order("likes_count", { ascending: false })
+                .order("created_at", { ascending: false });
         } else {
-
-            query =
-                query.order(
-                    "created_at",
-                    {
-                        ascending: false
-                    }
-                );
+            query = query.order("created_at", { ascending: false });
         }
 
-        const {
-            data: posts,
-            error
-        } = await query;
+        const { data: posts, error: postsError } = await query;
 
-        if (error) {
-            throw error;
+        if (postsError) {
+            console.error("POSTS ERROR:", postsError);
+            throw postsError;
         }
-// معرفة منشورات أعجب بها المستخدم
-        const session =
-            await getSession();
 
-        let likedIds =
-            new Set();
+        if (!posts || posts.length === 0) {
+            postsContainer.innerHTML =
+                '<div class="empty">لا توجد منشورات بعد.</div>';
+            return;
+        }
+const userIds = [
+            ...new Set(posts.map(post => post.user_id).filter(Boolean))
+        ];
 
-        if (session) {
+        let profiles = [];
 
-            const {
-                data: myLikes,
-                error: likesError
-            } = await chatSupabase
-                .from("chat_azzi_likes")
-                .select("post_id")
-                .eq(
-                    "user_id",
-                    session.user.id
-                );
+        if (userIds.length > 0) {
+            const { data: profileData, error: profileError } =
+                await chatSupabase
+                    .from("chat_azzi_profiles")
+                    .select("id, username, display_name")
+                    .in("id", userIds);
 
-            if (!likesError && myLikes) {
+            if (profileError) {
+                console.error("PROFILES ERROR:", profileError);
+                throw profileError;
+            }
 
-                likedIds =
-                    new Set(
-                        myLikes.map(
-                            like => like.post_id
-                        )
-                    );
+            profiles = profileData || [];
+        }
+
+        const profileMap = {};
+
+        profiles.forEach(profile => {
+            profileMap[profile.id] = profile;
+        });
+
+        const sessionResult = await chatSupabase.auth.getSession();
+        const currentUser = sessionResult.data?.session?.user || null;
+
+        let likedPostIds = [];
+        if (currentUser) {
+            const { data: likes, error: likesError } =
+                await chatSupabase
+                    .from("chat_azzi_likes")
+                    .select("post_id")
+                    .eq("user_id", currentUser.id);
+
+            if (likesError) {
+                console.error("LIKES ERROR:", likesError);
+            } else {
+                likedPostIds = (likes || []).map(like => like.post_id);
             }
         }
 
-        renderPosts(
-            posts || [],
-            likedIds
-        );
+        postsContainer.innerHTML = posts.map(post => {
+            return createPostHTML({
+                ...post,
+                chat_azzi_profiles: profileMap[post.user_id] || {
+                    username: "مستخدم",
+                    display_name: "مستخدم"
+                },
+                isLiked: likedPostIds.includes(post.id)
+            });
+        }).join("");
 
     } catch (error) {
+        console.error("LOAD POSTS ERROR:", error);
 
-        console.error(
-            "Load posts error:",
-            error
-        );
-
-        postsContainer.innerHTML =
-            `<div class="empty">
+        postsContainer.innerHTML = `
+            <div class="empty">
                 تعذر تحميل المنشورات
-            </div>`;
+            </div>
+        `;
     }
 }
 // ============================================
