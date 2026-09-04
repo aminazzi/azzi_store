@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chat AZZI</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/chat-azzi.css">
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
+        body {
+            direction: rtl;
+        }
+
+        .chat-header {
+            direction: rtl;
+        }
+
+        .chat-header > div {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .chat-back {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+#postContent,
+        .comment-box textarea {
+            font-family: inherit;
+            direction: rtl;
+        }
+
+        #postsContainer {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="chat-header">
+        <button
+            class="chat-back"
+            type="button"
+            onclick="window.location.href='../index.html'"
+            aria-label="العودة">
+            ‹
+        </button>
+
+        <div>
+            <strong>Chat AZZI</strong>
+            <small>مجتمع AZZI</small>
+        </div>
+    </header>
+
+    <main class="chat-container">
+
+        <section class="chat-hero">
+            <div class="chat-logo">💬</div>
+
+            <h1>Chat AZZI</h1>
+
+            <p>
+                شارك أفكارك وتفاعل مع مجتمع AZZI
+            </p>
+        </section>
+<section class="create-card">
+
+            <textarea
+                id="postContent"
+                maxlength="500"
+                placeholder="ماذا تريد أن تشارك؟"
+                aria-label="محتوى المنشور"></textarea>
+
+            <div class="create-bottom">
+
+                <span id="counter">
+                    0 / 500
+                </span>
+
+                <button
+                    id="publishBtn"
+                    type="button">
+                    نشر
+                </button>
+
+            </div>
+        </section>
+
+        <div class="chat-tabs">
+
+            <button
+                type="button"
+                class="active"
+                data-sort="latest">
+                الأحدث
+            </button>
+
+            <button
+                type="button"
+                data-sort="popular">
+                الأكثر إعجابًا
+            </button>
+
+        </div>
+
+        <section id="postsContainer">
+            <div class="loading">
+                جاري تحميل المنشورات...
+            </div>
+        </section>
+
+    </main>
+<!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- ملف المصادقة الذي ينشئ supabaseClient -->
+    <script src="../assets/js/auth.js"></script>
+
+    <!-- Chat AZZI -->
+    <script src="../assets/js/chat-azzi.js"></script>
+
+</body>
+</html>
