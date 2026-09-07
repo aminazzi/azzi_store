@@ -4569,4 +4569,440 @@ body.sidebar-open {
         font-size: 24px !important;
     }
 }
-            
+
+
+
+/* =========================================================
+   AZZI UNIVERSE — ELECTRONIC LAB BOARDS
+   ضع هذا الكود في نهاية:
+   assets/css/style.css
+========================================================= */
+
+/* ---------- قسم الأقسام ---------- */
+
+#products {
+    position: relative;
+    padding: 90px 20px 110px;
+    overflow: hidden;
+}
+
+/* خلفية إلكترونية خفيفة */
+#products::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .35;
+
+    background:
+        linear-gradient(
+            rgba(56,189,248,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(168,85,247,.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 34px 34px;
+}
+
+/* توهج مركزي */
+#products::after {
+    content: "";
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(168,85,247,.10),
+            rgba(56,189,248,.04) 40%,
+            transparent 72%
+        );
+
+    filter: blur(10px);
+}
+/* ---------- عنوان القسم ---------- */
+
+#products > h2 {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    margin-bottom: 50px !important;
+
+    font-size: clamp(28px, 5vw, 42px);
+
+    color: #fff;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,.45),
+        0 0 18px var(--azzi-cyan),
+        0 0 35px var(--azzi-purple);
+}
+
+#products > h2::before {
+    content: "◉";
+    color: var(--azzi-cyan);
+    font-size: 18px;
+
+    text-shadow:
+        0 0 8px var(--azzi-cyan),
+        0 0 18px var(--azzi-blue);
+
+    animation: azziPulse 1.8s infinite;
+}
+
+/* ---------- منطقة اللوحات ---------- */
+
+.cards {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1150px;
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
+}
+/* ---------- اللوحة الإلكترونية ---------- */
+
+.cards .card {
+    position: relative;
+
+    min-height: 220px;
+
+    padding: 28px 22px !important;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    border-radius: 10px !important;
+
+    overflow: hidden;
+
+    /* جسم اللوحة */
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17,24,39,.98),
+            rgba(7,12,28,.98)
+        ) !important;
+
+    border:
+        1px solid rgba(56,189,248,.48) !important;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(168,85,247,.12),
+        inset 0 0 25px rgba(56,189,248,.035),
+        0 10px 25px rgba(0,0,0,.45),
+        0 0 18px rgba(56,189,248,.08);
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease,
+        filter .35s ease;
+}
+/* إطار إضافي */
+.cards .card::before {
+    content: "";
+
+    position: absolute;
+    inset: 8px;
+
+    border:
+        1px solid rgba(168,85,247,.22);
+
+    border-radius: 6px;
+
+    pointer-events: none;
+}
+
+/* خطوط Scan */
+.cards .card::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: -20%;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--azzi-cyan),
+            var(--azzi-purple),
+            transparent
+        );
+
+    box-shadow:
+        0 0 8px var(--azzi-cyan),
+        0 0 18px var(--azzi-purple);
+
+    opacity: .55;
+
+    animation: azziScan 4s linear infinite;
+
+    pointer-events: none;
+}
+/* ---------- النقوش الإلكترونية ---------- */
+
+.cards .card span {
+    position: relative;
+    z-index: 3;
+
+    margin-top: 18px;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    color: #fff;
+
+    letter-spacing: .5px;
+
+    text-shadow:
+        0 0 6px rgba(255,255,255,.3),
+        0 0 12px var(--azzi-blue);
+}
+
+/* ---------- أيقونة القسم ---------- */
+
+.cards .card > :first-child {
+    position: relative;
+    z-index: 3;
+
+    font-size: 48px !important;
+
+    line-height: 1;
+
+    filter:
+        drop-shadow(0 0 5px rgba(255,255,255,.25))
+        drop-shadow(0 0 14px var(--azzi-blue))
+        drop-shadow(0 0 25px var(--azzi-purple));
+
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+}
+
+/* ---------- نقاط صغيرة داخل اللوحة ---------- */
+
+.cards .card {
+    isolation: isolate;
+}
+
+.cards .card .board-light,
+.cards .card .status-light {
+    position: absolute;
+}
+/* لمبات جانبية */
+
+.cards .card {
+    --board-line: rgba(56,189,248,.65);
+}
+
+.cards .card:hover {
+    transform:
+        translateY(-9px)
+        scale(1.015);
+
+    border-color:
+        var(--azzi-cyan) !important;
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        inset 0 0 0 1px rgba(34,211,238,.18),
+        inset 0 0 35px rgba(56,189,248,.06),
+        0 12px 30px rgba(0,0,0,.55),
+        0 0 18px rgba(56,189,248,.35),
+        0 0 42px rgba(168,85,247,.18);
+}
+
+.cards .card:hover > :first-child {
+    transform:
+        translateY(-4px)
+        scale(1.08);
+
+    filter:
+        drop-shadow(0 0 6px rgba(255,255,255,.45))
+        drop-shadow(0 0 16px var(--azzi-cyan))
+        drop-shadow(0 0 30px var(--azzi-purple));
+}
+
+.cards .card:hover span {
+    color: var(--azzi-cyan);
+
+    text-shadow:
+        0 0 8px var(--azzi-cyan),
+        0 0 18px var(--azzi-blue),
+        0 0 28px var(--azzi-purple);
+}
+/* ---------- زوايا إلكترونية ---------- */
+
+.cards .card {
+    clip-path: polygon(
+        0 10px,
+        10px 0,
+        calc(100% - 10px) 0,
+        100% 10px,
+        100% calc(100% - 10px),
+        calc(100% - 10px) 100%,
+        10px 100%,
+        0 calc(100% - 10px)
+    );
+}
+
+/* ---------- شريط حالة ---------- */
+
+.cards .card::selection {
+    background: var(--azzi-purple);
+}
+
+/* نضيف لمعة صغيرة باستخدام background overlay */
+.cards .card {
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(168,85,247,.07),
+            transparent 30%,
+            transparent 70%,
+            rgba(56,189,248,.06)
+        ),
+        linear-gradient(
+            145deg,
+            rgba(17,24,39,.98),
+            rgba(7,12,28,.98)
+        ) !important;
+}
+/* ---------- Animation ---------- */
+
+@keyframes azziScan {
+    0% {
+        top: -10%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .35;
+    }
+
+    50% {
+        opacity: .7;
+    }
+
+    90% {
+        opacity: .35;
+    }
+
+    100% {
+        top: 110%;
+        opacity: 0;
+    }
+}
+
+@keyframes azziPulse {
+    0%,100% {
+        opacity: .45;
+        transform: scale(.85);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+/* ---------- الهاتف ---------- */
+
+@media (max-width: 800px) {
+
+    .cards {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 18px;
+    }
+
+    .cards .card {
+        min-height: 190px;
+        padding: 24px 14px !important;
+    }
+
+    .cards .card > :first-child {
+        font-size: 40px !important;
+    }
+
+    .cards .card span {
+        font-size: 17px;
+    }
+}
+@media (max-width: 480px) {
+
+    #products {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .cards .card {
+        min-height: 165px;
+        padding: 20px 10px !important;
+    }
+
+    .cards .card::before {
+        inset: 6px;
+    }
+
+    .cards .card > :first-child {
+        font-size: 34px !important;
+    }
+
+    .cards .card span {
+        margin-top: 14px;
+        font-size: 14px;
+    }
+}
+
+/* ---------- تقليل الحركة لمن يفضل ذلك ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .cards .card,
+    .cards .card > :first-child,
+    .cards .card::after,
+    #products > h2::before {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
