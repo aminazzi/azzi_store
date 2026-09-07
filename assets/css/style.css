@@ -4569,46 +4569,4 @@ body.sidebar-open {
         font-size: 24px !important;
     }
 }
-            /* ===== تحسين آمن للموقع ===== */
-
-.card,
-.product-card,
-.review-card {
-    transition: .25s ease;
-}
-
-.card:hover,
-.review-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0,0,0,.35);
-}
-
-.btn,
-.buy-btn,
-.smart-picker-button {
-    transition: .25s ease;
-}
-
-.btn:hover,
-.buy-btn:hover,
-.smart-picker-button:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.08);
-}
-
-#search-box,
-.account-box,
-.smart-picker-box {
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.45),
-        0 0 25px rgba(168,85,247,.12);
-}
-
-.product-img,
-.product-image {
-    transition: .3s ease;
-}
-
-.card:hover .product-img {
-    transform: scale(1.02);
-}
+            
