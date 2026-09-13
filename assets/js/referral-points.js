@@ -76,28 +76,38 @@ pointsStyle.textContent = `
     position: fixed !important;
 
     left: 15px !important;
-    bottom: 85px !important;
+    bottom: 170px !important;
 
     top: auto !important;
     right: auto !important;
 
     z-index: 999999 !important;
 
-    padding: 7px 12px;
+    min-width: 60px;
+    height: 38px;
 
-    background: rgba(10, 8, 30, .95);
-    color: white;
+    padding: 0 10px;
 
-    border: 1px solid #a855f7;
-    border-radius: 12px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
 
-    font-size: 13px;
+    background: rgba(8, 10, 28, .96) !important;
+
+    color: white !important;
+
+    border: 1px solid #a855f7 !important;
+    border-radius: 14px !important;
+
+    font-size: 14px;
     font-weight: bold;
 
     box-shadow:
-        0 0 12px rgba(168,85,247,.45);
+        0 0 12px rgba(168,85,247,.45),
+        0 0 25px rgba(168,85,247,.15);
 
     direction: rtl;
+
     pointer-events: none;
 }
 `;
