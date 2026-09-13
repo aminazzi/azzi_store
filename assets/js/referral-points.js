@@ -69,3 +69,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     }, 1000);
 
 });
+const pointsStyle = document.createElement("style");
+
+pointsStyle.textContent = `
+#azziPoints {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 99999;
+
+    padding: 7px 12px;
+
+    background: rgba(20, 15, 45, .92);
+    color: #fff;
+
+    border: 1px solid #a855f7;
+    border-radius: 12px;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    box-shadow: 0 0 15px rgba(168,85,247,.35);
+
+    direction: rtl;
+}
+`;
+
+document.head.appendChild(pointsStyle);
