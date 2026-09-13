@@ -5005,4 +5005,95 @@ body.sidebar-open {
         transition: none !important;
     }
 }
+.referral-page {
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:#f7f7f8;
+  padding:20px;
+  overflow:auto;
+  direction:rtl;
+}
 
+.referral-page.show {
+  display:block;
+}
+
+.referral-box {
+  max-width:500px;
+  margin:50px auto;
+  padding:25px;
+  background:#fff;
+  border-radius:22px;
+  text-align:center;
+  box-shadow:0 8px 30px #0001;
+}
+
+.referral-icon {
+  font-size:50px;
+}
+
+.referral-box h2 {
+  margin:10px 0;
+}
+
+.referral-box p {
+  color:#777;
+  line-height:1.8;
+}
+
+.reward {
+  padding:15px;
+  margin:20px 0;
+  border-radius:15px;
+  background:#fff8d9;
+  line-height:1.8;
+}
+
+.link-box {
+  display:flex;
+  gap:7px;
+}
+
+.link-box input {
+  flex:1;
+  min-width:0;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  direction:ltr;
+}
+
+.link-box button,
+.share-btn,
+.social button,
+.back-btn {
+  border:0;
+  border-radius:12px;
+  padding:12px 16px;
+  cursor:pointer;
+}
+
+.share-btn {
+  width:100%;
+  margin-top:12px;
+  background:#111;
+  color:#fff;
+  font-size:16px;
+}
+
+.social {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:15px;
+}
+
+.social button {
+  background:#f1f1f1;
+}
+
+.back-btn {
+  background:#fff;
+}
