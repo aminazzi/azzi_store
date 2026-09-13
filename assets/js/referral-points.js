@@ -73,15 +73,20 @@ const pointsStyle = document.createElement("style");
 
 pointsStyle.textContent = `
 #azziPoints {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 99999;
+    position: fixed !important;
+
+    left: 15px !important;
+    bottom: 85px !important;
+
+    top: auto !important;
+    right: auto !important;
+
+    z-index: 999999 !important;
 
     padding: 7px 12px;
 
-    background: rgba(20, 15, 45, .92);
-    color: #fff;
+    background: rgba(10, 8, 30, .95);
+    color: white;
 
     border: 1px solid #a855f7;
     border-radius: 12px;
@@ -89,9 +94,11 @@ pointsStyle.textContent = `
     font-size: 13px;
     font-weight: bold;
 
-    box-shadow: 0 0 15px rgba(168,85,247,.35);
+    box-shadow:
+        0 0 12px rgba(168,85,247,.45);
 
     direction: rtl;
+    pointer-events: none;
 }
 `;
 
