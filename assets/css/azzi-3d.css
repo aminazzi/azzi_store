@@ -1,0 +1,221 @@
+/* ===== AZZI STORE 3D SCENE ===== */
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    perspective:1000px;
+}
+
+.azzi-3d-scene{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:1;
+}
+
+.azzi-obj{
+    position:absolute;
+    width:90px;
+    height:auto;
+    object-fit:contain;
+
+    filter:
+        drop-shadow(0 0 7px #20e7ff)
+        drop-shadow(0 0 18px #a855f7);
+
+    animation:azziFloat 8s ease-in-out infinite;
+    will-change:transform;
+}
+
+/* القلعة */
+.obj-castle{
+    top:8%;
+    left:4%;
+    width:125px;
+    animation-delay:-1s;
+}
+
+/* PDF */
+.obj-pdf{
+    top:10%;
+    right:5%;
+    width:105px;
+    animation-delay:-3s;
+}
+
+/* يد التحكم */
+.obj-controller{
+    top:48%;
+    left:3%;
+    width:105px;
+    animation-delay:-5s;
+}
+
+/* اللابتوب */
+.obj-laptop{
+    top:45%;
+    right:3%;
+    width:125px;
+    animation-delay:-2s;
+}
+
+/* الترس */
+.obj-gear{
+    bottom:8%;
+    left:7%;
+    width:95px;
+    animation-delay:-6s;
+}
+
+/* الفيديو */
+.obj-video{
+    bottom:7%;
+    right:7%;
+    width:100px;
+    animation-delay:-4s;
+}
+@keyframes azziFloat{
+
+    0%,100%{
+        transform:
+            translate3d(0,0,0)
+            rotate(-4deg)
+            scale(1);
+    }
+
+    25%{
+        transform:
+            translate3d(12px,-15px,20px)
+            rotate(3deg)
+            scale(1.04);
+    }
+
+    50%{
+        transform:
+            translate3d(-8px,-30px,40px)
+            rotate(6deg)
+            scale(1.08);
+    }
+
+    75%{
+        transform:
+            translate3d(15px,-12px,15px)
+            rotate(-2deg)
+            scale(1.03);
+    }
+}
+
+
+/* جسيمات ضوئية */
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:-50%;
+    z-index:0;
+    pointer-events:none;
+
+    background:
+        radial-gradient(circle,#fff 1px,transparent 2px)
+        0 0/90px 90px,
+
+        radial-gradient(circle,#a855f7 1px,transparent 2px)
+        40px 60px/130px 130px,
+
+        radial-gradient(circle,#20e7ff 1px,transparent 2px)
+        20px 30px/180px 180px;
+
+    opacity:.45;
+
+    animation:azziParticles 35s linear infinite;
+}
+
+@keyframes azziParticles{
+    from{
+        transform:translate3d(0,0,0) rotate(0deg);
+    }
+50%{
+        transform:translate3d(-50px,35px,0) rotate(2deg);
+    }
+
+    to{
+        transform:translate3d(0,0,0) rotate(0deg);
+    }
+}
+
+
+/* هالة خلف المحتوى */
+.hero::after{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            #a855f744,
+            #ec168f18 40%,
+            transparent 70%
+        );
+
+    filter:blur(15px);
+    pointer-events:none;
+    z-index:0;
+
+    animation:azziAura 6s ease-in-out infinite;
+}
+
+@keyframes azziAura{
+    0%,100%{
+        opacity:.5;
+        scale:.85;
+    }
+
+    50%{
+        opacity:1;
+        scale:1.15;
+    }
+}
+
+
+/* المحتوى فوق المجسمات */
+.hero > *:not(.azzi-3d-scene){
+    position:relative;
+    z-index:2;
+}
+
+
+/* الهاتف */
+@media(max-width:600px){
+
+    .azzi-obj{
+        width:55px;
+    }
+
+    .obj-castle{
+        top:8%;
+        left:1%;
+    }
+.obj-pdf{
+        top:8%;
+        right:1%;
+    }
+
+    .obj-controller{
+        top:52%;
+        left:1%;
+    }
+
+    .obj-laptop{
+        top:50%;
+        right:1%;
+    }
+
+    .obj-gear,
+    .obj-video{
+        display:none;
+    }
+}
