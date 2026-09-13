@@ -30,9 +30,14 @@ async function registerUser(email, password) {
             password: password,
 
             options: {
-                emailRedirectTo:
-                    "https://aminazzi.github.io/azzi_store/pages/login.html"
-            }
+    emailRedirectTo:
+        "https://aminazzi.github.io/azzi_store/pages/login.html",
+
+    data: {
+        referrer_id:
+            localStorage.getItem("azzi_referrer")
+    }
+}
 
         });
 
