@@ -262,14 +262,16 @@ const userIds = [
         }
 
         postsContainer.innerHTML = posts.map(post => {
-            return createPostHTML({
-                ...post,
-                chat_azzi_profiles: profileMap[post.user_id] || {
-                    username: "مستخدم",
-                    display_name: "مستخدم"
-                },
-                isLiked: likedPostIds.includes(post.id)
-            });
+            return createPostHTML(
+    {
+        ...post,
+        chat_azzi_profiles: profileMap[post.user_id] || {
+            username: "مستخدم",
+            display_name: "مستخدم"
+        }
+    },
+    likedPostIds.includes(post.id)
+);
         }).join("");
 
     } catch (error) {
