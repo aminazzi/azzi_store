@@ -333,4 +333,26 @@
         height: 60px;
     }
 }
+/* ❤️ الإعجاب */
+.post-actions button.liked {
+    color: #ff3b81;
+    text-shadow: 0 0 10px rgba(255,59,129,.5);
+}
 
+/* أزرار المنشور */
+.post-actions button {
+    transition: .2s;
+}
+
+.post-actions button:active {
+    transform: scale(.94);
+}
+
+/* التعليقات */
+.comment strong {
+    color: #a855f7;
+}
+
+.comment {
+    border: 1px solid rgba(168,85,247,.12);
+}
