@@ -121,7 +121,15 @@
         </span>
        <small>الخروج</small>
     </button>
-    
+     <button
+    class="bottom-nav-item"
+    type="button"
+    onclick="openTasks()">
+
+    <span>🎯</span>
+    <small>المهام</small>
+
+</button>
 </button>
 
 </nav>
@@ -652,7 +660,31 @@ function goToLogin() {
         </div>
 
     </div>  
+<!-- 🎯 مهام AZZI STORE -->
 
+<div id="tasksPage" class="tasks-page">
+
+    <div class="tasks-box">
+
+        <button
+            class="tasks-close"
+            onclick="closeTasks()">
+            ✕
+        </button>
+
+        <div class="tasks-title">
+            🎯 مهام AZZI STORE
+        </div>
+
+        <p class="tasks-subtitle">
+            أكمل المهام واربح نقاطًا ⭐
+        </p>
+
+        <div id="tasks-list"></div>
+
+    </div>
+
+</div>
 </body>
 
 </html>
