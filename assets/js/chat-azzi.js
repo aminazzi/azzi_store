@@ -381,10 +381,11 @@ const content =
             <div class="post-actions">
 
                 <button
-type="button"
-                    onclick="likePost('${post.id}')">
-                    ${liked ? "♥" : "♡"} ${likes}
-                </button>
+    type="button"
+    class="${liked ? "liked" : ""}"
+    onclick="likePost('${post.id}')">
+    ${liked ? "❤️" : "♡"} ${likes}
+</button>
 
                 <button
                     type="button"
