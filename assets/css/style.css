@@ -5097,3 +5097,54 @@ body.sidebar-open {
 .back-btn {
   background:#fff;
 }
+/* =========================================
+   🎰 زر عجلة الحظ
+========================================= */
+
+#wheel-launch {
+    position: absolute !important;
+
+    top: 25px !important;
+    left: 50% !important;
+
+    transform: translateX(-50%) !important;
+
+    width: 58px !important;
+    height: 46px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border: 1px solid #a855f7 !important;
+    border-radius: 14px !important;
+
+    background: rgba(8, 5, 25, 0.95) !important;
+
+    color: white !important;
+
+    font-size: 24px !important;
+
+    cursor: pointer !important;
+
+    z-index: 9999 !important;
+
+    box-shadow:
+        0 0 10px rgba(168, 85, 247, .9),
+        0 0 22px rgba(32, 231, 255, .35) !important;
+}
+
+#wheel-launch:hover {
+    transform:
+        translateX(-50%)
+        scale(1.08) !important;
+}
+
+.wheel-launch-icon {
+    display: block !important;
+    font-size: 25px !important;
+    line-height: 1 !important;
+}
