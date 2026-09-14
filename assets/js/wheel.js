@@ -225,6 +225,9 @@ if (!button || !message || !wheel)
 
     const reward =
         Number(data.reward);
+   if (typeof taskEvent === "function") {
+    taskEvent("wheel");
+}
 // ======================================
     // معرفة رقم الشريحة
     // ======================================
