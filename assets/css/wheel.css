@@ -575,3 +575,38 @@
 .points-wheel::after {
     display: none !important;
 }
+/* 🎯 الجوائز داخل ألوانها */
+.wheel-label {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 70px;
+    text-align: center;
+}
+
+/* 🔴 10 */
+.label-10 {
+    transform: translate(-50%, -50%) rotate(36deg) translateY(-88px) rotate(-36deg) !important;
+}
+
+/* 🔵 30 */
+.label-30 {
+    transform: translate(-50%, -50%) rotate(108deg) translateY(-88px) rotate(-108deg) !important;
+}
+
+/* 🟡 80 */
+.label-80 {
+    transform: translate(-50%, -50%) rotate(180deg) translateY(-88px) rotate(-180deg) !important;
+}
+
+/* 🟢 200 */
+.label-200 {
+    transform: translate(-50%, -50%) rotate(252deg) translateY(-88px) rotate(-252deg) !important;
+}
+
+/* 🟣 1000 */
+.label-1000 {
+    transform: translate(-50%, -50%) rotate(324deg) translateY(-88px) rotate(-324deg) !important;
+}
