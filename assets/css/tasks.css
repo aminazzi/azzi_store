@@ -1,0 +1,112 @@
+/* 🎯 AZZI TASKS */
+
+.tasks-page{
+    position:fixed;
+    inset:0;
+    z-index:999999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    background:rgba(3,5,18,.88);
+    backdrop-filter:blur(8px);
+}
+
+.tasks-page.active{
+    display:flex;
+}
+
+.tasks-box{
+    width:min(95vw,500px);
+    max-height:90vh;
+    overflow:auto;
+    position:relative;
+    padding:25px 16px;
+    border-radius:24px;
+    background:#10162e;
+    border:1px solid #a855f7;
+    box-shadow:
+        0 0 25px rgba(168,85,247,.5);
+    direction:rtl;
+}
+
+.tasks-close{
+    position:absolute;
+    top:12px;
+    left:14px;
+    border:0;
+    background:none;
+    color:white;
+    font-size:25px;
+}
+
+.tasks-title{
+    text-align:center;
+    font-size:27px;
+    font-weight:bold;
+    color:white;
+    text-shadow:0 0 15px #a855f7;
+}
+
+.tasks-subtitle{
+    text-align:center;
+    color:#cbd5e1;
+    margin:8px 0 20px;
+}
+
+.task-card{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:12px;
+    margin:9px 0;
+    border-radius:15px;
+    background:#151b38;
+    border:1px solid rgba(168,85,247,.25);
+}
+
+.task-icon{
+    font-size:25px;
+}
+.task-info{
+    flex:1;
+    min-width:0;
+}
+
+.task-info strong{
+    display:block;
+    color:white;
+    font-size:14px;
+}
+
+.task-info small{
+    display:block;
+    margin-top:4px;
+    color:#94a3b8;
+    font-size:11px;
+}
+
+.task-reward{
+    color:#facc15;
+    font-weight:bold;
+    font-size:13px;
+    white-space:nowrap;
+}
+
+.task-claim{
+    border:0;
+    border-radius:10px;
+    padding:8px 10px;
+    color:white;
+    background:linear-gradient(
+        90deg,
+        #a855f7,
+        #ec4899
+    );
+    cursor:pointer;
+}
+
+.task-claim.claimed{
+    background:#263047;
+    color:#94a3b8;
+}
