@@ -560,3 +560,18 @@
     }
 
 }
+/* 🎨 تقسيم العجلة إلى 5 ألوان */
+.points-wheel {
+    background: conic-gradient(
+        #ef4444 0deg 72deg,
+        #3b82f6 72deg 144deg,
+        #facc15 144deg 216deg,
+        #22c55e 216deg 288deg,
+        #8b5cf6 288deg 360deg
+    ) !important;
+}
+
+/* إزالة الخطوط المشوهة */
+.points-wheel::after {
+    display: none !important;
+}
