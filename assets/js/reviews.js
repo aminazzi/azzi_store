@@ -453,7 +453,9 @@ async function submitReview(event) {
 
         message.textContent =
             "✅ تم نشر تقييمك بنجاح!";
-
+if (typeof taskEvent === "function") {
+    taskEvent("review");
+}
 
         /* إعادة تحميل التقييمات */
         await loadReviews();
