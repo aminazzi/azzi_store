@@ -571,7 +571,97 @@ function goToLogin() {
 
   </div>
 </div>
-            
+
+<!-- =========================================
+     🎰 AZZI WHEEL
+========================================= -->
+
+<div
+    id="wheel-modal"
+    class="wheel-modal"
+    aria-hidden="true">
+
+    <div class="wheel-box">
+
+        <button
+            class="wheel-close"
+            type="button"
+            onclick="closeWheel()">
+            ✕
+        </button>
+
+        <div class="wheel-title">
+            🎰 عجلة الحظ
+        </div>
+
+        <p class="wheel-subtitle">
+            لف العجلة واربح نقاطًا مجانية ⭐
+        </p>
+
+
+        <!-- العجلة -->
+        <div class="wheel-wrapper">
+
+            <div class="wheel-pointer">
+                ▼
+            </div>
+
+            <div
+                id="points-wheel"
+                class="points-wheel">
+
+                <div class="wheel-label label-10">
+                    ⭐ 10
+                </div>
+
+                <div class="wheel-label label-30">
+                    ⭐ 30
+                </div>
+
+                <div class="wheel-label label-80">
+                    ⭐ 80
+                </div>
+
+                <div class="wheel-label label-200">
+                    ⭐ 200
+                </div>
+
+                <div class="wheel-label label-1000">
+                    ⭐ 1000
+                </div>
+
+            </div>
+
+            <div class="wheel-center">
+                ⭐
+            </div>
+
+        </div>
+
+
+        <button
+            id="spin-wheel-btn"
+            class="spin-wheel-btn"
+            type="button"
+            onclick="spinWheel()">
+
+            🎰 لف العجلة
+        </button>
+
+
+        <div
+            id="wheel-message"
+            class="wheel-message">
+        </div>
+
+
+        <div
+            id="wheel-countdown"
+            class="wheel-countdown">
+        </div>
+
+    </div>  
+
 </body>
 
 </html>
