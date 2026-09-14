@@ -62,7 +62,10 @@ Promise.all([
         `;
 
         return;
-    }   
+    }  
+    if (typeof taskEvent === "function") {
+    taskEvent("product", String(product.id));
+}
     // ==============================
     // الصورة
     // ==============================
@@ -331,11 +334,12 @@ Promise.all([
 
                 favorites.push(product);
 
-                favoriteButton.innerHTML =
-                    "❤️ Added to Favorites";
-
-            }
-
+if (typeof taskEvent === "function") {
+    taskEvent(
+        "favorite",
+        String(product.id)
+    );
+}
 
             // ==============================
             // حفظ مفضلة هذا المستخدم فقط
