@@ -722,6 +722,207 @@ document.addEventListener("DOMContentLoaded",()=>{
     taskEvent("section","videos");
 });   
 </script>
+
+<style>
+:root{
+  --az-accent:#00e5ff;
+  --az-bg:#080b12;
+  --az-card:rgba(255,255,255,.06);
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  overflow-x:hidden;
+  text-rendering:optimizeSpeed;
+}
+
+#az-progress{
+  position:fixed;
+  top:0;
+  right:0;
+  width:0;
+  height:3px;
+  z-index:99999;
+  background:linear-gradient(90deg,#00e5ff,#7c4dff,#ff00aa);
+  box-shadow:0 0 10px rgba(0,229,255,.7);
+}
+
+.header{
+  transition:box-shadow .25s ease,background .25s ease,transform .25s ease;
+}
+
+.header.az-scrolled{
+  box-shadow:0 8px 30px rgba(0,0,0,.22);
+  backdrop-filter:blur(12px);
+}
+</style>
+<style>
+.product-card,
+.card,
+.item,
+.category-card{
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+
+@media (hover:hover){
+  .product-card:hover,
+  .card:hover,
+  .item:hover,
+  .category-card:hover{
+    transform:translateY(-4px);
+  }
+}
+
+img{
+  max-width:100%;
+  height:auto;
+}
+
+img[loading="lazy"]{
+  content-visibility:auto;
+}
+
+img.az-broken{
+  opacity:.55;
+  filter:grayscale(1);
+}
+
+button,a,input,select,textarea{
+  outline-offset:3px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible{
+  outline:2px solid var(--az-accent);
+}
+</style>
+<style>
+#az-top{
+  position:fixed;
+  left:18px;
+  bottom:85px;
+  width:44px;
+  height:44px;
+  border:0;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  z-index:9998;
+  color:#fff;
+  background:rgba(20,25,35,.82);
+  backdrop-filter:blur(10px);
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(12px);
+  transition:.25s;
+}
+
+#az-top.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+#az-top:hover{
+  transform:translateY(-3px);
+}
+
+@media(max-width:600px){
+  #az-top{
+    left:12px;
+    bottom:75px;
+    width:40px;
+    height:40px;
+  }
+}
+</style>
+<script>
+(function(){
+
+  const progress=document.createElement("div");
+  progress.id="az-progress";
+  document.body.prepend(progress);
+
+  const topBtn=document.createElement("button");
+  topBtn.id="az-top";
+  topBtn.type="button";
+  topBtn.setAttribute("aria-label","العودة إلى الأعلى");
+  topBtn.innerHTML="↑";
+  document.body.appendChild(topBtn);
+
+  function optimizeImages(){
+    document.querySelectorAll("img").forEach((img,index)=>{
+      if(index>2 && !img.getAttribute("loading"))
+        img.setAttribute("loading","lazy");
+
+      if(!img.getAttribute("decoding"))
+        img.setAttribute("decoding","async");
+
+      img.addEventListener("error",function(){
+        this.classList.add("az-broken");
+      },{once:true});
+    });
+  }
+
+  let ticking=false;
+
+  function updateScroll(){
+    const scrollTop=window.scrollY;
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const percent=max>0?(scrollTop/max)*100:0;
+
+    progress.style.width=percent+"%";
+
+    const header=document.querySelector(".header");
+    if(header)
+      header.classList.toggle("az-scrolled",scrollTop>20);
+
+    topBtn.classList.toggle("show",scrollTop>450);
+
+    ticking=false;
+  }
+
+  window.addEventListener("scroll",()=>{
+    if(!ticking){
+      requestAnimationFrame(updateScroll);
+      ticking=true;
+    }
+  },{passive:true});
+
+  topBtn.addEventListener("click",()=>{
+    window.scrollTo({top:0,behavior:"smooth"});
+  });
+
+</script>
+<script>
+  document.querySelectorAll('a[href^="http"]').forEach(a=>{
+    if(a.hostname!==location.hostname){
+      a.target="_blank";
+      a.rel="noopener noreferrer";
+    }
+  });
+
+  const observer=new MutationObserver(()=>{
+    optimizeImages();
+  });
+
+  observer.observe(document.body,{
+    childList:true,
+    subtree:true
+  });
+
+  optimizeImages();
+  updateScroll();
+
+})();
+</script>
+
 </body>
 
 </html>
