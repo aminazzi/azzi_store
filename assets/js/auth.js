@@ -262,18 +262,36 @@ async function createUserProfile(user) {
 
     if (!user) return;
 
-    const { error } = await supabaseClient
-        .from("profiles")
-        .upsert({
-            id: user.id,
-            email: user.email
-        });
+    const { data: existingProfile, error: fetchError } =
+        await supabaseClient
+            .from("profiles")
+            .select("id")
+            .eq("id", user.id)
+            .maybeSingle();
+
+    if (fetchError) {
+        console.error("Profile fetch error:", fetchError);
+        return;
+    }
+
+    // إذا كان الملف موجودًا، لا نعيد إنشاءه
+    if (existingProfile) return;
+
+    const { error } =
+        await supabaseClient
+            .from("profiles")
+            .insert({
+                id: user.id,
+                email: user.email,
+                display_name: "مستخدم جديد",
+                bio: "",
+                gender: null,
+                avatar_url: null,
+                username_changed_at: null
+            });
 
     if (error) {
-        console.error(
-            "Profile error:",
-            error
-        );
+        console.error("Profile creation error:", error);
     }
 }
 // ================================
